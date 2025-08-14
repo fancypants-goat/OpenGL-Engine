@@ -18,8 +18,6 @@ add_executable(Engine
         camera.cpp
         camera.h
         glad.c
-        indices.h
-        keystate.h
         main.cpp
         shader.cpp
         shader.h
@@ -33,6 +31,8 @@ add_executable(Engine
         resources.h
         input.cpp
         input.h
+        mouse.cpp
+        mouse.h
 )
 
 target_link_libraries(Engine
