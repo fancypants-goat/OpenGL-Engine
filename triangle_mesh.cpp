@@ -1,20 +1,22 @@
 #include "triangle_mesh.h"
 
+#include <utility>
+
 namespace engine
 {
     TriangleMesh::TriangleMesh(std::vector<Vertex> vertices, Texture *texture, Shader *shader, std::vector<unsigned int> indices)
         : m_texture(texture)
-        , m_vertices(vertices)
+        , m_vertices(std::move(vertices))
         , m_shader(shader)
-        , m_indices(indices)
+        , m_indices(std::move(indices))
     {
         initialise();
     }
 
     TriangleMesh::TriangleMesh(std::vector<Vertex> vertices, Shader *shader, std::vector<unsigned int> indices)
-        : m_vertices(vertices)
+        : m_vertices(std::move(vertices))
         , m_shader(shader)
-        , m_indices(indices)
+        , m_indices(std::move(indices))
     {
         initialise();
     }

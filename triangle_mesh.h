@@ -18,7 +18,7 @@ namespace engine
             TriangleMesh(std::vector<Vertex> vertices, Texture *texture, Shader *shader, std::vector<unsigned int> indices = {});
             TriangleMesh(std::vector<Vertex> vertices, Shader *shader, std::vector<unsigned int> indices = {});
             
-            void vertexAttribPointer(int index, int size, GLenum type, bool normalized, int stride, const GLvoid *offset);
+            static void vertexAttribPointer(int index, int size, GLenum type, bool normalized, int stride, const GLvoid *offset);
             
             void draw();
             
