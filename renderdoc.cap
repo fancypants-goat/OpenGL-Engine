@@ -5,7 +5,7 @@
         "commandLine": "",
         "environment": [
         ],
-        "executable": "/home/michiel/Coding/Game Engine/Engine/main",
+        "executable": "/home/michiel/Coding/Game Engine/Engine/cmake-build-debug/Engine",
         "inject": false,
         "numQueuedFrames": 0,
         "options": {
