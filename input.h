@@ -7,30 +7,32 @@
 
 #include <GLFW/glfw3.h>
 #include <unordered_map>
+#include <glm/glm.hpp>
+
+#include "mouse.h"
 
 namespace engine {
 	
 	enum class KeyState
 	{
-		UNKNOWN,
-		OFF,
-		RELEASE,
-		PRESS,
-		HOLD
+		Unknown = -1,
+		Off,
+		Release,
+		Press,
+		Hold
 	};
 	
 	class Input
 	{
 	public:
-		Input() = delete;
+		Input() = delete; // static class
 		
-		static KeyState GetKeyState(int key);
-		
-		static void updateKeys(GLFWwindow *window);
-		static void initialize(GLFWwindow *window);
+		// key states
+		static KeyState getKeyState(GLFWwindow *window, int key);
+	
 	
 	private:
-		static std::unordered_map<int, KeyState> keyStates;
+		static std::unordered_map<int, KeyState> polledStates;
 	};
 	
 	

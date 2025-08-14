@@ -4,50 +4,36 @@
 
 #include "input.h"
 
-#include <iostream>
-
 namespace engine {
-	std::unordered_map<int, KeyState> Input::keyStates {};
+	std::unordered_map<int, KeyState> Input::polledStates {};
 	
-	KeyState Input::GetKeyState(int key)
+	
+	KeyState Input::getKeyState(GLFWwindow *window, int key)
 	{
-		if (keyStates.find(key) != keyStates.end())
-			return keyStates[key];
+		int glfwState = glfwGetKey(window, key);
 		
-		return KeyState::UNKNOWN;
-	}
-	
-	void Input::updateKeys(GLFWwindow *window)
-	{
-		for (auto &[key, state] : keyStates)
+		KeyState state = KeyState::Unknown;
+		
+		if (polledStates.find(key) != polledStates.end())
+			state = polledStates[key];
+		
+		if (glfwState == GLFW_PRESS) // if the button is down
 		{
-			int glfwState = glfwGetKey(window, key);
-			
-			if (glfwState == GLFW_PRESS)
-			{
-				if (state == KeyState::PRESS || state == KeyState::HOLD)
-					state = KeyState::HOLD;
-				else
-					state = KeyState::PRESS;
-			} else if (glfwState == GLFW_RELEASE)
-			{
-				if (state == KeyState::RELEASE || state == KeyState::OFF || state == KeyState::UNKNOWN)
-					state = KeyState::OFF;
-				else
-					state = KeyState::RELEASE;
-			} else
-				state = KeyState::UNKNOWN;
-		}
-	}
-	
-	void Input::initialize(GLFWwindow *window)
-	{
-		int lowest_key_enum (GLFW_KEY_SPACE);
-		int highest_key_enum (GLFW_KEY_LAST);
-		for (int k = lowest_key_enum; k <= highest_key_enum; k++)
+			if (state == KeyState::Press || state == KeyState::Hold)
+				state = KeyState::Hold;
+			else
+				state = KeyState::Press;
+		} else if (glfwState == GLFW_RELEASE)
 		{
-			keyStates[k] = KeyState::UNKNOWN;
-		}
-		updateKeys(window);
+			if (state == KeyState::Release || state == KeyState::Off)
+				state = KeyState::Off;
+			else
+				state = KeyState::Release;
+		} else
+			return KeyState::Unknown;
+		
+		// save the state into the polledStates map for later usage
+		polledStates[key] = state;
+		return state;
 	}
 } // engine
