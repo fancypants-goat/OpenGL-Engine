@@ -20,7 +20,7 @@ void main()
     // translation * rotation * scale
     mat4 trans = translation * rotation * scale;
     gl_Position = camera * trans * vec4(aPos, 1.0);
-    
-    color = aColor;
+
+    color = vec4(aPos + 0.5f, 1);
     texCoord = aTexCoord;
 }
