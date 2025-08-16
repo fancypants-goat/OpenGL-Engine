@@ -42,6 +42,24 @@ namespace engine
             void uniformmat4x2(const char *name, bool transpose, glm::mat4x2 value);
             void uniformmat3x4(const char *name, bool transpose, glm::mat3x4 value);
             void unifomrmat4x3(const char *name, bool transpose, glm::mat4x3 value);
+		
+			void vertexAttribPointer(int index, int size, GLenum type, bool normalized, int stride, const GLvoid *offset);
+			
+			template<typename MatType>
+			void vertexAttribPointerMatrix(int startIndex, bool normalized)
+			{
+				const int cols = MatType::length();
+				const int colSize = cols * sizeof(float);
+				const int rows = sizeof(MatType) / colSize;
+				
+				for (int i = 0; i < rows; i++)
+				{
+					vertexAttribPointer(startIndex + i, cols, GL_FLOAT, normalized, sizeof(MatType),
+										(void *) (i * colSize));
+					glVertexAttribDivisor(4 + i, 1);
+				}
+			}
+			
             
             
         private:

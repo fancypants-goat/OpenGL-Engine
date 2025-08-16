@@ -9,7 +9,7 @@ namespace engine
     {
         // generate the texture id and bind it
         glGenTextures(1, &m_id);
-        bind();
+        use();
         
         // set the texture parameters
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
@@ -36,7 +36,7 @@ namespace engine
         stbi_image_free(data);
     }
 
-    void Texture::bind()
+    void Texture::use()
     {
         glBindTexture(GL_TEXTURE_2D, m_id);
     }

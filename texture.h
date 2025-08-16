@@ -11,7 +11,7 @@ namespace engine
     {
         public:
             Texture(const char *source);
-            void bind();
+            void use();
             int get_width();
             int get_height();
             int get_id();
