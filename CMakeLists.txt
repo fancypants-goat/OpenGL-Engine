@@ -24,8 +24,6 @@ add_executable(Engine
         stb_image.cpp
         texture.cpp
         texture.h
-        triangle_mesh.cpp
-        triangle_mesh.h
         vertex.h
         resources.cpp
         resources.h
@@ -33,6 +31,12 @@ add_executable(Engine
         input.h
         mouse.cpp
         mouse.h
+        mesh_group.cpp
+        mesh_group.h
+        mesh.cpp
+        mesh.h
+        transform.cpp
+        transform.h
 )
 
 target_link_libraries(Engine
