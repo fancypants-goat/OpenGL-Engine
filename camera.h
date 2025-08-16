@@ -19,10 +19,10 @@ namespace engine
             
             void updateCamera();
             
-            glm::mat4 get_view();
-            glm::mat4 get_orthoProjection();
-            glm::mat4 get_perspectiveProjection(glm::vec2 viewport);
-            glm::mat4 get_cameraProjection(glm::vec2 viewport);
+            glm::mat4 calculateView();
+            glm::mat4 orthoProjection();
+            glm::mat4 perspectiveProjection(glm::vec2 viewport);
+            glm::mat4 cameraProjection(glm::vec2 viewport);
             
             glm::vec3 position;
             glm::vec3 rotation;
@@ -42,7 +42,7 @@ namespace engine
             static Camera *get_main();
             static void set_main(Camera *camera);
         private:
-            static Camera *sMain;
+            static Camera *s_main;
             
             glm::vec3 direction;
             glm::vec3 forwards;
