@@ -5,84 +5,22 @@
 #include <glm/glm.hpp>
 
 
-#include "mesh.h"
-#include "shader.h"
-#include "vertex.h"
-#include "camera.h"
-#include "resources.h"
-#include "input.h"
-#include "transform.h"
-#include "mesh_group.h"
+#include <engine/mouse.h>
+#include <engine/input.h>
+#include <engine/shader.h>
+#include <engine/texture.h>
+#include <engine/resources.h>
+#include <engine/object_loader.h>
+#include <engine/mesh.h>
+#include <engine/mesh_renderer.h>
+#include <engine/transform.h>
+#include <engine/camera.h>
 
 
 using namespace std;
 
 
 namespace engine {
-	vector <Vertex> indexedVertices
-			{
-					Vertex { // front top right
-							glm::vec3(0.5f, 0.5f, 0.5f),
-							glm::vec3(0, 0, 0),
-							glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-							glm::vec2(1.0f, 1.0f)
-					},
-					Vertex { // front top left
-							glm::vec3(-0.5f, 0.5f, 0.5f),
-							glm::vec3(0, 0, 0),
-							glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-							glm::vec2(0.0f, 1.0f)
-					},
-					Vertex { // front bottom left
-							glm::vec3(-0.5f, -0.5f, 0.5f),
-							glm::vec3(0, 0, 0),
-							glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-							glm::vec2(0.0f, 0.0f)
-					},
-					
-					Vertex { // front bottom right
-							glm::vec3(0.5f, -0.5f, 0.5f),
-							glm::vec3(0, 0, 0),
-							glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-							glm::vec2(1.0f, 0.0f)
-					},
-					
-					Vertex { // back top right
-							glm::vec3(0.5f, 0.5f, -0.5f),
-							glm::vec3(0, 0, 0),
-							glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-							glm::vec2(1.0f, 1.0f)
-					},
-					Vertex { // back top left
-							glm::vec3(-0.5f, 0.5f, -0.5f),
-							glm::vec3(0, 0, 0),
-							glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-							glm::vec2(0.0f, 1.0f)
-					},
-					Vertex { // back bottom left
-							glm::vec3(-0.5f, -0.5f, -0.5f),
-							glm::vec3(0, 0, 0),
-							glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-							glm::vec2(0.0f, 0.0f)
-					},
-					
-					Vertex { // back bottom right
-							glm::vec3(0.5f, -0.5f, -0.5f),
-							glm::vec3(0, 0, 0),
-							glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-							glm::vec2(1.0f, 0.0f)
-					}
-			};
-	vector<unsigned int> indices {
-			1, 2, 3, 0, 1, 3, // front
-			4, 5, 6, 4, 6, 7, // back
-			2, 3, 6, 3, 6, 7, // bottom
-			0, 1, 4, 1, 4, 5, // top
-			1, 2, 6, 1, 5, 6, // left
-			0, 3, 7, 0, 4, 7, // right
-	};
-	
-	
 	void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 	{
 		glViewport(0, 0, width, height);
@@ -92,23 +30,6 @@ namespace engine {
 	{
 		float randomFloat = min + static_cast<float>(rand()) / (RAND_MAX / (max - min));
 		return randomFloat;
-	}
-	
-	int createCubeBatch(MeshGroup *group, int batchSize, float minBorder, float maxBorder)
-	{
-		glm::vec3 p, r, s;
-		int count (0);
-		for (count = 0; count < batchSize; count++)
-		{
-			p = glm::vec3(randomFloat(minBorder, maxBorder), randomFloat(minBorder, maxBorder), randomFloat(minBorder, maxBorder));
-			r = glm::vec3(randomFloat(0, 360), randomFloat(0, 360), randomFloat(0, 360));
-			s = glm::vec3(randomFloat(0.7, 1.3));
-			group->addTransform(Transform(p, r, s));
-		}
-		
-		group->upload();
-		
-		return count;
 	}
 	
 	
@@ -148,32 +69,50 @@ namespace engine {
 		
 		Mouse::setCursorMode(window, CursorState::Disabled);
 		
-		Shader shader(Resources::Get("Shaders/rainbow.vert").c_str(),
-					  Resources::Get("Shaders/rainbow.frag").c_str());
-		Texture texture(Resources::Get("Textures/container.jpg").c_str());
-		
-		Mesh mesh(&shader, &texture, indexedVertices, indices);
-		
-		// load all transforms
+		srand(time(0));
 		
 		
-		const int cubeCount = 2'000'000;
-		int currentCubeCount (0);
-		const int batchSize = 200000;
-		const float minBorder (-1000);
-		const float maxBorder (1000);
+		Shader unlitShader(Resources::Get("Shaders/unlit.vert"),
+					  Resources::Get("Shaders/unlit.frag"));
+		Shader litShader(Resources::Get("Shaders/shader.vert"),
+						 Resources::Get("Shaders/shader.frag"));
+		Shader normalsShader(Resources::Get("Shaders/unlit.vert"),
+							 Resources::Get("Shaders/unlit.frag"));
 		
-		MeshGroup group(&mesh);
+		Texture container(Resources::Get("Textures/container.jpg"));
+		Texture wall(Resources::Get("Textures/wall.jpg"));
 		
-		currentCubeCount += createCubeBatch(&group, batchSize, minBorder, maxBorder);
+		ObjectLoader homerLoader(Resources::Get("Objects/homer.obj"));
+		ObjectLoader monkeyLoader(Resources::Get("Objects/Monkey.obj"));
+		ObjectLoader bunnyLoader(Resources::Get("Objects/stanford-bunny.obj"));
+		ObjectLoader teapotLoader(Resources::Get("Objects/teapot.obj"));
+		ObjectLoader dragonLoader(Resources::Get("Objects/Dragon.obj"));
+		ObjectLoader wCubeLoader(Resources::Get("Objects/Something.obj"));
+		
+		MeshRenderer dragon(dragonLoader.LoadAsMesh(), &normalsShader,
+							Transform(glm::vec3(0, -2, 0), glm::vec3(0, 60, 0), glm::vec3(.8)));
+		dragon.color = glm::vec4(0.5, 0.5, 1, 1);
+		MeshRenderer suzanne(monkeyLoader.LoadAsMesh(), &normalsShader,
+							 Transform(glm::vec3(2.5, 0, .5), glm::vec3(0), glm::vec3(.8)));
+		suzanne.color = glm::vec4(0.5, 1, 0.5, 1);
+		MeshRenderer teapot(teapotLoader.LoadAsMesh(), &normalsShader,
+							Transform(glm::vec3(1.7, -2, 2.2), glm::vec3(0), glm::vec3(.8)));
+		teapot.color = glm::vec4(1);
+		MeshRenderer wCube(wCubeLoader.LoadAsMesh(), &normalsShader,
+						   Transform(glm::vec3(2, -2, 4), glm::vec3(0, -80, 0), glm::vec3(1.5)));
+		wCube.color = glm::vec4(1);
+		
 		
 		Camera camera(Camera::Perspective);
-		camera.position = glm::vec3(0, 0, 0);
+		Camera::set_main(&camera);
+		camera.position = glm::vec3(0, 0, 1);
+		camera.rotation = glm::vec3(0, 0, 0);
 		camera.set_depthPlanes(0.1f, 100000);
-		camera.size = glm::vec2(8, 8);
+		camera.size = glm::vec2(5);
 		camera.fovy = 90;
 		const float speed(5);
 		const float sensitivity(0.1f);
+		camera.updateCamera();
 		
 		// delta time shit
 		float timeSinceLastFrame(glfwGetTime());
@@ -183,16 +122,9 @@ namespace engine {
 		// main loop
 		while (!glfwWindowShouldClose(window))
 		{
-			if (currentCubeCount < cubeCount)
-			{
-				currentCubeCount += createCubeBatch(&group, batchSize, minBorder, maxBorder);
-			}
-			
 			// delta time
 			deltaTime = (glfwGetTime() - timeSinceLastFrame) * timeScale;
 			timeSinceLastFrame = glfwGetTime();
-			// mouse
-			Mouse::mouse_move_callback(window);
 			
 			
 			// INPUT
@@ -233,7 +165,7 @@ namespace engine {
 			
 			glm::vec2 cursorOffset = Mouse::getMouseOffset(window);
 			camera.rotation.y += cursorOffset.x * sensitivity * timeScale;
-			camera.rotation.x -= cursorOffset.y * sensitivity * timeScale;
+			camera.rotation.x += -cursorOffset.y * sensitivity * timeScale;
 			
 			if (camera.rotation.x > 89.0f)
 				camera.rotation.x = 89.0f;
@@ -247,17 +179,16 @@ namespace engine {
 			// 0. reset the screen buffer
 			glClearColor(0, 0, 0, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			dragon.draw(window);
+			suzanne.draw(window);
+			teapot.draw(window);
+//			wCube.draw(window);
 			
-			glm::ivec2 viewport(0);
-			glfwGetWindowSize(window, &viewport.x, &viewport.y);
-			
-			mesh.shader->uniformmat4("camera", false, camera.cameraProjection(viewport));
-			
-			group.draw();
 			
 			
 			// mouse
-			cursorOffset = glm::vec2(0);
+			Mouse::mouse_move_callback(window);
 			
 			// EVENTS AND BUFFER
 			glfwSwapBuffers(window);

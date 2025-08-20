@@ -1,0 +1,15 @@
+# ninja log v6
+1	539	1755691865536363472	CMakeFiles/Engine.dir/src/glad.c.o	5a813dfb2d38484b
+1	868	1755691865537738371	CMakeFiles/Engine.dir/src/input.cpp.o	e1f8c0edf9336263
+2	874	1755691865538827587	CMakeFiles/Engine.dir/src/mouse.cpp.o	e599adaadaf08bff
+3	920	1755691865539209749	CMakeFiles/Engine.dir/src/resources.cpp.o	71a9bea80861d16a
+1	1000	1755691865537509770	CMakeFiles/Engine.dir/src/camera.cpp.o	aa3445dc4256ebee
+1	1033	1755691865537960422	CMakeFiles/Engine.dir/src/mesh.cpp.o	f669abebc0d9cb18
+868	1325	1755691866404368129	CMakeFiles/Engine.dir/src/texture.cpp.o	7a9381e0b95be31b
+874	1421	1755691866409368155	CMakeFiles/Engine.dir/src/transform.cpp.o	fb0f2062ac5b87f5
+0	2037	1755691865535363466	CMakeFiles/Engine.dir/main.cpp.o	c082ce89d8ff8df3
+3	2179	1755691865539624611	CMakeFiles/Engine.dir/src/shader.cpp.o	4e8c39566b198af3
+2	2386	1755691865538182754	CMakeFiles/Engine.dir/src/mesh_renderer.cpp.o	2f9b2eaf010d3c0e
+2	2449	1755691865539046338	CMakeFiles/Engine.dir/src/object_loader.cpp.o	ac6040d3a4ec61ab
+540	4600	1755691866076463533	CMakeFiles/Engine.dir/src/stb_image.cpp.o	87a34752b0492311
+4600	4686	1755691870135388147	Engine	ae9092ad5670a181
