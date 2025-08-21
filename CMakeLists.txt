@@ -4,8 +4,18 @@ project(Engine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include(FetchContent)
+
+FetchContent_Declare(
+glfw
+GIT_REPOSITORY https://github.com/glfw/glfw.git
+GIT_TAG latest  # or specify a version like 3.3.9
+)
+FetchContent_MakeAvailable(glfw)
+
+
 # Find dependencies
-find_package(glfw3 3.3 REQUIRED)
+find_package(glfw3 3.3)
 find_package(OpenGL REQUIRED)
 
 # Executable
@@ -32,13 +42,13 @@ target_include_directories(Engine PRIVATE
         ${CMAKE_SOURCE_DIR}/include/glad
         ${CMAKE_SOURCE_DIR}/include/khr
         ${CMAKE_SOURCE_DIR}/include/stb
+        ${CMAKE_SOURCE_DIR}/include/glm
 )
 
 # Link libraries
 target_link_libraries(Engine PRIVATE
         glfw
         OpenGL::GL
-        dl
         pthread
 )
 
