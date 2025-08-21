@@ -10,11 +10,11 @@
 #include <engine/shader.h>
 #include <engine/texture.h>
 #include <engine/resources.h>
-#include <engine/object_loader.h>
 #include <engine/mesh.h>
 #include <engine/mesh_renderer.h>
 #include <engine/transform.h>
 #include <engine/camera.h>
+#include <engine/sol.h>
 
 
 using namespace std;
@@ -73,34 +73,32 @@ namespace engine {
 		
 		
 		Shader unlitShader(Resources::Get("Shaders/unlit.vert"),
-					  Resources::Get("Shaders/unlit.frag"));
+						   Resources::Get("Shaders/unlit.frag"));
 		Shader litShader(Resources::Get("Shaders/shader.vert"),
 						 Resources::Get("Shaders/shader.frag"));
-		Shader normalsShader(Resources::Get("Shaders/unlit.vert"),
-							 Resources::Get("Shaders/unlit.frag"));
+//		Shader normalsShader(Resources::Get("Shaders/unlit.vert"),
+//							 Resources::Get("Shaders/unlit.frag"));
 		
 		Texture container(Resources::Get("Textures/container.jpg"));
 		Texture wall(Resources::Get("Textures/wall.jpg"));
 		
-		ObjectLoader homerLoader(Resources::Get("Objects/homer.obj"));
-		ObjectLoader monkeyLoader(Resources::Get("Objects/Monkey.obj"));
-		ObjectLoader bunnyLoader(Resources::Get("Objects/stanford-bunny.obj"));
-		ObjectLoader teapotLoader(Resources::Get("Objects/teapot.obj"));
-		ObjectLoader dragonLoader(Resources::Get("Objects/Dragon.obj"));
-		ObjectLoader wCubeLoader(Resources::Get("Objects/Something.obj"));
 		
-		MeshRenderer dragon(dragonLoader.LoadAsMesh(), &normalsShader,
-							Transform(glm::vec3(0, -2, 0), glm::vec3(0, 60, 0), glm::vec3(.8)));
-		dragon.color = glm::vec4(0.5, 0.5, 1, 1);
-		MeshRenderer suzanne(monkeyLoader.LoadAsMesh(), &normalsShader,
-							 Transform(glm::vec3(2.5, 0, .5), glm::vec3(0), glm::vec3(.8)));
-		suzanne.color = glm::vec4(0.5, 1, 0.5, 1);
-		MeshRenderer teapot(teapotLoader.LoadAsMesh(), &normalsShader,
-							Transform(glm::vec3(1.7, -2, 2.2), glm::vec3(0), glm::vec3(.8)));
-		teapot.color = glm::vec4(1);
-		MeshRenderer wCube(wCubeLoader.LoadAsMesh(), &normalsShader,
-						   Transform(glm::vec3(2, -2, 4), glm::vec3(0, -80, 0), glm::vec3(1.5)));
-		wCube.color = glm::vec4(1);
+		MeshRenderer dragon(SOL::ReadFile(Resources::Get("Objects/Dragon.obj")), &unlitShader,
+							Transform(glm::vec3(5, 0, 0), glm::vec3(0, 0, 0), glm::vec3(.8)));
+		dragon.color = glm::vec3(0.6, 0.6, 1);
+		
+		MeshRenderer suzanne(SOL::ReadFile(Resources::Get("Objects/Suzanne.obj")), &unlitShader,
+							 Transform(glm::vec3(5, 0, 2), glm::vec3(0, -90, 0), glm::vec3(.8)));
+		suzanne.color = glm::vec3(0.5, 0.8, 0.5);
+		
+		MeshRenderer teapot(SOL::ReadFile(Resources::Get("Objects/teapot.obj")), &unlitShader,
+							Transform(glm::vec3(5, 0, 4), glm::vec3(0), glm::vec3(.8)));
+		
+		MeshRenderer wCube(SOL::ReadFile(Resources::Get("Objects/Something.obj")), &unlitShader,
+						   Transform(glm::vec3(5, 0, 6), glm::vec3(0, 0, 0), glm::vec3(1.5)));
+//		wCube.color = glm::vec3(0.7, 0.5, 1);
+
+		MeshRenderer *selectedRenderer = &dragon;
 		
 		
 		Camera camera(Camera::Perspective);
@@ -145,6 +143,10 @@ namespace engine {
 			else if (Input::getKeyState(window, GLFW_KEY_TAB) == KeyState::Off)
 				glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 			
+			if (Input::getKeyState(window, GLFW_KEY_P) == KeyState::Press)
+				std::cout << "glm::vec3(" << camera.position.x << ',' << camera.position.y << ',' << camera.position.z << ')' << std::endl;
+				
+			
 			// movement
 			float toMove = speed * deltaTime;
 			
@@ -174,16 +176,35 @@ namespace engine {
 			
 			camera.updateCamera();
 			
+			if (Input::getKeyState(window, GLFW_KEY_1) == KeyState::Press)
+				selectedRenderer = &dragon;
+			if (Input::getKeyState(window, GLFW_KEY_2) == KeyState::Press)
+				selectedRenderer = &suzanne;
+			if (Input::getKeyState(window, GLFW_KEY_3) == KeyState::Press)
+				selectedRenderer = &teapot;
+			if (Input::getKeyState(window, GLFW_KEY_4) == KeyState::Press)
+				selectedRenderer = &wCube;
+			
+			if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_2) == ButtonState::Hold)
+			{
+				selectedRenderer->addTransform(Transform(camera.position, camera.rotation +
+																		  selectedRenderer
+																				  ->get_transforms()[0]
+																				  .rotation,
+														 selectedRenderer->get_transforms()[0]
+																 .scale));
+			}
+			
 			
 			// RENDERING
 			// 0. reset the screen buffer
 			glClearColor(0, 0, 0, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+			
 			dragon.draw(window);
 			suzanne.draw(window);
 			teapot.draw(window);
-//			wCube.draw(window);
+			wCube.draw(window);
 			
 			
 			

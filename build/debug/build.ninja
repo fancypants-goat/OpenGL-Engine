@@ -112,15 +112,6 @@ build CMakeFiles/Engine.dir/src/mouse.cpp.o: CXX_COMPILER__Engine_unscanned_Debu
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
-build CMakeFiles/Engine.dir/src/object_loader.cpp.o: CXX_COMPILER__Engine_unscanned_Debug /home/michiel/Coding/Game$ Engine/Engine/src/object_loader.cpp || cmake_object_order_depends_target_Engine
-  CONFIG = Debug
-  DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
-  DEP_FILE = CMakeFiles/Engine.dir/src/object_loader.cpp.o.d
-  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
-  OBJECT_DIR = CMakeFiles/Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
-
 build CMakeFiles/Engine.dir/src/resources.cpp.o: CXX_COMPILER__Engine_unscanned_Debug /home/michiel/Coding/Game$ Engine/Engine/src/resources.cpp || cmake_object_order_depends_target_Engine
   CONFIG = Debug
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
@@ -134,6 +125,15 @@ build CMakeFiles/Engine.dir/src/shader.cpp.o: CXX_COMPILER__Engine_unscanned_Deb
   CONFIG = Debug
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/shader.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
+
+build CMakeFiles/Engine.dir/src/sol.cpp.o: CXX_COMPILER__Engine_unscanned_Debug /home/michiel/Coding/Game$ Engine/Engine/src/sol.cpp || cmake_object_order_depends_target_Engine
+  CONFIG = Debug
+  DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
+  DEP_FILE = CMakeFiles/Engine.dir/src/sol.cpp.o.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
   OBJECT_DIR = CMakeFiles/Engine.dir
@@ -166,6 +166,15 @@ build CMakeFiles/Engine.dir/src/transform.cpp.o: CXX_COMPILER__Engine_unscanned_
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
+build CMakeFiles/Engine.dir/src/submesh.cpp.o: CXX_COMPILER__Engine_unscanned_Debug /home/michiel/Coding/Game$ Engine/Engine/src/submesh.cpp || cmake_object_order_depends_target_Engine
+  CONFIG = Debug
+  DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
+  DEP_FILE = CMakeFiles/Engine.dir/src/submesh.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Engine
@@ -174,7 +183,7 @@ build CMakeFiles/Engine.dir/src/transform.cpp.o: CXX_COMPILER__Engine_unscanned_
 #############################################
 # Link the executable Engine
 
-build Engine: CXX_EXECUTABLE_LINKER__Engine_Debug CMakeFiles/Engine.dir/main.cpp.o CMakeFiles/Engine.dir/src/glad.c.o CMakeFiles/Engine.dir/src/camera.cpp.o CMakeFiles/Engine.dir/src/input.cpp.o CMakeFiles/Engine.dir/src/mesh.cpp.o CMakeFiles/Engine.dir/src/mesh_renderer.cpp.o CMakeFiles/Engine.dir/src/mouse.cpp.o CMakeFiles/Engine.dir/src/object_loader.cpp.o CMakeFiles/Engine.dir/src/resources.cpp.o CMakeFiles/Engine.dir/src/shader.cpp.o CMakeFiles/Engine.dir/src/stb_image.cpp.o CMakeFiles/Engine.dir/src/texture.cpp.o CMakeFiles/Engine.dir/src/transform.cpp.o | /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 /usr/lib/x86_64-linux-gnu/libGL.so
+build Engine: CXX_EXECUTABLE_LINKER__Engine_Debug CMakeFiles/Engine.dir/main.cpp.o CMakeFiles/Engine.dir/src/glad.c.o CMakeFiles/Engine.dir/src/camera.cpp.o CMakeFiles/Engine.dir/src/input.cpp.o CMakeFiles/Engine.dir/src/mesh.cpp.o CMakeFiles/Engine.dir/src/mesh_renderer.cpp.o CMakeFiles/Engine.dir/src/mouse.cpp.o CMakeFiles/Engine.dir/src/resources.cpp.o CMakeFiles/Engine.dir/src/shader.cpp.o CMakeFiles/Engine.dir/src/sol.cpp.o CMakeFiles/Engine.dir/src/stb_image.cpp.o CMakeFiles/Engine.dir/src/texture.cpp.o CMakeFiles/Engine.dir/src/transform.cpp.o CMakeFiles/Engine.dir/src/submesh.cpp.o | /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 /usr/lib/x86_64-linux-gnu/libGL.so
   CONFIG = Debug
   DEP_FILE = CMakeFiles/Engine.dir/link.d
   FLAGS = -g

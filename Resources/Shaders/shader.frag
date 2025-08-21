@@ -6,10 +6,10 @@ in vec2 texCoord;
 uniform sampler2D texture;
 uniform bool useTexture;
 
-uniform vec4 objectColor;
+uniform vec3 objColor;
 
 void main() {
-    vec4 color = objectColor;
+    vec4 color = vec4(objColor, 1);
     if (useTexture)
         color *= texture2D(texture, texCoord);
 

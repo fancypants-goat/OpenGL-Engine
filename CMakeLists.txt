@@ -8,14 +8,22 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(glfw3 3.3 REQUIRED)
 find_package(OpenGL REQUIRED)
 
-# Source files
-file(GLOB SRC_FILES src/*.cpp)
-
 # Executable
 add_executable(Engine
         main.cpp
         src/glad.c
-        ${SRC_FILES}
+        src/camera.cpp
+        src/input.cpp
+        src/mesh.cpp
+        src/mesh_renderer.cpp
+        src/mouse.cpp
+        src/resources.cpp
+        src/shader.cpp
+        src/sol.cpp
+        src/stb_image.cpp
+        src/texture.cpp
+        src/transform.cpp
+        src/submesh.cpp
 )
 
 # Include directories (scoped to this target)

@@ -8,11 +8,18 @@
 
 namespace engine {
 	
-	Mesh::Mesh(std::vector<Vertex> vertices,
-			   std::vector<unsigned int> indices,
-			   Mesh::StorageType storageType)
-			: m_vertices(vertices), m_indices(indices), m_storageType(storageType), m_vao(-1),
-			  m_vbo(-1), m_ebo(-1)
+	Mesh::Mesh()
+	: m_subMeshes(), m_vao(-1)
+	{
+	}
+	
+	Mesh::Mesh(SubMesh subMesh)
+			: m_subMeshes(std::vector<SubMesh> {subMesh}), m_vao(-1)
+	{
+	}
+	
+	Mesh::Mesh(Material material, std::vector<Vertex> vertices, std::vector<unsigned int> indices)
+			: m_subMeshes(std::vector<SubMesh> {SubMesh(material, vertices, indices)}), m_vao(-1)
 	{
 	}
 	
@@ -20,10 +27,11 @@ namespace engine {
 	{
 		if (m_vao == -1)
 			glGenVertexArrays(1, &m_vao);
-		if (m_vbo == -1)
-			glGenBuffers(1, &m_vbo);
-		if (m_ebo == -1)
-			glGenBuffers(1, &m_ebo);
+		
+		for (SubMesh subMesh : m_subMeshes)
+		{
+			subMesh.initialize();
+		}
 		
 		upload(); // binds VAO -> uploads DATA -> unbinds VAO
 	}
@@ -32,33 +40,10 @@ namespace engine {
 	{
 		use();
 		
-		glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-		glBufferData(GL_ARRAY_BUFFER, m_vertices.size() * sizeof(Vertex), m_vertices.data(),
-					 (int) m_storageType);
-		
-		if (!m_indices.empty())
+		for (SubMesh subMesh : m_subMeshes)
 		{
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indices.size() * sizeof(unsigned int),
-						 m_indices.data(), (int) m_storageType);
+			subMesh.upload();
 		}
-		
-		// because no shader is present in this class,
-		// as it is sent through to mesh_renderer.hpp,
-		// use the raw gl methods to set the vertex attributes
-		
-		std::size_t vertexSize(sizeof(Vertex));
-		
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, vertexSize,
-							  (void *) offsetof(Vertex, position));
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, vertexSize,
-							  (void *) offsetof(Vertex, normal));
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, vertexSize,
-							  (void *) offsetof(Vertex, texCoord));
-		
-		glEnableVertexAttribArray(0);
-		glEnableVertexAttribArray(1);
-		glEnableVertexAttribArray(2);
 		
 		glBindVertexArray(0);
 	}
@@ -68,33 +53,35 @@ namespace engine {
 		glBindVertexArray(m_vao);
 	}
 	
-	std::vector<unsigned int> Mesh::get_indices()
+	void Mesh::addSubMesh(SubMesh subMesh)
 	{
-		return m_indices;
-	}
-	
-	std::vector<Vertex> Mesh::get_vertices()
-	{
-		return m_vertices;
-	}
-	
-	void Mesh::updateVertices(std::vector<Vertex> vertices, std::vector<unsigned int> indices)
-	{
-		m_vertices = vertices;
-		m_indices = indices;
-		
+		subMesh.initialize();
+		subMesh.parentMesh = this;
+		m_subMeshes.push_back(subMesh);
 		upload();
 	}
 	
-	Mesh::StorageType Mesh::get_storageType()
+	void Mesh::addSubMeshSilent(SubMesh subMesh)
 	{
-		return m_storageType;
+		if (subMesh.get_vertices().empty())
+			return;
+		
+		subMesh.initialize();
+		subMesh.parentMesh = this;
+		m_subMeshes.push_back(subMesh);
 	}
 	
-	void Mesh::set_storageType(Mesh::StorageType storageType)
+	void Mesh::singleUpload(SubMesh *subMesh) const
 	{
-		m_storageType = storageType;
+		use();
 		
-		upload();
+		subMesh->upload();
+		
+		glBindVertexArray(0);
+	}
+	
+	std::vector<SubMesh> Mesh::get_SubMeshes()
+	{
+		return m_subMeshes;
 	}
 } // engine

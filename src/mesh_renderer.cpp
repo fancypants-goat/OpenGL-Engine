@@ -101,16 +101,39 @@ namespace engine {
 		shader->use();
 		shader->uniformb("useTexture", texture != nullptr);
 		shader->uniformmat4("camera", false, Camera::get_main()->cameraProjection(viewport));
-		shader->uniform3f("cameraPos", Camera::get_main()->position.x, Camera::get_main()->position.y, Camera::get_main()->position.z);
-		shader->uniform3f("lightPos", 2, 4, 6);
-		shader->uniform3f("lightColor", 0.94, 0.88, 0.98);
-		shader->uniform4f("objectColor", color.x, color.y, color.z, color.w);
+		shader->uniform3f("cameraPos", Camera::get_main()->position.x,
+						  Camera::get_main()->position.y, Camera::get_main()->position.z);
+		shader->uniform3f("lightPos", -1.19842,0.560531,4.0903);
+		shader->uniform3f("lightColor", 1, 1, 1);
+		shader->uniform3f("objColor", color.x, color.y, color.z);
 		
-		if (!mesh.get_indices().empty())
-			glDrawElementsInstanced(GL_TRIANGLES, mesh.get_indices().size(), GL_UNSIGNED_INT,
-									0, m_transforms.size());
-		else
-			glDrawArraysInstanced(GL_TRIANGLES, 0, mesh.get_vertices().size(), m_transforms.size());
+		for (SubMesh subMesh : mesh.get_SubMeshes())
+		{
+			glm::vec3 ambientColor = color;
+			glm::vec3 diffuseColor = color;
+			glm::vec3 specularColor = color;
+			if (subMesh.material.ambientColor != glm::vec3(-1))
+				ambientColor = subMesh.material.ambientColor;
+			if (subMesh.material.diffuseColor != glm::vec3(-1))
+				diffuseColor = subMesh.material.diffuseColor;
+			if (subMesh.material.specularColor != glm::vec3(-1))
+				specularColor = subMesh.material.specularColor;
+			
+			shader->uniform3f("objAmbient", ambientColor.x,
+							  ambientColor.y, ambientColor.z);
+			shader->uniform3f("objDiffuse", diffuseColor.x,
+							  diffuseColor.y, diffuseColor.z);
+			shader->uniform3f("objSpecular", specularColor.x,
+							  specularColor.y, specularColor.z);
+			shader->uniformf("specularExp", subMesh.material.specularExponent);
+			
+			if (!subMesh.get_indices().empty())
+				glDrawElementsInstanced(GL_TRIANGLES, subMesh.get_indices().size(), GL_UNSIGNED_INT,
+										nullptr, m_transforms.size());
+			else
+				glDrawArraysInstanced(GL_TRIANGLES, 0, subMesh.get_vertices().size(),
+									  m_transforms.size());
+		}
 	}
 	
 	void MeshRenderer::addTransform(Transform transform)

@@ -41,7 +41,7 @@ namespace engine {
 		Mesh mesh;
 		Shader *shader;
 		Texture *texture;
-		glm::vec4 color;
+		glm::vec3 color = glm::vec3(1);
 	private:
 		void initialize();
 		

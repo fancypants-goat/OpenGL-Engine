@@ -5,47 +5,38 @@
 #ifndef ENGINE_MESH_H
 #define ENGINE_MESH_H
 
-#include <glad/glad.h>
-#include <vector>
-#include "vertex.h"
+#include <engine/submesh.h>
 
 namespace engine {
 	
 	class Mesh
 	{
 	public:
-		enum class StorageType
-		{
-			Static = GL_STATIC_DRAW,
-			Dynamic = GL_DYNAMIC_DRAW
-		};
+		Mesh(Material material, std::vector<Vertex> vertices,
+			 std::vector<unsigned int> indices = {});
 		
-		Mesh(std::vector<Vertex> vertices,
-			 std::vector<unsigned int> indices = {}, StorageType storageType = StorageType::Static);
+		explicit Mesh(SubMesh mesh);
+		
+		Mesh();
 		
 		void initialize();
 		
 		void upload();
 		
+		void singleUpload(SubMesh *subMesh) const;
+		
 		void use() const;
 		
-		std::vector<unsigned int> get_indices();
+		void addSubMesh(SubMesh subMesh);
+		void addSubMeshSilent(SubMesh subMesh);
 		
-		std::vector<Vertex> get_vertices();
+		std::vector<SubMesh> get_SubMeshes();
 		
-		void updateVertices(std::vector<Vertex> vertices, std::vector<unsigned int> indices = {});
-		
-		StorageType get_storageType();
-		
-		void set_storageType(StorageType storageType);
-	
+		glm::vec3 color;
 	
 	private:
-		unsigned int m_vao, m_vbo, m_ebo;
-		
-		std::vector<Vertex> m_vertices;
-		std::vector<unsigned int> m_indices;
-		StorageType m_storageType;
+		unsigned int m_vao;
+		std::vector<SubMesh> m_subMeshes;
 	};
 	
 } // engine

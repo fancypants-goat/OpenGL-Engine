@@ -8,25 +8,22 @@
 #include <bits/stdc++.h>
 #include <engine/vertex.h>
 #include <engine/mesh.h>
+#include <engine/material.h>
 
 namespace engine {
-	class Object
+	class SOL
 	{
 	public:
-		Object(std::string source);
+		SOL() = delete;
 		
+		static Mesh
+		ReadFile(std::string source);
 		
-	private:
-		std::string source;
+		static Mesh
+		ReadObj(std::string source);
+		
+		static std::unordered_map<std::string, Material> ReadMTL(std::string source);
 	};
-	
-	static void
-	ReadFile(std::string source, std::vector<Vertex> *vertices, std::vector<unsigned int> *indices);
-	
-	static void
-	ReadObj(std::string source, std::vector<Vertex> *vertices, std::vector<unsigned int> *indices);
-	
-	static Mesh ReadFileToMesh(std::string source);
 }
 
 #endif // ENGINE_SIMPLEOBJECTLOADER_H
