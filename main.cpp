@@ -113,16 +113,18 @@ namespace engine {
 		camera.updateCamera();
 		
 		// delta time shit
-		float timeSinceLastFrame(glfwGetTime());
+		float timeAtLastFrame(glfwGetTime());
 		float deltaTime(0);
 		float timeScale(1);
+		float frameTime (0);
 		
 		// main loop
 		while (!glfwWindowShouldClose(window))
 		{
 			// delta time
-			deltaTime = (glfwGetTime() - timeSinceLastFrame) * timeScale;
-			timeSinceLastFrame = glfwGetTime();
+			float frameStart = glfwGetTime();
+			deltaTime = (frameStart - timeAtLastFrame) * timeScale;
+			timeAtLastFrame = frameStart;
 			
 			
 			// INPUT
@@ -214,6 +216,10 @@ namespace engine {
 			// EVENTS AND BUFFER
 			glfwSwapBuffers(window);
 			glfwPollEvents();
+
+			//
+			frameTime = glfwGetTime() - frameStart;
+			std::cout << "Frame Time: " << frameTime << " Frames per Second: " << 1 / frameTime << std::endl;
 		}
 		
 		

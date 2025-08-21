@@ -8,7 +8,7 @@ namespace engine {
 	Mesh SOL::ReadFile(std::string source)
 	{
 		std::filesystem::path file = std::filesystem::path(source);
-		std::string fileType = file.extension();
+		std::string fileType = file.extension().string();
 		
 		if (fileType == ".obj")
 			return ReadObj(file.string());
@@ -126,7 +126,7 @@ namespace engine {
 				std::filesystem::path filePath(source);
 				std::filesystem::path parentPath = filePath.parent_path();
 				
-				mtlMaterials = ReadMTL(parentPath.append(name));
+				mtlMaterials = ReadMTL(parentPath.append(name).string());
 				for (auto mtlMaterial : mtlMaterials)
 				{
 					std::cout << "Key: " << mtlMaterial.first << ", Value: " << mtlMaterial.second.specularExponent << std::endl;
