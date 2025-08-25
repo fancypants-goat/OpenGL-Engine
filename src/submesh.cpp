@@ -11,20 +11,26 @@ namespace engine {
 					 std::vector<unsigned int> indices,
 					 SubMesh::StorageType storageType)
 			: material(material), m_vertices(vertices), m_indices(indices),
-			  m_storageType(storageType), m_vbo(-1), m_ebo(-1)
+			  m_storageType(storageType), m_vbo(-1), m_ebo(-1), m_vao(-1)
 	{
 	}
 	
 	void SubMesh::initialize()
 	{
+		if (m_vao == -1)
+			glGenVertexArrays(1, &m_vao);
 		if (m_vbo == -1)
 			glGenBuffers(1, &m_vbo);
 		if (m_ebo == -1)
 			glGenBuffers(1, &m_ebo);
+		
+		upload();
 	}
 	
 	void SubMesh::upload()
 	{
+		use();
+		
 		glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 		glBufferData(GL_ARRAY_BUFFER, m_vertices.size() * sizeof(Vertex), m_vertices.data(),
 					 (int) m_storageType);
@@ -52,6 +58,8 @@ namespace engine {
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
 		glEnableVertexAttribArray(2);
+		
+		glBindVertexArray(0);
 	}
 	
 	std::vector<unsigned int> SubMesh::get_indices()
@@ -68,7 +76,7 @@ namespace engine {
 	{
 		m_vertices = vertices;
 		m_indices = indices;
-		parentMesh->singleUpload(this);
+		upload();
 	}
 	
 	SubMesh::StorageType SubMesh::get_storageType()
@@ -79,7 +87,12 @@ namespace engine {
 	void SubMesh::set_storageType(SubMesh::StorageType storageType)
 	{
 		m_storageType = storageType;
-		parentMesh->singleUpload(this);
+		upload();
+	}
+	
+	void SubMesh::use() const
+	{
+		glBindVertexArray(m_vao);
 	}
 }
 

@@ -544,3 +544,201 @@ events:
       Running the CXX compiler's linker: "/usr/bin/ld" "-v"
       GNU ld (GNU Binutils for Ubuntu) 2.42
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindThreads.cmake:97 (check_c_source_compiles)"
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "build/debug/_deps/glfw-src/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-74eL9o"
+      binary: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-74eL9o"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-74eL9o'
+        
+        Run Build Command(s): /snap/clion/367/bin/ninja/linux/x64/ninja -v cmTC_ce5c1
+        [1/2] /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -fdiagnostics-color=always -o CMakeFiles/cmTC_ce5c1.dir/src.c.o -c '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-74eL9o/src.c'
+        [2/2] : && /usr/bin/cc   CMakeFiles/cmTC_ce5c1.dir/src.c.o -o cmTC_ce5c1   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "build/debug/_deps/glfw-src/src/CMakeLists.txt:69 (check_function_exists)"
+    checks:
+      - "Looking for memfd_create"
+    directories:
+      source: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-xjOytK"
+      binary: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-xjOytK"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "HAVE_MEMFD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-xjOytK'
+        
+        Run Build Command(s): /snap/clion/367/bin/ninja/linux/x64/ninja -v cmTC_f271a
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=memfd_create -fdiagnostics-color=always -o CMakeFiles/cmTC_f271a.dir/CheckFunctionExists.c.o -c '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-xjOytK/CheckFunctionExists.c'
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=memfd_create  CMakeFiles/cmTC_f271a.dir/CheckFunctionExists.c.o -o cmTC_f271a   && :
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckLibraryExists.cmake:112 (try_compile)"
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindX11.cmake:701 (check_library_exists)"
+      - "build/debug/_deps/glfw-src/src/CMakeLists.txt:181 (find_package)"
+    checks:
+      - "Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so"
+    directories:
+      source: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-yfmgR0"
+      binary: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-yfmgR0"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "X11_LIB_X11_SOLO"
+      cached: true
+      stdout: |
+        Change Dir: '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-yfmgR0'
+        
+        Run Build Command(s): /snap/clion/367/bin/ninja/linux/x64/ninja -v cmTC_9c182
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -o CMakeFiles/cmTC_9c182.dir/CheckFunctionExists.c.o -c '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-yfmgR0/CheckFunctionExists.c'
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=XOpenDisplay  CMakeFiles/cmTC_9c182.dir/CheckFunctionExists.c.o -o cmTC_9c182  /usr/lib/x86_64-linux-gnu/libX11.so  /usr/lib/x86_64-linux-gnu/libXext.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindX11.cmake:716 (check_function_exists)"
+      - "build/debug/_deps/glfw-src/src/CMakeLists.txt:181 (find_package)"
+    checks:
+      - "Looking for gethostbyname"
+    directories:
+      source: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-YGBj1v"
+      binary: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-YGBj1v"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_GETHOSTBYNAME"
+      cached: true
+      stdout: |
+        Change Dir: '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-YGBj1v'
+        
+        Run Build Command(s): /snap/clion/367/bin/ninja/linux/x64/ninja -v cmTC_0113e
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -o CMakeFiles/cmTC_0113e.dir/CheckFunctionExists.c.o -c '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-YGBj1v/CheckFunctionExists.c'
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=gethostbyname  CMakeFiles/cmTC_0113e.dir/CheckFunctionExists.c.o -o cmTC_0113e   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindX11.cmake:730 (check_function_exists)"
+      - "build/debug/_deps/glfw-src/src/CMakeLists.txt:181 (find_package)"
+    checks:
+      - "Looking for connect"
+    directories:
+      source: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-OkTT5o"
+      binary: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-OkTT5o"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_CONNECT"
+      cached: true
+      stdout: |
+        Change Dir: '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-OkTT5o'
+        
+        Run Build Command(s): /snap/clion/367/bin/ninja/linux/x64/ninja -v cmTC_d79e7
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect -o CMakeFiles/cmTC_d79e7.dir/CheckFunctionExists.c.o -c '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-OkTT5o/CheckFunctionExists.c'
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=connect  CMakeFiles/cmTC_d79e7.dir/CheckFunctionExists.c.o -o cmTC_d79e7   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindX11.cmake:739 (check_function_exists)"
+      - "build/debug/_deps/glfw-src/src/CMakeLists.txt:181 (find_package)"
+    checks:
+      - "Looking for remove"
+    directories:
+      source: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-ISdl4O"
+      binary: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-ISdl4O"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_REMOVE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-ISdl4O'
+        
+        Run Build Command(s): /snap/clion/367/bin/ninja/linux/x64/ninja -v cmTC_17219
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove -o CMakeFiles/cmTC_17219.dir/CheckFunctionExists.c.o -c '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-ISdl4O/CheckFunctionExists.c'
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=remove  CMakeFiles/cmTC_17219.dir/CheckFunctionExists.c.o -o cmTC_17219   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "/snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindX11.cmake:748 (check_function_exists)"
+      - "build/debug/_deps/glfw-src/src/CMakeLists.txt:181 (find_package)"
+    checks:
+      - "Looking for shmat"
+    directories:
+      source: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-vP6bIw"
+      binary: "/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-vP6bIw"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_SHMAT"
+      cached: true
+      stdout: |
+        Change Dir: '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-vP6bIw'
+        
+        Run Build Command(s): /snap/clion/367/bin/ninja/linux/x64/ninja -v cmTC_298ca
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat -o CMakeFiles/cmTC_298ca.dir/CheckFunctionExists.c.o -c '/home/michiel/Coding/Game Engine/Engine/build/debug/CMakeFiles/CMakeScratch/TryCompile-vP6bIw/CheckFunctionExists.c'
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=shmat  CMakeFiles/cmTC_298ca.dir/CheckFunctionExists.c.o -o cmTC_298ca   && :
+        
+      exitCode: 0
+...

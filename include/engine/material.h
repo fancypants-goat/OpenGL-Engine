@@ -14,6 +14,7 @@ namespace engine {
 		glm::vec3 diffuseColor = glm::vec3(-1);
 		glm::vec3 specularColor = glm::vec3(-1);
 		float specularExponent = 32;
+		float alpha = 1;
 	};
 } // engine
 

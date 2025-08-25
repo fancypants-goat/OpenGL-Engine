@@ -6,7 +6,7 @@ namespace engine {
 	Camera *Camera::s_main {nullptr};
 	
 	Camera::Camera(Type type)
-			: type(type)
+			: type(type), transform(glm::vec3(0), glm::vec3(0), glm::vec3(0))
 	{
 		updateCamera();
 	}
@@ -15,9 +15,9 @@ namespace engine {
 	{
 		glm::vec3 worldUp(0, 1, 0);
 		
-		direction = glm::vec3(sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x)),
-							  sin(glm::radians(rotation.x)),
-							  -cos(glm::radians(rotation.y)) * cos(glm::radians(rotation.x)));
+		direction = glm::vec3(sin(glm::radians(transform.globalRotation().y)) * cos(glm::radians(transform.globalRotation().x)),
+							  sin(glm::radians(transform.globalRotation().x)),
+							  -cos(glm::radians(transform.globalRotation().y)) * cos(glm::radians(transform.globalRotation().x)));
 		direction = glm::normalize(direction);
 		forwards = glm::normalize(glm::vec3(direction.x, 0, direction.z));
 		right = glm::normalize(glm::cross(direction, worldUp));
@@ -28,7 +28,7 @@ namespace engine {
 	{
 		glm::mat4 view;
 		
-		view = glm::lookAt(position, position + direction, up);
+		view = glm::lookAt(transform.globalPosition(), transform.globalPosition() + direction, up);
 		return view;
 	}
 	

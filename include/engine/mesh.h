@@ -23,19 +23,11 @@ namespace engine {
 		
 		void upload();
 		
-		void singleUpload(SubMesh *subMesh) const;
-		
-		void use() const;
-		
 		void addSubMesh(SubMesh subMesh);
-		void addSubMeshSilent(SubMesh subMesh);
 		
 		std::vector<SubMesh> get_SubMeshes();
-		
-		glm::vec3 color;
 	
 	private:
-		unsigned int m_vao;
 		std::vector<SubMesh> m_subMeshes;
 	};
 	

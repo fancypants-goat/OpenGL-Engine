@@ -4,6 +4,7 @@ project(Engine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+
 include(FetchContent)
 
 FetchContent_Declare(
@@ -34,6 +35,11 @@ add_executable(Engine
         src/texture.cpp
         src/transform.cpp
         src/submesh.cpp
+        src/component.cpp
+        src/entity.cpp
+        src/rigidbody.cpp
+        src/time.cpp
+        src/scene.cpp
 )
 
 # Include directories (scoped to this target)

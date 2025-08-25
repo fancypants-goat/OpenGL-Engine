@@ -3,6 +3,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include "transform.h"
 
 
 namespace engine
@@ -24,13 +25,12 @@ namespace engine
             glm::mat4 perspectiveProjection(glm::vec2 viewport);
             glm::mat4 cameraProjection(glm::vec2 viewport);
             
-            glm::vec3 position;
-            glm::vec3 rotation;
-            
             glm::vec2 size;
             float fovy;
             float nearPlane;
             float farPlane;
+			
+			Transform transform;
             
             void set_depthPlanes(float nearPlane, float farPlane);
             

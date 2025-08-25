@@ -29,6 +29,8 @@ namespace engine {
 		
 		void upload();
 		
+		void use() const;
+		
 		std::vector<unsigned int> get_indices();
 		
 		std::vector<Vertex> get_vertices();
@@ -40,11 +42,9 @@ namespace engine {
 		void set_storageType(SubMesh::StorageType storageType);
 		
 		Material material;
-		
-		Mesh *parentMesh;
 	
 	private:
-		unsigned int m_vbo, m_ebo;
+		unsigned int m_vao, m_vbo, m_ebo;
 		
 		std::vector<Vertex> m_vertices;
 		std::vector<unsigned int> m_indices;

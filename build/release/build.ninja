@@ -47,14 +47,14 @@ cmake_ninja_workdir = /home/michiel/Coding/Game$ Engine/Engine/build/release/
 #############################################
 # Order-only phony target for Engine
 
-build cmake_object_order_depends_target_Engine: phony || .
+build cmake_object_order_depends_target_Engine: phony || cmake_object_order_depends_target_glfw
 
 build CMakeFiles/Engine.dir/main.cpp.o: CXX_COMPILER__Engine_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/main.cpp || cmake_object_order_depends_target_Engine
   CONFIG = Release
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/main.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir
 
@@ -63,7 +63,7 @@ build CMakeFiles/Engine.dir/src/glad.c.o: C_COMPILER__Engine_unscanned_Release /
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/glad.c.o.d
   FLAGS = -O3 -DNDEBUG -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -72,7 +72,7 @@ build CMakeFiles/Engine.dir/src/camera.cpp.o: CXX_COMPILER__Engine_unscanned_Rel
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/camera.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -81,7 +81,7 @@ build CMakeFiles/Engine.dir/src/input.cpp.o: CXX_COMPILER__Engine_unscanned_Rele
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/input.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -90,7 +90,7 @@ build CMakeFiles/Engine.dir/src/mesh.cpp.o: CXX_COMPILER__Engine_unscanned_Relea
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/mesh.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -99,7 +99,7 @@ build CMakeFiles/Engine.dir/src/mesh_renderer.cpp.o: CXX_COMPILER__Engine_unscan
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/mesh_renderer.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -108,7 +108,7 @@ build CMakeFiles/Engine.dir/src/mouse.cpp.o: CXX_COMPILER__Engine_unscanned_Rele
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/mouse.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -117,7 +117,7 @@ build CMakeFiles/Engine.dir/src/resources.cpp.o: CXX_COMPILER__Engine_unscanned_
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/resources.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -126,7 +126,7 @@ build CMakeFiles/Engine.dir/src/shader.cpp.o: CXX_COMPILER__Engine_unscanned_Rel
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/shader.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -135,7 +135,7 @@ build CMakeFiles/Engine.dir/src/sol.cpp.o: CXX_COMPILER__Engine_unscanned_Releas
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/sol.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -144,7 +144,7 @@ build CMakeFiles/Engine.dir/src/stb_image.cpp.o: CXX_COMPILER__Engine_unscanned_
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/stb_image.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -153,7 +153,7 @@ build CMakeFiles/Engine.dir/src/texture.cpp.o: CXX_COMPILER__Engine_unscanned_Re
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/texture.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -162,7 +162,7 @@ build CMakeFiles/Engine.dir/src/transform.cpp.o: CXX_COMPILER__Engine_unscanned_
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/transform.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -171,7 +171,52 @@ build CMakeFiles/Engine.dir/src/submesh.cpp.o: CXX_COMPILER__Engine_unscanned_Re
   DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
   DEP_FILE = CMakeFiles/Engine.dir/src/submesh.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb"
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
+
+build CMakeFiles/Engine.dir/src/component.cpp.o: CXX_COMPILER__Engine_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/src/component.cpp || cmake_object_order_depends_target_Engine
+  CONFIG = Release
+  DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
+  DEP_FILE = CMakeFiles/Engine.dir/src/component.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
+
+build CMakeFiles/Engine.dir/src/entity.cpp.o: CXX_COMPILER__Engine_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/src/entity.cpp || cmake_object_order_depends_target_Engine
+  CONFIG = Release
+  DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
+  DEP_FILE = CMakeFiles/Engine.dir/src/entity.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
+
+build CMakeFiles/Engine.dir/src/rigidbody.cpp.o: CXX_COMPILER__Engine_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/src/rigidbody.cpp || cmake_object_order_depends_target_Engine
+  CONFIG = Release
+  DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
+  DEP_FILE = CMakeFiles/Engine.dir/src/rigidbody.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
+
+build CMakeFiles/Engine.dir/src/time.cpp.o: CXX_COMPILER__Engine_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/src/time.cpp || cmake_object_order_depends_target_Engine
+  CONFIG = Release
+  DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
+  DEP_FILE = CMakeFiles/Engine.dir/src/time.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
+
+build CMakeFiles/Engine.dir/src/scene.cpp.o: CXX_COMPILER__Engine_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/src/scene.cpp || cmake_object_order_depends_target_Engine
+  CONFIG = Release
+  DEFINES = -DPROJECT_DIR="\"/home/michiel/Coding/Game Engine/Engine\""
+  DEP_FILE = CMakeFiles/Engine.dir/src/scene.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/include" -I"/home/michiel/Coding/Game Engine/Engine/include/glad" -I"/home/michiel/Coding/Game Engine/Engine/include/khr" -I"/home/michiel/Coding/Game Engine/Engine/include/stb" -I"/home/michiel/Coding/Game Engine/Engine/include/glm" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include"
   OBJECT_DIR = CMakeFiles/Engine.dir
   OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src
 
@@ -183,12 +228,12 @@ build CMakeFiles/Engine.dir/src/submesh.cpp.o: CXX_COMPILER__Engine_unscanned_Re
 #############################################
 # Link the executable Engine
 
-build Engine: CXX_EXECUTABLE_LINKER__Engine_Release CMakeFiles/Engine.dir/main.cpp.o CMakeFiles/Engine.dir/src/glad.c.o CMakeFiles/Engine.dir/src/camera.cpp.o CMakeFiles/Engine.dir/src/input.cpp.o CMakeFiles/Engine.dir/src/mesh.cpp.o CMakeFiles/Engine.dir/src/mesh_renderer.cpp.o CMakeFiles/Engine.dir/src/mouse.cpp.o CMakeFiles/Engine.dir/src/resources.cpp.o CMakeFiles/Engine.dir/src/shader.cpp.o CMakeFiles/Engine.dir/src/sol.cpp.o CMakeFiles/Engine.dir/src/stb_image.cpp.o CMakeFiles/Engine.dir/src/texture.cpp.o CMakeFiles/Engine.dir/src/transform.cpp.o CMakeFiles/Engine.dir/src/submesh.cpp.o | /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 /usr/lib/x86_64-linux-gnu/libGL.so
+build Engine: CXX_EXECUTABLE_LINKER__Engine_Release CMakeFiles/Engine.dir/main.cpp.o CMakeFiles/Engine.dir/src/glad.c.o CMakeFiles/Engine.dir/src/camera.cpp.o CMakeFiles/Engine.dir/src/input.cpp.o CMakeFiles/Engine.dir/src/mesh.cpp.o CMakeFiles/Engine.dir/src/mesh_renderer.cpp.o CMakeFiles/Engine.dir/src/mouse.cpp.o CMakeFiles/Engine.dir/src/resources.cpp.o CMakeFiles/Engine.dir/src/shader.cpp.o CMakeFiles/Engine.dir/src/sol.cpp.o CMakeFiles/Engine.dir/src/stb_image.cpp.o CMakeFiles/Engine.dir/src/texture.cpp.o CMakeFiles/Engine.dir/src/transform.cpp.o CMakeFiles/Engine.dir/src/submesh.cpp.o CMakeFiles/Engine.dir/src/component.cpp.o CMakeFiles/Engine.dir/src/entity.cpp.o CMakeFiles/Engine.dir/src/rigidbody.cpp.o CMakeFiles/Engine.dir/src/time.cpp.o CMakeFiles/Engine.dir/src/scene.cpp.o | _deps/glfw-build/src/libglfw3.a /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/librt.a /usr/lib/x86_64-linux-gnu/libm.so || _deps/glfw-build/src/libglfw3.a
   CONFIG = Release
   DEP_FILE = CMakeFiles/Engine.dir/link.d
   FLAGS = -O3 -DNDEBUG
   LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/Engine.dir/link.d
-  LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libglfw.so.3.3  /usr/lib/x86_64-linux-gnu/libGL.so  -ldl  -lpthread
+  LINK_LIBRARIES = _deps/glfw-build/src/libglfw3.a  /usr/lib/x86_64-linux-gnu/libGL.so  -lpthread  /usr/lib/x86_64-linux-gnu/librt.a  -lm  -ldl
   OBJECT_DIR = CMakeFiles/Engine.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -218,8 +263,717 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/michiel/Coding/Game Engine/Engine/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for uninstall
+
+build _deps/glfw-build/uninstall: phony _deps/glfw-build/CMakeFiles/uninstall
+
+
+#############################################
+# Utility command for edit_cache
+
+build _deps/glfw-build/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build _deps/glfw-build/edit_cache: phony _deps/glfw-build/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build _deps/glfw-build/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S"/home/michiel/Coding/Game Engine/Engine" -B"/home/michiel/Coding/Game Engine/Engine/build/release"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/rebuild_cache: phony _deps/glfw-build/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build _deps/glfw-build/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build _deps/glfw-build/CMakeFiles/install.util: CUSTOM_COMMAND _deps/glfw-build/all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/install: phony _deps/glfw-build/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build _deps/glfw-build/CMakeFiles/install/local.util: CUSTOM_COMMAND _deps/glfw-build/all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/install/local: phony _deps/glfw-build/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build _deps/glfw-build/CMakeFiles/install/strip.util: CUSTOM_COMMAND _deps/glfw-build/all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/install/strip: phony _deps/glfw-build/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for _deps/glfw-build/CMakeFiles/uninstall
+
+build _deps/glfw-build/CMakeFiles/uninstall | ${cmake_ninja_workdir}_deps/glfw-build/CMakeFiles/uninstall: CUSTOM_COMMAND
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -P /home/michiel/Coding/Game\ Engine/Engine/build/release/_deps/glfw-build/cmake_uninstall.cmake
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target glfw
+
+
+#############################################
+# Order-only phony target for glfw
+
+build cmake_object_order_depends_target_glfw: phony || _deps/glfw-build/src/fractional-scale-v1-client-protocol-code.h _deps/glfw-build/src/fractional-scale-v1-client-protocol.h _deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol-code.h _deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol.h _deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol-code.h _deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol.h _deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol-code.h _deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol.h _deps/glfw-build/src/viewporter-client-protocol-code.h _deps/glfw-build/src/viewporter-client-protocol.h _deps/glfw-build/src/wayland-client-protocol-code.h _deps/glfw-build/src/wayland-client-protocol.h _deps/glfw-build/src/xdg-activation-v1-client-protocol-code.h _deps/glfw-build/src/xdg-activation-v1-client-protocol.h _deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol-code.h _deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol.h _deps/glfw-build/src/xdg-shell-client-protocol-code.h _deps/glfw-build/src/xdg-shell-client-protocol.h
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/context.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/context.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/context.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/init.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/init.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/init.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/input.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/input.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/input.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/monitor.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/monitor.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/monitor.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/platform.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/platform.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/platform.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/vulkan.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/vulkan.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/vulkan.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/window.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/window.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/window.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/egl_context.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/egl_context.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/egl_context.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/osmesa_context.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/osmesa_context.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/osmesa_context.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/null_init.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/null_init.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/null_init.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/null_monitor.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/null_monitor.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/null_monitor.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/null_window.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/null_window.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/null_window.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/null_joystick.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/null_joystick.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/null_joystick.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_module.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/posix_module.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_module.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_time.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/posix_time.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_time.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_thread.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/posix_thread.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_thread.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_init.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/x11_init.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_init.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_monitor.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/x11_monitor.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_monitor.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_window.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/x11_window.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_window.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/xkb_unicode.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/xkb_unicode.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/xkb_unicode.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/glx_context.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/glx_context.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/glx_context.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/wl_init.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/wl_init.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/wl_init.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/wl_monitor.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/wl_monitor.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/wl_monitor.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/wl_window.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/wl_window.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/wl_window.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/linux_joystick.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/linux_joystick.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/linux_joystick.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+build _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_poll.c.o: C_COMPILER__glfw_unscanned_Release /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-src/src/posix_poll.c || cmake_object_order_depends_target_glfw
+  CONFIG = Release
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_poll.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/include" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" -I"/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src"
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target glfw
+
+
+#############################################
+# Link the static library _deps/glfw-build/src/libglfw3.a
+
+build _deps/glfw-build/src/libglfw3.a: C_STATIC_LIBRARY_LINKER__glfw_Release _deps/glfw-build/src/CMakeFiles/glfw.dir/context.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/init.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/input.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/monitor.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/platform.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/vulkan.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/window.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/egl_context.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/osmesa_context.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/null_init.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/null_monitor.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/null_window.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/null_joystick.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_module.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_time.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_thread.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_init.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_monitor.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_window.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/xkb_unicode.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/glx_context.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/wl_init.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/wl_monitor.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/wl_window.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/linux_joystick.c.o _deps/glfw-build/src/CMakeFiles/glfw.dir/posix_poll.c.o
+  CONFIG = Release
+  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+  OBJECT_DIR = _deps/glfw-build/src/CMakeFiles/glfw.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = _deps/glfw-build/src/libglfw3.a
+  TARGET_PDB = glfw3.a.dbg
+
+
+#############################################
+# Utility command for update_mappings
+
+build _deps/glfw-build/src/update_mappings: phony _deps/glfw-build/src/CMakeFiles/update_mappings
+
+
+#############################################
+# Utility command for edit_cache
+
+build _deps/glfw-build/src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build _deps/glfw-build/src/edit_cache: phony _deps/glfw-build/src/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build _deps/glfw-build/src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S"/home/michiel/Coding/Game Engine/Engine" -B"/home/michiel/Coding/Game Engine/Engine/build/release"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/src/rebuild_cache: phony _deps/glfw-build/src/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build _deps/glfw-build/src/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build _deps/glfw-build/src/CMakeFiles/install.util: CUSTOM_COMMAND _deps/glfw-build/src/all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/src/install: phony _deps/glfw-build/src/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build _deps/glfw-build/src/CMakeFiles/install/local.util: CUSTOM_COMMAND _deps/glfw-build/src/all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/src/install/local: phony _deps/glfw-build/src/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build _deps/glfw-build/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND _deps/glfw-build/src/all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/src/install/strip: phony _deps/glfw-build/src/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/wayland-client-protocol.h
+
+build _deps/glfw-build/src/wayland-client-protocol.h | ${cmake_ninja_workdir}_deps/glfw-build/src/wayland-client-protocol.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/wayland.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner client-header "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/wayland.xml" wayland-client-protocol.h
+  DESC = Generating wayland-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/wayland-client-protocol-code.h
+
+build _deps/glfw-build/src/wayland-client-protocol-code.h | ${cmake_ninja_workdir}_deps/glfw-build/src/wayland-client-protocol-code.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/wayland.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner private-code "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/wayland.xml" wayland-client-protocol-code.h
+  DESC = Generating wayland-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/viewporter-client-protocol.h
+
+build _deps/glfw-build/src/viewporter-client-protocol.h | ${cmake_ninja_workdir}_deps/glfw-build/src/viewporter-client-protocol.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/viewporter.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner client-header "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/viewporter.xml" viewporter-client-protocol.h
+  DESC = Generating viewporter-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/viewporter-client-protocol-code.h
+
+build _deps/glfw-build/src/viewporter-client-protocol-code.h | ${cmake_ninja_workdir}_deps/glfw-build/src/viewporter-client-protocol-code.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/viewporter.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner private-code "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/viewporter.xml" viewporter-client-protocol-code.h
+  DESC = Generating viewporter-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/xdg-shell-client-protocol.h
+
+build _deps/glfw-build/src/xdg-shell-client-protocol.h | ${cmake_ninja_workdir}_deps/glfw-build/src/xdg-shell-client-protocol.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/xdg-shell.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner client-header "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/xdg-shell.xml" xdg-shell-client-protocol.h
+  DESC = Generating xdg-shell-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/xdg-shell-client-protocol-code.h
+
+build _deps/glfw-build/src/xdg-shell-client-protocol-code.h | ${cmake_ninja_workdir}_deps/glfw-build/src/xdg-shell-client-protocol-code.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/xdg-shell.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner private-code "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/xdg-shell.xml" xdg-shell-client-protocol-code.h
+  DESC = Generating xdg-shell-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol.h
+
+build _deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol.h | ${cmake_ninja_workdir}_deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/idle-inhibit-unstable-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner client-header "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/idle-inhibit-unstable-v1.xml" idle-inhibit-unstable-v1-client-protocol.h
+  DESC = Generating idle-inhibit-unstable-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol-code.h
+
+build _deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol-code.h | ${cmake_ninja_workdir}_deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol-code.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/idle-inhibit-unstable-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner private-code "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/idle-inhibit-unstable-v1.xml" idle-inhibit-unstable-v1-client-protocol-code.h
+  DESC = Generating idle-inhibit-unstable-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol.h
+
+build _deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol.h | ${cmake_ninja_workdir}_deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/pointer-constraints-unstable-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner client-header "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/pointer-constraints-unstable-v1.xml" pointer-constraints-unstable-v1-client-protocol.h
+  DESC = Generating pointer-constraints-unstable-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol-code.h
+
+build _deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol-code.h | ${cmake_ninja_workdir}_deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol-code.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/pointer-constraints-unstable-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner private-code "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/pointer-constraints-unstable-v1.xml" pointer-constraints-unstable-v1-client-protocol-code.h
+  DESC = Generating pointer-constraints-unstable-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol.h
+
+build _deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol.h | ${cmake_ninja_workdir}_deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/relative-pointer-unstable-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner client-header "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/relative-pointer-unstable-v1.xml" relative-pointer-unstable-v1-client-protocol.h
+  DESC = Generating relative-pointer-unstable-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol-code.h
+
+build _deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol-code.h | ${cmake_ninja_workdir}_deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol-code.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/relative-pointer-unstable-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner private-code "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/relative-pointer-unstable-v1.xml" relative-pointer-unstable-v1-client-protocol-code.h
+  DESC = Generating relative-pointer-unstable-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/fractional-scale-v1-client-protocol.h
+
+build _deps/glfw-build/src/fractional-scale-v1-client-protocol.h | ${cmake_ninja_workdir}_deps/glfw-build/src/fractional-scale-v1-client-protocol.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/fractional-scale-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner client-header "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/fractional-scale-v1.xml" fractional-scale-v1-client-protocol.h
+  DESC = Generating fractional-scale-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/fractional-scale-v1-client-protocol-code.h
+
+build _deps/glfw-build/src/fractional-scale-v1-client-protocol-code.h | ${cmake_ninja_workdir}_deps/glfw-build/src/fractional-scale-v1-client-protocol-code.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/fractional-scale-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner private-code "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/fractional-scale-v1.xml" fractional-scale-v1-client-protocol-code.h
+  DESC = Generating fractional-scale-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/xdg-activation-v1-client-protocol.h
+
+build _deps/glfw-build/src/xdg-activation-v1-client-protocol.h | ${cmake_ninja_workdir}_deps/glfw-build/src/xdg-activation-v1-client-protocol.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/xdg-activation-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner client-header "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/xdg-activation-v1.xml" xdg-activation-v1-client-protocol.h
+  DESC = Generating xdg-activation-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/xdg-activation-v1-client-protocol-code.h
+
+build _deps/glfw-build/src/xdg-activation-v1-client-protocol-code.h | ${cmake_ninja_workdir}_deps/glfw-build/src/xdg-activation-v1-client-protocol-code.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/xdg-activation-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner private-code "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/xdg-activation-v1.xml" xdg-activation-v1-client-protocol-code.h
+  DESC = Generating xdg-activation-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol.h
+
+build _deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol.h | ${cmake_ninja_workdir}_deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/xdg-decoration-unstable-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner client-header "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/xdg-decoration-unstable-v1.xml" xdg-decoration-unstable-v1-client-protocol.h
+  DESC = Generating xdg-decoration-unstable-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol-code.h
+
+build _deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol-code.h | ${cmake_ninja_workdir}_deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol-code.h: CUSTOM_COMMAND _deps/glfw-src/deps/wayland/xdg-decoration-unstable-v1.xml
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src" && /usr/bin/wayland-scanner private-code "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/deps/wayland/xdg-decoration-unstable-v1.xml" xdg-decoration-unstable-v1-client-protocol-code.h
+  DESC = Generating xdg-decoration-unstable-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for _deps/glfw-build/src/CMakeFiles/update_mappings
+
+build _deps/glfw-build/src/CMakeFiles/update_mappings | ${cmake_ninja_workdir}_deps/glfw-build/src/CMakeFiles/update_mappings: CUSTOM_COMMAND
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/src" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -P "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/CMake/GenerateMappings.cmake" mappings.h.in mappings.h
+  DESC = Updating gamepad mappings from upstream repository
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-src/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build _deps/glfw-build/docs/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/docs" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build _deps/glfw-build/docs/edit_cache: phony _deps/glfw-build/docs/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build _deps/glfw-build/docs/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/docs" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S"/home/michiel/Coding/Game Engine/Engine" -B"/home/michiel/Coding/Game Engine/Engine/build/release"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/docs/rebuild_cache: phony _deps/glfw-build/docs/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build _deps/glfw-build/docs/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build _deps/glfw-build/docs/CMakeFiles/install.util: CUSTOM_COMMAND _deps/glfw-build/docs/all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/docs" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/docs/install: phony _deps/glfw-build/docs/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build _deps/glfw-build/docs/CMakeFiles/install/local.util: CUSTOM_COMMAND _deps/glfw-build/docs/all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/docs" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/docs/install/local: phony _deps/glfw-build/docs/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build _deps/glfw-build/docs/CMakeFiles/install/strip.util: CUSTOM_COMMAND _deps/glfw-build/docs/all
+  COMMAND = cd "/home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/docs" && /snap/clion/367/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build _deps/glfw-build/docs/install/strip: phony _deps/glfw-build/docs/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
+
+build glfw: phony _deps/glfw-build/src/libglfw3.a
+
+build libglfw3.a: phony _deps/glfw-build/src/libglfw3.a
+
+build uninstall: phony _deps/glfw-build/uninstall
+
+build update_mappings: phony _deps/glfw-build/src/update_mappings
 
 # =============================================================================
 # Folder targets.
@@ -229,7 +983,28 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/michiel/Coding/Game Engine/Engine/build/release
 
-build all: phony Engine
+build all: phony Engine _deps/glfw-build/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build
+
+build _deps/glfw-build/all: phony _deps/glfw-build/src/all _deps/glfw-build/docs/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/docs
+
+build _deps/glfw-build/docs/all: phony
+
+# =============================================================================
+
+#############################################
+# Folder: /home/michiel/Coding/Game Engine/Engine/build/release/_deps/glfw-build/src
+
+build _deps/glfw-build/src/all: phony _deps/glfw-build/src/libglfw3.a
 
 # =============================================================================
 # Built-in targets
@@ -238,14 +1013,14 @@ build all: phony Engine
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja /home/michiel/Coding/Game$ Engine/Engine/build/release/cmake_install.cmake: RERUN_CMAKE | /home/michiel/Coding/Game$ Engine/Engine/CMakeLists.txt /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindOpenGL.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindPackageMessage.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-Initialize.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets-none.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake
+build build.ninja /home/michiel/Coding/Game$ Engine/Engine/build/release/cmake_install.cmake /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-build/cmake_install.cmake /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-build/src/cmake_install.cmake /home/michiel/Coding/Game$ Engine/Engine/build/release/_deps/glfw-build/docs/cmake_install.cmake: RERUN_CMAKE | /home/michiel/Coding/Game$ Engine/Engine/CMakeLists.txt /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/BasicConfigVersion-SameMajorVersion.cmake.in /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeDependentOption.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakePackageConfigHelpers.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckCSourceCompiles.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckFunctionExists.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckIncludeFile.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckIncludeFiles.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckLibraryExists.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/ExternalProject/shared_internal_commands.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FetchContent.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FetchContent/CMakeLists.cmake.in /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindDoxygen.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindGit.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindOpenGL.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindPackageMessage.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindPkgConfig.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindThreads.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindX11.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/GNUInstallDirs.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CheckSourceCompiles.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-Initialize.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/WriteBasicConfigVersionFile.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake _deps/glfw-src/CMake/cmake_uninstall.cmake.in _deps/glfw-src/CMake/glfw3.pc.in _deps/glfw-src/CMake/glfw3Config.cmake.in _deps/glfw-src/CMakeLists.txt _deps/glfw-src/docs/CMakeLists.txt _deps/glfw-src/src/CMakeLists.txt
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/michiel/Coding/Game$ Engine/Engine/CMakeLists.txt /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindOpenGL.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindPackageMessage.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-Initialize.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets-none.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake: phony
+build /home/michiel/Coding/Game$ Engine/Engine/CMakeLists.txt /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/BasicConfigVersion-SameMajorVersion.cmake.in /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCXXInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeDependentOption.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeGenericSystem.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakePackageConfigHelpers.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckCSourceCompiles.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckFunctionExists.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckIncludeFile.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckIncludeFiles.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/CheckLibraryExists.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Compiler/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/ExternalProject/shared_internal_commands.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FetchContent.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FetchContent/CMakeLists.cmake.in /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindDoxygen.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindGit.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindOpenGL.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindPackageMessage.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindPkgConfig.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindThreads.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/FindX11.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/GNUInstallDirs.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Internal/CheckSourceCompiles.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Linker/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linker/Linux-GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU-C.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-GNU.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux-Initialize.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/Linux.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/Platform/UnixPaths.cmake /snap/clion/367/bin/cmake/linux/x64/share/cmake-4.0/Modules/WriteBasicConfigVersionFile.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake /usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake _deps/glfw-src/CMake/cmake_uninstall.cmake.in _deps/glfw-src/CMake/glfw3.pc.in _deps/glfw-src/CMake/glfw3Config.cmake.in _deps/glfw-src/CMakeLists.txt _deps/glfw-src/docs/CMakeLists.txt _deps/glfw-src/src/CMakeLists.txt: phony
 
 
 #############################################

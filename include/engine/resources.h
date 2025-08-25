@@ -12,7 +12,7 @@ namespace engine {
 	class Resources
 	{
 	public:
-		static std::string Get(const char *path);
+		static std::string get(const char *path);
 		
 		Resources() = delete;
 	};

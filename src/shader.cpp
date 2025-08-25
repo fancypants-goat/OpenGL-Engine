@@ -183,10 +183,14 @@ namespace engine {
 	}
 	
 	void Shader::vertexAttribPointer(int index, int size, GLenum type, bool normalized, int stride,
-									 const GLvoid *offset)
+									 int offset)
 	{
-		glVertexAttribPointer(index, size, type, normalized, stride, offset);
+		glVertexAttribPointer(index, size, type, normalized, stride, (void *) offset);
 		glEnableVertexAttribArray(index);
 	}
 	
+	void Shader::vertexAttribDivisor(int index, int divisor)
+	{
+		glVertexAttribDivisor(index, divisor);
+	}
 }

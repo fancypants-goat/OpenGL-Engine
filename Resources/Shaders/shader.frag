@@ -2,11 +2,10 @@
 out vec4 FragColor;
 
 in vec2 texCoord;
+in vec3 objColor;
 
 uniform sampler2D texture;
 uniform bool useTexture;
-
-uniform vec3 objColor;
 
 void main() {
     vec4 color = vec4(objColor, 1);

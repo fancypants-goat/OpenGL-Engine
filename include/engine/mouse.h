@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
+#include <shared_mutex>
 
 namespace engine {
 	
@@ -35,18 +36,19 @@ namespace engine {
 		
 		static ButtonState getButtonState(GLFWwindow *window, int button);
 		
-		static glm::vec2 getMousePosition(GLFWwindow *window);
-		static glm::vec2 getMouseOffset(GLFWwindow *window);
+		static glm::vec2 getMousePosition();
+		static glm::vec2 getMouseOffset();
 		
 		static void setCursorMode(GLFWwindow *window, CursorState mode);
 		static CursorState getCursorMode(GLFWwindow *window);
-		
-		static void mouse_move_callback(GLFWwindow *window);
 	
 	private:
-		static std::unordered_map<int, ButtonState> polledStates;
+		static std::unordered_map<int, ButtonState> buttonStates;
 		static glm::vec2 lastCursorPosition;
 		static glm::vec2 cursorOffset;
+		
+		friend void glfwInputUpdateHandler(GLFWwindow *window);
+		static void updateCursorPosition(GLFWwindow *window);
 	};
 	
 } // engine

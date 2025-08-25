@@ -6,7 +6,7 @@
 #define ENGINE_INPUT_H
 
 #include <GLFW/glfw3.h>
-#include <unordered_map>
+#include <bits/stdc++.h>
 #include <glm/glm.hpp>
 
 #include "mouse.h"
@@ -30,9 +30,9 @@ namespace engine {
 		// key states
 		static KeyState getKeyState(GLFWwindow *window, int key);
 	
-	
 	private:
-		static std::unordered_map<int, KeyState> polledStates;
+		static std::mutex inputMutex;
+		static std::unordered_map<int, KeyState> keyStates;
 	};
 	
 	

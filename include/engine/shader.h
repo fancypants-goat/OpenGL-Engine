@@ -10,6 +10,8 @@ namespace engine {
 	class Shader
 	{
 	public:
+		Shader() = default;
+		
 		Shader(std::string vertexPath, std::string fragPath);
 		
 		void use();
@@ -70,15 +72,17 @@ namespace engine {
 		
 		void unifomrmat4x3(std::string name, bool transpose, glm::mat4x3 value);
 		
+		void vertexAttribDivisor(int index, int divisor);
+		
 		void vertexAttribPointer(int index,
 								 int size,
 								 GLenum type,
 								 bool normalized,
 								 int stride,
-								 const GLvoid *offset);
+								 int offset);
 		
 		template<typename MatType>
-		void vertexAttribPointerMatrix(int startIndex, bool normalized)
+		void vertexAttribPointerMatrix(int startIndex, bool normalized, int stride, int offset)
 		{
 			const int cols = MatType::length();
 			const int colSize = cols * sizeof(float);
@@ -86,8 +90,8 @@ namespace engine {
 			
 			for (int i = 0; i < rows; i++)
 			{
-				vertexAttribPointer(startIndex + i, cols, GL_FLOAT, normalized, sizeof(MatType),
-									(void *) (i * colSize));
+				vertexAttribPointer(startIndex + i, cols, GL_FLOAT, normalized, stride,
+									(i * colSize) + offset);
 				glVertexAttribDivisor(startIndex + i, 1);
 			}
 		}

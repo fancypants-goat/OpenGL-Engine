@@ -4,6 +4,7 @@ out vec4 FragColor;
 in vec3 fragPos;
 in vec2 texCoord;
 in vec3 normal;
+in vec3 objColor;
 
 uniform sampler2D texture;
 uniform bool useTexture;
@@ -15,11 +16,11 @@ uniform vec3 objAmbient;
 uniform vec3 objDiffuse;
 uniform vec3 objSpecular;
 uniform float specularExp;
-uniform vec3 objColor;
+uniform float alpha;
 
 void main()
 {
-    vec4 color = vec4(objColor, 1);
+    vec4 color = vec4(objColor, alpha);
     if (useTexture)
         color *= texture2D(texture, texCoord);
 

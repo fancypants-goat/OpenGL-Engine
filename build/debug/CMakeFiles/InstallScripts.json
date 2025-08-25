@@ -1,7 +1,10 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/michiel/Coding/Game Engine/Engine/build/debug/cmake_install.cmake"
+		"/home/michiel/Coding/Game Engine/Engine/build/debug/cmake_install.cmake",
+		"/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/cmake_install.cmake",
+		"/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/cmake_install.cmake",
+		"/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/docs/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

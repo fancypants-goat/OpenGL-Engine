@@ -2,10 +2,10 @@
 // Created by michiel on 8/14/25.
 //
 #include <engine/mouse.h>
-
+#include <mutex>
 
 namespace engine {
-	std::unordered_map<int, ButtonState> Mouse::polledStates {};
+	std::unordered_map<int, ButtonState> Mouse::buttonStates {};
 	glm::vec2 Mouse::lastCursorPosition(0);
 	glm::vec2 Mouse::cursorOffset(0);
 	
@@ -13,11 +13,10 @@ namespace engine {
 	ButtonState Mouse::getButtonState(GLFWwindow *window, int button)
 	{
 		int glfwState = glfwGetMouseButton(window, button);
-		
 		ButtonState state = ButtonState::Unknown;
 		
-		if (polledStates.find(button) != polledStates.end())
-			state = polledStates[button];
+		if (buttonStates.find(button) != buttonStates.end())
+			state = buttonStates[button];
 		
 		if (glfwState == GLFW_PRESS)
 		{
@@ -34,18 +33,16 @@ namespace engine {
 		} else
 			return ButtonState::Unknown;
 		
-		polledStates[button] = state;
+		buttonStates[button] = state;
 		return state;
 	}
 	
-	glm::vec2 Mouse::getMousePosition(GLFWwindow *window)
+	glm::vec2 Mouse::getMousePosition()
 	{
-		glm::dvec2 pos;
-		glfwGetCursorPos(window, &pos.x, &pos.y);
-		return pos;
+		return lastCursorPosition;
 	}
 	
-	glm::vec2 Mouse::getMouseOffset(GLFWwindow *window)
+	glm::vec2 Mouse::getMouseOffset()
 	{
 		return cursorOffset;
 	}
@@ -60,11 +57,11 @@ namespace engine {
 		return (CursorState) glfwGetInputMode(window, GLFW_CURSOR);
 	}
 	
-	void Mouse::mouse_move_callback(GLFWwindow *window)
+	void Mouse::updateCursorPosition(GLFWwindow *window)
 	{
-		glm::vec2 newPosition = getMousePosition(window);
-		cursorOffset = newPosition - lastCursorPosition;
-		lastCursorPosition = newPosition; // reset the last position to that of this frame
+		glm::dvec2 newPosition;
+		glfwGetCursorPos(window, &newPosition.x, &newPosition.y);
+		cursorOffset = glm::vec2(newPosition) - lastCursorPosition;
+		lastCursorPosition = glm::vec2(newPosition);
 	}
-	
 } // engine

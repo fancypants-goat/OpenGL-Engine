@@ -6,53 +6,17 @@
 
 #include <glm/glm.hpp>
 #include <engine/camera.h>
+#include <engine/entity.h>
 
 namespace engine {
-	
-	MeshRenderer::MeshRenderer(Mesh _mesh,
-							   Shader *shader,
-							   Texture *texture,
-							   std::vector<Transform> transforms)
-			: mesh(_mesh), shader(shader), texture(texture), m_transforms(transforms), m_vbo(-1)
+	MeshRenderer::MeshRenderer()
+			: mesh(), shader(nullptr), texture(nullptr), m_vbo(-1)
 	{
-		mesh.initialize();
-		initialize();
+	
 	}
 	
-	MeshRenderer::MeshRenderer(Mesh _mesh, Shader *shader, Texture *texture, Transform transform)
-			: mesh(_mesh), shader(shader), texture(texture),
-			  m_transforms(std::vector<Transform> {transform}), m_vbo(-1)
-	{
-		mesh.initialize();
-		initialize();
-	}
-	
-	MeshRenderer::MeshRenderer(Mesh _mesh, Shader *shader, Texture *texture)
-			: mesh(_mesh), shader(shader), texture(texture), m_transforms(), m_vbo(-1)
-	{
-		mesh.initialize();
-		initialize();
-	}
-	
-	MeshRenderer::MeshRenderer(Mesh _mesh,
-							   Shader *shader,
-							   std::vector<Transform> transforms)
-			: mesh(_mesh), shader(shader), texture(), m_transforms(transforms), m_vbo(-1)
-	{
-		mesh.initialize();
-		initialize();
-	}
-	
-	MeshRenderer::MeshRenderer(Mesh _mesh, Shader *shader, Transform transform)
-			: mesh(_mesh), shader(shader), texture(),
-			  m_transforms(std::vector<Transform> {transform}), m_vbo(-1)
-	{
-		mesh.initialize();
-		initialize();
-	}
-	
-	MeshRenderer::MeshRenderer(Mesh _mesh, Shader *shader)
-			: mesh(_mesh), shader(shader), texture(), m_transforms(), m_vbo(-1)
+	MeshRenderer::MeshRenderer(Mesh mesh, Shader *shader, Texture *texture)
+			: mesh(mesh), shader(shader), texture(texture), m_vbo(-1)
 	{
 		mesh.initialize();
 		initialize();
@@ -68,22 +32,32 @@ namespace engine {
 	
 	void MeshRenderer::upload()
 	{
-		mesh.use();
+		if (m_entities.empty())
+			return;
 		
-		glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+		std::vector<EntityRenderData> bufferData;
+		bufferData.reserve(m_entities.size());
 		
-		std::vector<glm::mat4> models;
-		models.reserve(m_transforms.size());
-		
-		for (Transform t : m_transforms)
+		for (Entity *e : m_entities)
 		{
-			models.push_back(t.modelMatrix());
+			bufferData.push_back((*e).renderData);
 		}
 		
-		glBufferData(GL_ARRAY_BUFFER, models.size() * sizeof(glm::mat4), models.data(),
-					 GL_DYNAMIC_DRAW);
-		
-		shader->vertexAttribPointerMatrix<glm::mat4>(3, false);
+		for (SubMesh &subMesh : mesh.get_SubMeshes())
+		{
+			subMesh.use();
+			
+			glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(EntityRenderData) * bufferData.size(),
+						 bufferData.data(), GL_DYNAMIC_DRAW);
+			
+			shader->vertexAttribPointer(3, 3, GL_FLOAT, false, sizeof(EntityRenderData),
+										offsetof(EntityRenderData, color));
+			shader->vertexAttribPointerMatrix<glm::mat4>(4, false, sizeof(EntityRenderData),
+														 offsetof(EntityRenderData, model));
+			
+			glVertexAttribDivisor(3, 1);
+		}
 		
 		glBindVertexArray(0);
 	}
@@ -93,25 +67,24 @@ namespace engine {
 		glm::ivec2 viewport;
 		glfwGetWindowSize(window, &viewport.x, &viewport.y);
 		
-		mesh.use();
-		
 		if (texture != nullptr)
 			texture->use();
 		
 		shader->use();
 		shader->uniformb("useTexture", texture != nullptr);
 		shader->uniformmat4("camera", false, Camera::get_main()->cameraProjection(viewport));
-		shader->uniform3f("cameraPos", Camera::get_main()->position.x,
-						  Camera::get_main()->position.y, Camera::get_main()->position.z);
-		shader->uniform3f("lightPos", -1.19842,0.560531,4.0903);
+		shader->uniform3f("cameraPos", Camera::get_main()->transform.position.x,
+						  Camera::get_main()->transform.position.y, Camera::get_main()->transform.position.z);
+		shader->uniform3f("lightPos", 4562, 6452, 5425423);
 		shader->uniform3f("lightColor", 1, 1, 1);
-		shader->uniform3f("objColor", color.x, color.y, color.z);
 		
 		for (SubMesh subMesh : mesh.get_SubMeshes())
 		{
-			glm::vec3 ambientColor = color;
-			glm::vec3 diffuseColor = color;
-			glm::vec3 specularColor = color;
+			subMesh.use();
+			
+			glm::vec3 ambientColor = glm::vec3(1);
+			glm::vec3 diffuseColor = glm::vec3(1);
+			glm::vec3 specularColor = glm::vec3(1);
 			if (subMesh.material.ambientColor != glm::vec3(-1))
 				ambientColor = subMesh.material.ambientColor;
 			if (subMesh.material.diffuseColor != glm::vec3(-1))
@@ -126,24 +99,33 @@ namespace engine {
 			shader->uniform3f("objSpecular", specularColor.x,
 							  specularColor.y, specularColor.z);
 			shader->uniformf("specularExp", subMesh.material.specularExponent);
+			shader->uniformf("alpha", subMesh.material.alpha);
 			
 			if (!subMesh.get_indices().empty())
 				glDrawElementsInstanced(GL_TRIANGLES, subMesh.get_indices().size(), GL_UNSIGNED_INT,
-										nullptr, m_transforms.size());
+										nullptr, m_entities.size());
 			else
 				glDrawArraysInstanced(GL_TRIANGLES, 0, subMesh.get_vertices().size(),
-									  m_transforms.size());
+									  m_entities.size());
 		}
 	}
 	
-	void MeshRenderer::addTransform(Transform transform)
+	void MeshRenderer::addEntity(Entity *entity)
 	{
-		m_transforms.push_back(transform);
-		upload();
+		addEntitySilent(entity);
+		entity->renderer = this;
 	}
 	
-	std::vector<Transform> MeshRenderer::get_transforms()
+	void MeshRenderer::addEntitySilent(Entity *entity)
 	{
-		return m_transforms;
+		m_entities.push_back(entity);
+		// add the entity to the entities list if it's not in there yet
+		if (std::find(Entity::entities.begin(), Entity::entities.end(), entity) == Entity::entities.end())
+			Entity::entities.push_back(entity);
+	}
+	
+	std::vector<Entity *> MeshRenderer::get_entities()
+	{
+		return m_entities;
 	}
 } // engine

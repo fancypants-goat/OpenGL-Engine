@@ -24,6 +24,8 @@ namespace engine {
 		
 		std::vector<Vertex> resultVertices;
 		std::vector<unsigned int> resultIndices;
+		unsigned int minIndex (0);
+		unsigned int maxIndex (1);
 		
 		std::unordered_map<std::string, Material> mtlMaterials;
 		
@@ -90,8 +92,8 @@ namespace engine {
 						}
 					}
 					
-					glm::vec2 texCoord(glm::vec2(0));
-					glm::vec3 normal(glm::vec3(0));
+					auto texCoord(glm::vec2(0));
+					auto normal(glm::vec3(0));
 					if (t != -1)
 						texCoord = textureCoordinates[t - 1];
 					if (n != -1)
@@ -100,8 +102,8 @@ namespace engine {
 					// create and push back the new Vertex
 					Vertex vertex {
 							vertexPositions[v - 1],
-							normal = normal,
-							texCoord = texCoord,
+							normal,
+							texCoord,
 					};
 					faces.push_back(vertex);
 				}
@@ -126,11 +128,8 @@ namespace engine {
 				std::filesystem::path filePath(source);
 				std::filesystem::path parentPath = filePath.parent_path();
 				
-				mtlMaterials = ReadMTL(parentPath.append(name).string());
-				for (auto mtlMaterial : mtlMaterials)
-				{
-					std::cout << "Key: " << mtlMaterial.first << ", Value: " << mtlMaterial.second.specularExponent << std::endl;
-				}
+				auto newMaterials = ReadMTL(parentPath.append(name).string());
+				mtlMaterials.insert(newMaterials.begin(), mtlMaterials.end());
 			} else if (prefix == "usemtl") // selecting a material
 			{
 				
@@ -138,8 +137,13 @@ namespace engine {
 				{
 					// save the material and vertices
 					// and store it into the mesh
+					
+					// get the vertices used for this mesh:
 					SubMesh subMesh (usedMaterial, resultVertices, resultIndices);
-					mesh.addSubMeshSilent(subMesh);
+					mesh.addSubMesh(subMesh);
+					
+					resultIndices.erase(resultIndices.begin(), resultIndices.end());
+					resultVertices.erase(resultVertices.begin(), resultVertices.end());
 				}
 				
 				usingMaterial = true;
@@ -151,15 +155,13 @@ namespace engine {
 		}
 		
 		SubMesh subMesh (usedMaterial, resultVertices, resultIndices);
-		mesh.addSubMeshSilent(subMesh);
+		mesh.addSubMesh(subMesh);
 		
 		return mesh;
 	}
 	
 	std::unordered_map<std::string, Material> SOL::ReadMTL(std::string source)
 	{
-		std::cout << source << std::endl;
-		
 		std::unordered_map<std::string, Material> materials;
 		
 		std::ifstream file(source);
@@ -206,7 +208,18 @@ namespace engine {
 				float exponent;
 				ss >> exponent;
 				currentMaterial.specularExponent = exponent;
-			}
+			} else if (prefix == "d")
+			{
+				ss >> currentMaterial.alpha;
+			} else if (prefix == "Tr") // 'd' but inverted: 1 - d
+			{
+				float alpha;
+				ss >> alpha;
+				currentMaterial.alpha = 1 - alpha;
+			} else if (prefix == "Tf") // transparency color. ignore for now.
+			{} else if (prefix == "Ni") // index of refraction. ignore for now
+			{} else if (prefix == "illum") // illumination models. fucking raytracing shit
+			{}
 		}
 		
 		if (!currentMTL.empty())

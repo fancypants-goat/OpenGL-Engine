@@ -8,45 +8,42 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <vector>
+
 #include "mesh.h"
-#include "transform.h"
 #include "shader.h"
 #include "texture.h"
 
 namespace engine {
+	struct EntityRenderData
+	{
+		glm::mat4 model;
+		glm::vec3 color;
+	};
 	
+	class Entity;
 	class MeshRenderer
 	{
 	public:
-		MeshRenderer(Mesh mesh, Shader *shader, Texture *texture, std::vector<Transform> transforms);
-		
-		MeshRenderer(Mesh mesh, Shader *shader, Texture *texture, Transform transform);
-		
-		explicit MeshRenderer(Mesh mesh, Shader *shader, Texture *texture);
-		
-		MeshRenderer(Mesh mesh, Shader *shader, std::vector<Transform> transforms);
-		
-		MeshRenderer(Mesh mesh, Shader *shader, Transform transform);
-		
-		explicit MeshRenderer(Mesh mesh, Shader *shader);
+		MeshRenderer();
+		MeshRenderer(Mesh mesh, Shader *shader, Texture *texture = nullptr);
 		
 		void upload();
 		
 		void draw(GLFWwindow *window);
 		
-		void addTransform(Transform transform);
+		void addEntity(Entity *entity);
 		
-		std::vector<Transform> get_transforms();
+		void addEntitySilent(Entity *entity);
+		
+		std::vector<Entity *> get_entities();
 		
 		Mesh mesh;
 		Shader *shader;
 		Texture *texture;
-		glm::vec3 color = glm::vec3(1);
 	private:
 		void initialize();
 		
-		std::vector<Transform> m_transforms;
-		
+		std::vector<Entity *> m_entities;
 		unsigned int m_vbo;
 	};
 	

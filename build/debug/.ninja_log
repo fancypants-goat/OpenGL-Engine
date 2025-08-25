@@ -1,44 +1,89 @@
 # ninja log v6
-3	1427	1755713533078652225	CMakeFiles/Engine.dir/src/mesh_renderer.cpp.o	3b6fac2ef63adf26
-1	39	1755705122907794203	/home/michiel/Coding/Game Engine/Engine/build/debug/cmake_install.cmake	ab4e0096cc3ce906
-3	715	1755706899336168275	CMakeFiles/Engine.dir/src/mesh.cpp.o	4aa192947c364983
-7	791	1755696697212832339	CMakeFiles/Engine.dir/src/resources.cpp.o	262b803337ffce8d
-3	1831	1755706899337713539	CMakeFiles/Engine.dir/src/sol.cpp.o	f51f706c08aeb6d6
-4	1051	1755696697209832332	CMakeFiles/Engine.dir/src/camera.cpp.o	f4dc20725724715c
-3	1328	1755713642704807623	CMakeFiles/Engine.dir/main.cpp.o	b525c1c5c72eb260
-8	2570	1755696697214006802	CMakeFiles/Engine.dir/src/shader.cpp.o	ee5ff3089579e6f8
-4	963	1755696697210478183	CMakeFiles/Engine.dir/src/input.cpp.o	f5c878fa9fe2ed57
-3	503	1755706899337914190	CMakeFiles/Engine.dir/src/submesh.cpp.o	64ce21d567e5314
-965	1495	1755696698170834362	CMakeFiles/Engine.dir/src/transform.cpp.o	32921ebcecc32257
-912	1432	1755696698117834250	CMakeFiles/Engine.dir/src/texture.cpp.o	232fa03348ecab8d
-1	39	1755705122907794203	build.ninja	ab4e0096cc3ce906
+3	12	1755778811435986359	_deps/glfw-build/src/wayland-client-protocol-code.h	b20d61fb07c1ee3b
+5	9	1755778811432148131	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol-code.h	ef03c83dd53e6827
+8	12	1755778811435986359	_deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol.h	ebe3e0ff7ee4f520
+4	11	1755778811433725633	_deps/glfw-build/src/xdg-shell-client-protocol.h	dbf30d145ec8e580
+4	9	1755778811432037378	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol-code.h	64fd6be1105fa24a
+3	8	1755778811432037378	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/viewporter-client-protocol.h	b2c22c1c13fdbd37
+6	1568	1756141382141655612	CMakeFiles/Engine.dir/src/rigidbody.cpp.o	52a86fcc6b829d04
+15	248	1755778811440043980	_deps/glfw-build/src/CMakeFiles/glfw.dir/input.c.o	e25b07da997a8a31
+19	632	1755963302524354666	CMakeFiles/Engine.dir/src/submesh.cpp.o	56d50692eef0032
+9	12	1755778811436423460	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/fractional-scale-v1-client-protocol-code.h	674740a2556dd94f
+11	15	1755778811439143028	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol-code.h	37a34ecc9adf0367
+9	13	1755778811436996092	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/xdg-activation-v1-client-protocol-code.h	1d6c2804e6c9528d
+5	1685	1756141382140976902	CMakeFiles/Engine.dir/src/transform.cpp.o	5b604e82a17593fa
+271	386	1755778811695147747	_deps/glfw-build/src/CMakeFiles/glfw.dir/posix_poll.c.o	878aec5d5c0c8e51
+5	1513	1756032468828418615	CMakeFiles/Engine.dir/src/shader.cpp.o	d8f3e658e0a7b1b5
+122	231	1755778811546147965	_deps/glfw-build/src/CMakeFiles/glfw.dir/null_monitor.c.o	6e52c55d3505ab90
+16	135	1755778811440643432	_deps/glfw-build/src/CMakeFiles/glfw.dir/vulkan.c.o	3ece43833bb268
+8	12	1755778811435986359	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol-code.h	fcbb20c382d3d89
+3	13	1755778811437148124	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/wayland-client-protocol.h	ad7abf31a802525b
+268	388	1755778811692147752	_deps/glfw-build/src/CMakeFiles/glfw.dir/linux_joystick.c.o	9d5ebf388fc30bac
+3	303	1756126987721249261	_deps/glfw-build/src/CMakeFiles/glfw.dir/wl_window.c.o	c15a0e013cdd63e9
+4	8	1755778811432037378	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/viewporter-client-protocol-code.h	c4b022ad25842b4b
+5	627	1756031647839005006	CMakeFiles/Engine.dir/src/resources.cpp.o	9d26768f4786c42e
+5	9	1755778811432148131	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol.h	e5d7ea8cf65cc067
+1	575	1756141598597671194	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/docs/cmake_install.cmake	ab4e0096cc3ce906
+5	9	1755778811432148131	_deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol-code.h	ef03c83dd53e6827
+158	351	1755778811582147912	_deps/glfw-build/src/CMakeFiles/glfw.dir/x11_init.c.o	c4d5f4965ccf18ef
+231	319	1755778811655147806	_deps/glfw-build/src/CMakeFiles/glfw.dir/xkb_unicode.c.o	5bff56eceec9299f
+6	25	1756126722802393849	CMakeFiles/Engine.dir/src/component.cpp.o	7b0e318c2d87f100
+4	1616	1756031133044050878	CMakeFiles/Engine.dir/src/sol.cpp.o	58dc100dcfdf6b22
+4	10	1755778811433217201	_deps/glfw-build/src/xdg-shell-client-protocol-code.h	3c4ed5885f57f9e
+5	692	1756136030234975036	CMakeFiles/Engine.dir/src/camera.cpp.o	dc8d97d0181ee76
+9	12	1755778811436423460	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/fractional-scale-v1-client-protocol.h	42db7714161e39fb
+1	575	1756141598599188199	build.ninja	ab4e0096cc3ce906
+8	12	1755778811435986359	_deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol-code.h	fcbb20c382d3d89
+3	13	1755778811437148124	_deps/glfw-build/src/wayland-client-protocol.h	ad7abf31a802525b
+8	12	1755778811435986359	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/relative-pointer-unstable-v1-client-protocol.h	ebe3e0ff7ee4f520
+248	384	1755778811672147781	_deps/glfw-build/src/CMakeFiles/glfw.dir/wl_monitor.c.o	94374029435f8966
+1	575	1756141598596037356	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/cmake_install.cmake	ab4e0096cc3ce906
+149	244	1755778811573147926	_deps/glfw-build/src/CMakeFiles/glfw.dir/posix_module.c.o	93972d915faa7868
+244	433	1755778811669147785	_deps/glfw-build/src/CMakeFiles/glfw.dir/wl_init.c.o	e4e8ab838a1c4ea0
+156	268	1755778811581147914	_deps/glfw-build/src/CMakeFiles/glfw.dir/posix_thread.c.o	d6096a85ae3bba1f
+9	13	1755778811436996092	_deps/glfw-build/src/xdg-activation-v1-client-protocol-code.h	1d6c2804e6c9528d
+15	121	1755778811440450641	_deps/glfw-build/src/CMakeFiles/glfw.dir/platform.c.o	6b18ef08eea386bf
+319	421	1755778811743147678	CMakeFiles/Engine.dir/src/glad.c.o	ee7d9ebc70662b9c
+135	237	1755778811560147944	_deps/glfw-build/src/CMakeFiles/glfw.dir/null_joystick.c.o	ebe6bf1f52a49fe1
+10	13	1755778811437148124	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol.h	df0cf2e898a3a191
+6	574	1756121582163706380	CMakeFiles/Engine.dir/src/mouse.cpp.o	883a4bb77b8e3b66
+4	11	1755778811433725633	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/xdg-shell-client-protocol.h	dbf30d145ec8e580
+17	150	1755778811441148119	_deps/glfw-build/src/CMakeFiles/glfw.dir/osmesa_context.c.o	54054fa224cecbe4
+3	12	1755778811435986359	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/wayland-client-protocol-code.h	b20d61fb07c1ee3b
 6	2630	1755696697212433958	CMakeFiles/Engine.dir/src/object_loader.cpp.o	fecfdfc09e18269c
-5	912	1755696697211278115	CMakeFiles/Engine.dir/src/mouse.cpp.o	b2d9993406e57a34
-791	1864	1755696697996833994	CMakeFiles/Engine.dir/src/stb_image.cpp.o	ef20b376db86dc46
-1328	1417	1755713644029809759	Engine	6c98e735667783db
-3	93	1755691844552251024	CMakeFiles/Engine.dir/src/glad.c.o	e06871eb6e50a599
-3	1398	1755713653961825949	CMakeFiles/Engine.dir/main.cpp.o	b525c1c5c72eb260
-1398	1496	1755713655356828249	Engine	6c98e735667783db
-3	1294	1755713909742336089	CMakeFiles/Engine.dir/main.cpp.o	b525c1c5c72eb260
-1294	1381	1755713911033339047	Engine	6c98e735667783db
-2	1394	1755713975311490229	CMakeFiles/Engine.dir/main.cpp.o	b525c1c5c72eb260
-1394	1500	1755713976703493584	Engine	6c98e735667783db
-3	1601	1755714903718871362	CMakeFiles/Engine.dir/main.cpp.o	b525c1c5c72eb260
-3	1916	1755714903719653307	CMakeFiles/Engine.dir/src/sol.cpp.o	f51f706c08aeb6d6
-1916	2033	1755714905631885561	Engine	6c98e735667783db
-3	1807	1755715055458929455	CMakeFiles/Engine.dir/src/sol.cpp.o	f51f706c08aeb6d6
-1807	1959	1755715057262941283	Engine	6c98e735667783db
-4	1833	1755715075868062347	CMakeFiles/Engine.dir/src/sol.cpp.o	f51f706c08aeb6d6
-1833	1941	1755715077697074159	Engine	6c98e735667783db
-2	1553	1755715356811721679	CMakeFiles/Engine.dir/src/sol.cpp.o	f51f706c08aeb6d6
-1553	1645	1755715358362730117	Engine	6c98e735667783db
-3	1555	1755715422948075905	CMakeFiles/Engine.dir/src/sol.cpp.o	f51f706c08aeb6d6
-1555	1649	1755715424500084087	Engine	6c98e735667783db
-3	1632	1755715500533478189	CMakeFiles/Engine.dir/src/sol.cpp.o	f51f706c08aeb6d6
-1632	1722	1755715502162486496	Engine	6c98e735667783db
-3	1561	1755715550659731444	CMakeFiles/Engine.dir/src/sol.cpp.o	f51f706c08aeb6d6
-1561	1651	1755715552217739236	Engine	6c98e735667783db
-2	1305	1755715627618111194	CMakeFiles/Engine.dir/main.cpp.o	b525c1c5c72eb260
-1305	1396	1755715628921117538	Engine	6c98e735667783db
-3	1337	1755716640659574982	CMakeFiles/Engine.dir/main.cpp.o	b525c1c5c72eb260
-1337	1429	1755716641993580534	Engine	6c98e735667783db
+15	148	1755778811439874710	_deps/glfw-build/src/CMakeFiles/glfw.dir/init.c.o	8fbe17c8d2e8cf6d
+9	13	1755778811436996092	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/xdg-activation-v1-client-protocol.h	6d27dcdb48720a9a
+5	17	1756123716329698533	CMakeFiles/Engine.dir/src/time.cpp.o	4922fd08c236c350
+16	215	1755778811440903452	_deps/glfw-build/src/CMakeFiles/glfw.dir/window.c.o	10ce232c833ae602
+9	12	1755778811436423460	_deps/glfw-build/src/fractional-scale-v1-client-protocol-code.h	674740a2556dd94f
+9	13	1755778811436996092	_deps/glfw-build/src/xdg-activation-v1-client-protocol.h	6d27dcdb48720a9a
+11	15	1755778811439143028	_deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol-code.h	37a34ecc9adf0367
+5	749	1756031647839221287	CMakeFiles/Engine.dir/src/stb_image.cpp.o	d523262c22ea8ce0
+5	317	1756032468828430942	CMakeFiles/Engine.dir/src/texture.cpp.o	ee2bf72dc27af02b
+17	124	1755778811441963835	_deps/glfw-build/src/CMakeFiles/glfw.dir/null_init.c.o	7ffc1ccf9ed5d90d
+4	8	1755778811432037378	_deps/glfw-build/src/viewporter-client-protocol-code.h	c4b022ad25842b4b
+1	575	1756141598593671194	/home/michiel/Coding/Game Engine/Engine/build/debug/cmake_install.cmake	ab4e0096cc3ce906
+6	1518	1756121582162334834	CMakeFiles/Engine.dir/src/input.cpp.o	b59d9dc686b91e71
+215	496	1755778811639147830	_deps/glfw-build/src/CMakeFiles/glfw.dir/x11_window.c.o	c0abf728dcdcb765
+9	12	1755778811436423460	_deps/glfw-build/src/fractional-scale-v1-client-protocol.h	42db7714161e39fb
+3	8	1755778811432037378	_deps/glfw-build/src/viewporter-client-protocol.h	b2c22c1c13fdbd37
+16	158	1755778811441144583	_deps/glfw-build/src/CMakeFiles/glfw.dir/egl_context.c.o	1f81a4feb29bdbda
+124	271	1755778811548147962	_deps/glfw-build/src/CMakeFiles/glfw.dir/null_window.c.o	4dff5b1b62042c7a
+5	1622	1756141382141202822	CMakeFiles/Engine.dir/src/entity.cpp.o	92777a90c4c7aea4
+4	10	1755778811433217201	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/xdg-shell-client-protocol-code.h	3c4ed5885f57f9e
+159	312	1755778811583147911	_deps/glfw-build/src/CMakeFiles/glfw.dir/x11_monitor.c.o	185cee1e053d093f
+5	9	1755778811432148131	_deps/glfw-build/src/pointer-constraints-unstable-v1-client-protocol.h	e5d7ea8cf65cc067
+4	9	1755778811432037378	_deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol.h	500ada6ed8b91023
+4	9	1755778811432037378	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol.h	500ada6ed8b91023
+15	157	1755778811440243631	_deps/glfw-build/src/CMakeFiles/glfw.dir/monitor.c.o	6385e3e6a1c96eb0
+237	385	1755778811662147796	_deps/glfw-build/src/CMakeFiles/glfw.dir/glx_context.c.o	5412024ce6261eca
+4	9	1755778811432037378	_deps/glfw-build/src/idle-inhibit-unstable-v1-client-protocol-code.h	64fd6be1105fa24a
+1	575	1756141598597671194	/home/michiel/Coding/Game Engine/Engine/build/debug/_deps/glfw-build/src/cmake_install.cmake	ab4e0096cc3ce906
+5	860	1755963350340149446	CMakeFiles/Engine.dir/src/mesh.cpp.o	3f46ef31daa29474
+303	357	1756126988021250377	_deps/glfw-build/src/libglfw3.a	bd0ef89250d484b9
+5	1769	1756141382140743012	CMakeFiles/Engine.dir/src/mesh_renderer.cpp.o	bca3ef8791b3c3af
+15	155	1755778811439148122	_deps/glfw-build/src/CMakeFiles/glfw.dir/context.c.o	763db139daa1f60
+1811	1929	1756141383945711695	Engine	c2fab6b4a0094cdc
+5	1811	1756141382139712687	CMakeFiles/Engine.dir/main.cpp.o	abf4b5d68d4eb331
+153	264	1755778811577147920	_deps/glfw-build/src/CMakeFiles/glfw.dir/posix_time.c.o	7cafe671d3b52e29
+10	13	1755778811437148124	_deps/glfw-build/src/xdg-decoration-unstable-v1-client-protocol.h	df0cf2e898a3a191
