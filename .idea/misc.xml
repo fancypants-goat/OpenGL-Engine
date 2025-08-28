@@ -4,4 +4,16 @@
     <option name="pythonIntegrationState" value="YES" />
   </component>
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
+  <component name="CidrRootsConfiguration">
+    <sourceRoots>
+      <file path="$PROJECT_DIR$/include/engine" />
+      <file path="$PROJECT_DIR$/src" />
+    </sourceRoots>
+    <libraryRoots>
+      <file path="$PROJECT_DIR$/include/glad" />
+      <file path="$PROJECT_DIR$/include/glm" />
+      <file path="$PROJECT_DIR$/include/khr" />
+      <file path="$PROJECT_DIR$/include/stb" />
+    </libraryRoots>
+  </component>
 </project>
