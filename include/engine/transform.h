@@ -11,7 +11,7 @@
 
 namespace engine {
 	
-	class Transform : Component
+	class Transform
 	{
 	public:
 		Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
@@ -54,11 +54,13 @@ namespace engine {
 		glm::vec3 globalScale() const;
 		
 		void set_parent(Transform *p);
-		void set_parent(Entity p);
+		void set_parent(Entity *p);
 		
 		Transform *parent;
+		Entity *entity;
 	private:
-		std::vector<Transform *> children;
+		friend Entity;
+		std::vector<Transform *> m_children;
 	};
 	
 } // engine

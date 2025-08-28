@@ -14,7 +14,7 @@ namespace engine
 	public:
 		virtual void update();
 		
-		Entity *parent;
+		Entity *entity;
 		bool enabled;
 	};
 }

@@ -18,15 +18,22 @@ namespace engine {
 		
 		void addDrawable(MeshRenderer *drawable);
 		
-		void activateScene(Scene scene);
+		void activate();
+		
+		void drawScene(GLFWwindow *window);
+		
+		void updateScene();
 		
 		// TODO write custom .scene file type to hold data (Entities, components, data, cameras, stuff)
 		Scene readFromFile(std::string source);
 		
 		std::string name;
 		
-		static Scene activeScene;
+		static void set_activeScene(Scene *scene);
+		
+		static Scene *activeScene;
 	private:
+		friend void dataSync();
 		std::vector<Entity *> m_rootEntities;
 		std::vector<MeshRenderer *> m_drawables;
 	};

@@ -85,12 +85,15 @@ namespace engine {
 		unique_lock<shared_mutex> lock(syncMutex);
 		camera.updateCamera();
 		
-		for (Entity *entity : Entity::entities)
+		for (const auto& r : Scene::activeScene->m_drawables)
 		{
-			entity->renderData = EntityRenderData {
-					entity->transform.modelMatrix(),
-					entity->color
-			};
+			for (auto& entity : r->get_entities())
+			{
+				entity->renderData = EntityRenderData {
+						entity->transform.modelMatrix(),
+						entity->color
+				};
+			}
 		}
 	}
 	
@@ -103,6 +106,8 @@ namespace engine {
 			lastPhysicsFrameTime = startTime;
 			
 			// physics shit
+			Scene::activeScene->updateScene();
+			
 			physicsUpdate(window);
 			
 			// sync
@@ -136,8 +141,7 @@ namespace engine {
 			// upload/draw all MeshRenderers
 			std::shared_lock<shared_mutex> lock(syncMutex);
 			
-			cubeRenderer.upload();
-			cubeRenderer.draw(window);
+			Scene::activeScene->drawScene(window);
 			
 			glfwPollEvents();
 			glfwInputUpdateHandler(window);
@@ -230,6 +234,8 @@ void engine::start(GLFWwindow *window)
 	camera.set_depthPlanes(0.1f, 100);
 	Camera::set_main(&camera);
 	
+	scene.activate();
+	
 	shader = Shader(Resources::get("Shaders/unlit.vert"), Resources::get("Shaders/unlit.frag"));
 	container = Texture(Resources::get("Textures/container.jpg"));
 	
@@ -238,13 +244,13 @@ void engine::start(GLFWwindow *window)
 	
 	cubeParent = Entity(glm::vec3(0, 5, 0), glm::vec3(0), glm::vec3(1));
 	
-	cube1 = Entity(glm::vec3(0, 0, -5), glm::vec3(0, 0, 0), glm::vec3(1));
+	cube1 = Entity(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(1));
 	cube1.color = glm::vec3(1);
-//	cube1.transform.set_parent(&(cubeParent.transform));
 	cube1.addComponent(Rigidbody(1, 1));
+	scene.addEntity(&cube1);
 	
 	cubeRenderer.addEntity(&cube1);
-	scene.addDrawable()
+	scene.addDrawable(&cubeRenderer);
 }
 
 void engine::physicsUpdate(GLFWwindow *window)
@@ -272,7 +278,7 @@ void engine::physicsUpdate(GLFWwindow *window)
 	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_2) == ButtonState::Press
 		|| Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_5) == ButtonState::Hold)
 	{
-		Entity *newEntity = new Entity(camera.transform.position, camera.transform.rotation,
+		auto *newEntity = new Entity(camera.transform.position, camera.transform.rotation,
 									   glm::vec3(5));
 		newEntity->color = glm::vec3(1);
 		cubeRenderer.addEntity(newEntity);

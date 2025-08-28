@@ -165,12 +165,12 @@ namespace engine {
 	void Transform::set_parent(Transform *p)
 	{
 		parent = p;
-		p->children.push_back(this);
+		p->m_children.push_back(this);
 	}
 	
-	void Transform::set_parent(Entity p)
+	void Transform::set_parent(Entity *p)
 	{
-		parent = &(p.transform);
-		p.transform.children.push_back(this);
+		parent = &(p->transform);
+		p->transform.m_children.push_back(this);
 	}
 } // engine

@@ -119,9 +119,6 @@ namespace engine {
 	void MeshRenderer::addEntitySilent(Entity *entity)
 	{
 		m_entities.push_back(entity);
-		// add the entity to the entities list if it's not in there yet
-		if (std::find(Entity::entities.begin(), Entity::entities.end(), entity) == Entity::entities.end())
-			Entity::entities.push_back(entity);
 	}
 	
 	std::vector<Entity *> MeshRenderer::get_entities()

@@ -26,7 +26,7 @@ namespace engine
 		void update();
 		
 		template<typename T>
-		Component addComponent(T component)
+		T addComponent(T component)
 		{
 			if (!std::is_base_of<Component, T>::value)
 			{
@@ -34,7 +34,7 @@ namespace engine
 				return component;
 			}
 			
-			component.parent = this;
+			component.entity = this;
 			m_components.push_back(component);
 			
 			return component;
@@ -62,7 +62,6 @@ namespace engine
 		friend MeshRenderer;
 		friend void dataSync();
 		EntityRenderData renderData;
-		static std::vector<Entity *> entities;
 	};
 }
 

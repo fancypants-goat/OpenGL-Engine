@@ -16,7 +16,7 @@ namespace engine {
 	void Rigidbody::update()
 	{
 		applyHalfGravity();
-		translate(velocity);
+		translate(velocity * Time::deltaTime);
 		applyHalfGravity();
 	}
 	
@@ -29,81 +29,81 @@ namespace engine {
 	
 	void Rigidbody::translate(glm::vec3 offset)
 	{
-		parent->transform.translate(offset);
+		entity->transform.translate(offset);
 	}
 	
 	void Rigidbody::translate(float x, float y, float z)
 	{
-		parent->transform.translate(x, y, z);
+		entity->transform.translate(x, y, z);
 	}
 	
 	void Rigidbody::teleport(glm::vec3 offset)
 	{
-		parent->transform.teleport(offset);
+		entity->transform.teleport(offset);
 	}
 	
 	void Rigidbody::teleport(float x, float y, float z)
 	{
-		parent->transform.teleport(x, y, z);
+		entity->transform.teleport(x, y, z);
 	}
 	
 	void Rigidbody::rotate(glm::vec3 rot)
 	{
-		parent->transform.rotate(rot);
+		entity->transform.rotate(rot);
 	}
 	
 	void Rigidbody::rotate(float x, float y, float z)
 	{
-		parent->transform.rotate(x, y, z);
+		entity->transform.rotate(x, y, z);
 	}
 	
 	void Rigidbody::rotateTo(glm::vec3 rot)
 	{
-		parent->transform.rotateTo(rot);
+		entity->transform.rotateTo(rot);
 	}
 	
 	void Rigidbody::rotateTo(float x, float y, float z)
 	{
-		parent->transform.rotateTo(x, y, z);
+		entity->transform.rotateTo(x, y, z);
 	}
 	
 	void Rigidbody::rotateAxis(float degrees, glm::vec3 axis)
 	{
-		parent->transform.rotateAxis(degrees, axis);
+		entity->transform.rotateAxis(degrees, axis);
 	}
 	
 	void Rigidbody::rotateToAxis(float degrees, glm::vec3 axis)
 	{
-		parent->transform.rotateToAxis(degrees, axis);
+		entity->transform.rotateToAxis(degrees, axis);
 	}
 	
 	void Rigidbody::scale(glm::vec3 scale)
 	{
-		parent->transform.scale(scale);
+		entity->transform.scale(scale);
 	}
 	
 	void Rigidbody::scale(float x, float y, float z)
 	{
-		parent->transform.scale(x, y, z);
+		entity->transform.scale(x, y, z);
 	}
 	
 	void Rigidbody::scale(float scale)
 	{
-		parent->transform.scale(scale);
+		entity->transform.scale(scale);
 	}
 	
 	void Rigidbody::scaleBy(glm::vec3 scale)
 	{
-		parent->transform.scaleBy(scale);
+		entity->transform.scaleBy(scale);
 	}
 	
 	void Rigidbody::scaleBy(float x, float y, float z)
 	{
-		parent->transform.scaleBy(x, y, z);
+		entity->transform.scaleBy(x, y, z);
 	}
 	
 	void Rigidbody::scaleBy(float scale)
 	{
-		parent->transform.scaleBy(scale);
+		entity->transform.scaleBy(scale);
 	}
 } // engine
