@@ -1,0 +1,108 @@
+scene objects
+
+o floor 0 0 (5, 1, 5)
+color 1 1 1
+add boxcollider 1 0
+
+init floor
+
+r floorR
+mesh "Objects/Cube.obj"
+vert "Shaders/unlit.vert"
+frag "Shaders/unlit.frag"
+t "Textures/wall.jpg"
+
+add floor
+
+init floorR
+
+
+
+
+o wfCube1 (0, 5, 0) 0 1
+color 0.4 0.4 1
+add boxcollider 1 0
+add rigidbody 0 -9.81
+
+init
+
+o cubeParent 0 0 1
+init
+
+
+o cube1 (2, 5, -2) (0, 45, 0) 1
+color 1 0 1
+add boxcollider 1 0
+add rigidbody 0 -9.81
+
+p cubeParent
+
+init
+
+
+o cube2 (-1, 10, 2.2) 0 1
+color 0 1 0
+add boxcollider 1 0
+add rigidbody 0 -9.81
+
+p cubeParent
+
+init
+
+
+o teapot (-2, 5, 2) (0, -125, 0) 2
+color 1 1 1
+add boxcollider .5 0
+add rigidbody 0 -9.81
+init
+
+o teapotCollider 0 0 .5
+p teapot
+color 1 1 1
+add scaleprnt
+
+tag disabled
+
+init
+
+
+o dragooon (-1, 7, 2.2) 0 1
+color 0.4 0.4 1
+add boxcollider (1, .8, 0.3) (0, .3, 0)
+add rigidbody 0 -9.81
+
+init
+
+
+
+r wfR
+mesh "Objects/Wireframe.obj"
+vert "Shaders/unlit.vert"
+frag "Shaders/unlit.frag"
+
+add wfCube1
+init wfR
+
+r cubeR
+mesh "Objects/Cube.obj"
+vert "Shaders/unlit.vert"
+frag "Shaders/unlit.frag"
+t "Textures/container.jpg"
+
+add cube1
+add cube2
+init cubeR
+
+r teapotR
+mesh "Objects/teapot.obj"
+vert "Shaders/unlit.vert"
+frag "Shaders/unlit.frag"
+add teapot
+init
+
+r dragonR
+mesh "Objects/Dragon.obj"
+vert "Shaders/unlit.vert"
+frag "Shaders/unlit.frag"
+add dragooon
+init

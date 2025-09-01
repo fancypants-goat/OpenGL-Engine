@@ -1,0 +1,23 @@
+scene player
+
+
+o player 0 0 (0.1, 1, 0.1)
+color 1 0 0
+add boxcollider 1 0
+add rigidbody 0 -9.81
+add playercontroller 3 5
+
+tag enabled
+
+init
+
+r playerR
+mesh "Objects/Cube.obj"
+vert "Shaders/shader.vert"
+frag "Shaders/shader.frag"
+
+add player
+
+tag disabled
+
+init
