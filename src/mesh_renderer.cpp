@@ -10,13 +10,12 @@
 
 namespace engine {
 	MeshRenderer::MeshRenderer()
-			: mesh(), shader(nullptr), texture(nullptr), m_vbo(-1)
+			: mesh(), shader(nullptr), texture(nullptr)
 	{
-	
 	}
 	
 	MeshRenderer::MeshRenderer(Mesh mesh, Shader *shader, Texture *texture)
-			: mesh(mesh), shader(shader), texture(texture), m_vbo(-1)
+			: mesh(mesh), shader(shader), texture(texture)
 	{
 		mesh.initialize();
 		initialize();
@@ -32,7 +31,7 @@ namespace engine {
 	
 	void MeshRenderer::upload()
 	{
-		if (m_entities.empty())
+		if (m_entities.empty() || !enabled)
 			return;
 		
 		std::vector<EntityRenderData> bufferData;
@@ -40,7 +39,8 @@ namespace engine {
 		
 		for (Entity *e : m_entities)
 		{
-			bufferData.push_back((*e).renderData);
+			if (e->isActive)
+				bufferData.push_back((*e).renderData);
 		}
 		
 		for (SubMesh &subMesh : mesh.get_SubMeshes())
@@ -64,6 +64,8 @@ namespace engine {
 	
 	void MeshRenderer::draw(GLFWwindow *window)
 	{
+		if (!enabled) return;
+		
 		glm::ivec2 viewport;
 		glfwGetWindowSize(window, &viewport.x, &viewport.y);
 		
@@ -74,7 +76,8 @@ namespace engine {
 		shader->uniformb("useTexture", texture != nullptr);
 		shader->uniformmat4("camera", false, Camera::get_main()->cameraProjection(viewport));
 		shader->uniform3f("cameraPos", Camera::get_main()->transform.position.x,
-						  Camera::get_main()->transform.position.y, Camera::get_main()->transform.position.z);
+						  Camera::get_main()->transform.position.y,
+						  Camera::get_main()->transform.position.z);
 		shader->uniform3f("lightPos", 4562, 6452, 5425423);
 		shader->uniform3f("lightColor", 1, 1, 1);
 		

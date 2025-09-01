@@ -11,6 +11,12 @@ namespace engine {
 		updateCamera();
 	}
 	
+	Camera::Camera()
+		: type(), transform(glm::vec3(0), glm::vec3(0), glm::vec3(0))
+	{
+	
+	}
+	
 	void Camera::updateCamera()
 	{
 		glm::vec3 worldUp(0, 1, 0);
@@ -20,6 +26,7 @@ namespace engine {
 							  -cos(glm::radians(transform.globalRotation().y)) * cos(glm::radians(transform.globalRotation().x)));
 		direction = glm::normalize(direction);
 		forwards = glm::normalize(glm::vec3(direction.x, 0, direction.z));
+		
 		right = glm::normalize(glm::cross(direction, worldUp));
 		up = glm::normalize(glm::cross(right, direction));
 	}

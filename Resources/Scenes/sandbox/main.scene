@@ -1,0 +1,32 @@
+scene sandbox
+
+cam mainCamera perspective (0, 5, 0) (10, 0, 0)
+fov 90
+tag main
+init camera
+
+include "Scenes/player.scene"
+
+o floor 0 0 (100, 0.1, 100)
+color 0.4 0.7 0.3
+add boxcollider 1 0
+init
+
+r R
+mesh "Objects/Cube.obj"
+vert "Shaders/unlit.vert"
+frag "Shaders/unlit.frag"
+t "Textures/wall.jpg"
+
+add floor
+init
+
+
+o cubeParent 0 0 1
+init
+r cubeR
+mesh "Objects/Cube.obj"
+vert "Shaders/unlit.vert"
+frag "Shaders/unlit.frag"
+t "Textures/container.jpg"
+init

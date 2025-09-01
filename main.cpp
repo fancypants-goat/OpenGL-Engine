@@ -3,19 +3,15 @@
 #include <bits/stdc++.h>
 #include <glm/glm.hpp>
 
-
-#include <engine/mouse.h>
-#include <engine/input.h>
 #include <engine/camera.h>
 #include <engine/entity.h>
 #include <engine/mesh_renderer.h>
-#include <engine/sol.h>
 #include <engine/shader.h>
 #include <engine/texture.h>
-#include <engine/resources.h>
-#include <engine/time.h>
-#include <engine/rigidbody.h>
+#include <engine/physics.h>
 #include <engine/scene.h>
+#include <engine/utils.h>
+#include <engine/scale_printer.h>
 
 using namespace std;
 
@@ -23,7 +19,6 @@ using namespace std;
 namespace engine {
 	
 	std::shared_mutex syncMutex;
-	std::shared_mutex timeMutex;
 	
 	bool runningApplication = true;
 	bool canExit = false;
@@ -31,19 +26,8 @@ namespace engine {
 	float lastFrameTime(glfwGetTime());
 	float lastPhysicsFrameTime(glfwGetTime());
 	
-	Camera camera(Camera::Perspective);
 	float speed(2.8);
 	float sensitivity(.1);
-	
-	Scene scene ("main");
-	
-	Shader shader;
-	Texture container;
-	
-	MeshRenderer cubeRenderer;
-	
-	Entity cube1;
-	Entity cubeParent;
 	
 	float physicsUpdateTime(1 / 99999.f);
 	
@@ -83,11 +67,11 @@ namespace engine {
 			return;
 		
 		unique_lock<shared_mutex> lock(syncMutex);
-		camera.updateCamera();
+		Camera::get_main()->updateCamera();
 		
-		for (const auto& r : Scene::activeScene->m_drawables)
+		for (const auto &r : Scene::activeScene->m_drawables)
 		{
-			for (auto& entity : r->get_entities())
+			for (auto &entity : r->get_entities())
 			{
 				entity->renderData = EntityRenderData {
 						entity->transform.modelMatrix(),
@@ -106,7 +90,7 @@ namespace engine {
 			lastPhysicsFrameTime = startTime;
 			
 			// physics shit
-			Scene::activeScene->updateScene();
+			Scene::activeScene->updateScene(window);
 			
 			physicsUpdate(window);
 			
@@ -116,6 +100,8 @@ namespace engine {
 			// physics fps cap
 			double timeToWait = max(physicsUpdateTime - (glfwGetTime() - startTime), 0.);
 			this_thread::sleep_for(chrono::duration<double>(timeToWait));
+
+//			std::cout << "Physics Frame time: " << glfwGetTime() - startTime << std::endl;
 		}
 		
 		canExit = true;
@@ -150,6 +136,8 @@ namespace engine {
 			
 			// BUFFER
 			glfwSwapBuffers(window);
+
+//			std::cout << "Rendering Frame time: " << glfwGetTime() - Time::runTime << std::endl;
 		}
 		
 		terminateApplication();
@@ -193,6 +181,12 @@ namespace engine {
 		
 		glfwSwapInterval(0);
 		
+		Scene *scene;
+//		scene = SOL::readScene("Scenes/Scene example.scene");
+		scene = SOL::readScene("Scenes/sandbox/main.scene");
+		scene->activate();
+		
+		
 		start(window);
 		
 		thread physicsThread(physicsLoop, window);
@@ -230,58 +224,88 @@ void engine::awake()
 
 void engine::start(GLFWwindow *window)
 {
-	camera.fovy = 90;
-	camera.set_depthPlanes(0.1f, 100);
-	Camera::set_main(&camera);
-	
-	scene.activate();
-	
-	shader = Shader(Resources::get("Shaders/unlit.vert"), Resources::get("Shaders/unlit.frag"));
-	container = Texture(Resources::get("Textures/container.jpg"));
-	
-	cubeRenderer = MeshRenderer(SOL::ReadFile(Resources::get("Objects/Cube.obj")), &shader,
-								&container);
-	
-	cubeParent = Entity(glm::vec3(0, 5, 0), glm::vec3(0), glm::vec3(1));
-	
-	cube1 = Entity(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(1));
-	cube1.color = glm::vec3(1);
-	cube1.addComponent(Rigidbody(1, 1));
-	scene.addEntity(&cube1);
-	
-	cubeRenderer.addEntity(&cube1);
-	scene.addDrawable(&cubeRenderer);
+//	camera.fovy = 90;
+//	camera.size = glm::vec2(15);
+//	camera.set_depthPlanes(0.1f, 100);
+//	camera.transform.teleport(2, 2, 3);
+//	Camera::set_main(&camera);
+
+//	scene.activate();
+
+//	shader = Shader("Shaders/unlit.vert", "Shaders/unlit.frag");
+//	container = Texture("Textures/container.jpg");
+//
+//	cubeRenderer = MeshRenderer(SOL::readMeshFile("Objects/Cube.obj"), &shader
+//			/*, &container*/);
+//
+//	cubeParent = Entity(glm::vec3(0, 5, 0), glm::vec3(0), glm::vec3(1));
+//
+//	cube1 = Entity(glm::vec3(0, 4, 0), glm::vec3(0, 0, 0), glm::vec3(1));
+//	cube1.color = glm::vec3(0.4, 0.4, 1);
+//	cube1.addComponent(new Rigidbody(1, -.01));
+//	cube1.addComponent(new BoxCollider(glm::vec3(1)));
+//	scene.addEntity(&cube1);
+//
+//	cube2 = Entity(glm::vec3(0, 0, 0), glm::vec3(0), glm::vec3(1));
+//	cube2.color = glm::vec3(1, 0.4, 0.4);
+//	cube2.addComponent(new BoxCollider(glm::vec3(1)));
+//	scene.addEntity(&cube2);
+//
+//	cubeRenderer.addEntity(&cube1);
+//	cubeRenderer.addEntity(&cube2);
+//	scene.addDrawable(&cubeRenderer);
 }
 
 void engine::physicsUpdate(GLFWwindow *window)
 {
 //  ----- MOVEMENT -----
-	float toMove(speed * Time::physicsDeltaTime);
-	
-	if (Input::getKeyState(window, GLFW_KEY_LEFT_SHIFT) == KeyState::Hold)
-		toMove *= 2;
-	
-	if (Input::getKeyState(window, GLFW_KEY_W) == KeyState::Hold)
-		camera.transform.translate(toMove * camera.get_direction());
-	if (Input::getKeyState(window, GLFW_KEY_S) == KeyState::Hold)
-		camera.transform.translate(-toMove * camera.get_direction());
-	if (Input::getKeyState(window, GLFW_KEY_A) == KeyState::Hold)
-		camera.transform.translate(-toMove * camera.get_right());
-	if (Input::getKeyState(window, GLFW_KEY_D) == KeyState::Hold)
-		camera.transform.translate(toMove * camera.get_right());
-	if (Input::getKeyState(window, GLFW_KEY_SPACE) == KeyState::Hold)
-		camera.transform.translate(toMove * glm::vec3(0, 1, 0));
-	if (Input::getKeyState(window, GLFW_KEY_LEFT_CONTROL) == KeyState::Hold)
-		camera.transform.translate(-toMove * glm::vec3(0, 1, 0));
+//	float toMove(speed * Time::physicsDeltaTime);
+//
+//	if (Input::getKeyState(window, GLFW_KEY_LEFT_SHIFT) == KeyState::Hold)
+//		toMove *= 1.2;
+//
+//	if (Input::getKeyState(window, GLFW_KEY_W) == KeyState::Hold)
+//		Camera::get_main()->transform.translate(toMove * Camera::get_main()->get_forwards());
+//	if (Input::getKeyState(window, GLFW_KEY_S) == KeyState::Hold)
+//		Camera::get_main()->transform.translate(-toMove * Camera::get_main()->get_forwards());
+//	if (Input::getKeyState(window, GLFW_KEY_A) == KeyState::Hold)
+//		Camera::get_main()->transform.translate(-toMove * Camera::get_main()->get_right());
+//	if (Input::getKeyState(window, GLFW_KEY_D) == KeyState::Hold)
+//		Camera::get_main()->transform.translate(toMove * Camera::get_main()->get_right());
+//	if (Input::getKeyState(window, GLFW_KEY_SPACE) == KeyState::Hold)
+//		Camera::get_main()->transform.translate(toMove * glm::vec3(0, 1, 0));
+//	if (Input::getKeyState(window, GLFW_KEY_LEFT_CONTROL) == KeyState::Hold)
+//		Camera::get_main()->transform.translate(-toMove * glm::vec3(0, 1, 0));
 
 //  ----- OBJECT PLACEMENT -----
-	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_2) == ButtonState::Press
-		|| Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_5) == ButtonState::Hold)
+	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_2) == ButtonState::Press)
 	{
-		auto *newEntity = new Entity(camera.transform.position, camera.transform.rotation,
-									   glm::vec3(5));
+		auto *newEntity = new Entity(
+				Camera::get_main()->transform.position + Camera::get_main()->get_direction(),
+				glm::vec3(0, Camera::get_main()->transform.rotation.y, 0),
+				glm::vec3(1));
+		
 		newEntity->color = glm::vec3(1);
-		cubeRenderer.addEntity(newEntity);
+		newEntity->addComponent(new BoxCollider(glm::vec3(1), glm::vec3(0)));
+//		newEntity->addComponent(new Rigidbody(0));
+		newEntity->transform.set_parent(Scene::activeScene->find("cubeParent"));
+		
+		Scene::activeScene->findDrawable("cubeR")->addEntity(newEntity);
+	}
+	
+	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_5) == ButtonState::Press)
+	{
+		auto *newEntity = new Entity(
+				Camera::get_main()->transform.position + Camera::get_main()->get_direction(),
+				glm::vec3(0, Camera::get_main()->transform.rotation.y, 0),
+				glm::vec3(1));
+		
+		newEntity->color = glm::vec3(1);
+		newEntity->addComponent(new BoxCollider(glm::vec3(1), glm::vec3(0)));
+		newEntity->addComponent(new Rigidbody(0));
+		newEntity->transform.set_parent(Scene::activeScene->find("cubeParent"));
+		
+		Scene::activeScene->findDrawable("cubeR")->addEntity(newEntity);
 	}
 }
 
@@ -289,11 +313,14 @@ void engine::update(GLFWwindow *window)
 {
 //  ----- MOUSE MOVEMENT -----
 	glm::vec2 offset = Mouse::getMouseOffset();
-	camera.transform.rotateAxis(offset.x * sensitivity * Time::timeScale, glm::vec3(0, 1, 0));
-	camera.transform.rotateAxis(-offset.y * sensitivity * Time::timeScale, glm::vec3(1, 0, 0));
+	Camera::get_main()->transform
+			.rotateAxis(offset.x * sensitivity * Time::timeScale, glm::vec3(0, 1, 0));
+	Camera::get_main()->transform
+			.rotateAxis(-offset.y * sensitivity * Time::timeScale, glm::vec3(1, 0, 0));
 	
-	camera.transform
-			.rotateTo(clamp(camera.transform.rotation.x, -89.f, 89.f), camera.transform.rotation.y,
+	Camera::get_main()->transform
+			.rotateTo(clamp(Camera::get_main()->transform.rotation.x, -89.f, 89.f),
+					  Camera::get_main()->transform.rotation.y,
 					  0);
 
 //  ----- ESCAPE 'MENU' -----

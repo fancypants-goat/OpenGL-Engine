@@ -13,6 +13,7 @@ namespace engine {
 	{
 	public:
 		static std::string get(const char *path);
+		static std::string get(std::string path);
 		
 		Resources() = delete;
 	};

@@ -1,4 +1,8 @@
+
+
 #include <engine/shader.h>
+
+#include <engine/resources.h>
 
 using namespace std;
 
@@ -8,8 +12,8 @@ namespace engine {
 			  m_fragmentShader(glCreateShader(GL_FRAGMENT_SHADER)),
 			  m_id(glCreateProgram())
 	{
-		compileShader(m_vertexShader, readShaderFromFile(vertexPath).c_str());
-		compileShader(m_fragmentShader, readShaderFromFile(fragPath).c_str());
+		compileShader(m_vertexShader, readShaderFromFile(Resources::get(vertexPath)).c_str());
+		compileShader(m_fragmentShader, readShaderFromFile(Resources::get(fragPath)).c_str());
 		compileProgram();
 	}
 	

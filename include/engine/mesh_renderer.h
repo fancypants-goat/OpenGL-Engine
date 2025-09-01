@@ -40,11 +40,13 @@ namespace engine {
 		Mesh mesh;
 		Shader *shader;
 		Texture *texture;
+		bool enabled = true;
 	private:
+		friend class SOL;
 		void initialize();
 		
 		std::vector<Entity *> m_entities;
-		unsigned int m_vbo;
+		unsigned int m_vbo = -1;
 	};
 	
 } // engine

@@ -2,8 +2,8 @@
 // Created by michiel on 8/23/25.
 //
 
-#ifndef ENGINE_GAME_OBJECT_H
-#define ENGINE_GAME_OBJECT_H
+#ifndef ENGINE_ENTITY_H
+#define ENGINE_ENTITY_H
 
 #include <engine/component.h>
 #include <engine/transform.h>
@@ -23,39 +23,24 @@ namespace engine
 		explicit Entity(glm::vec3 position = glm::vec3(0), glm::vec3 rotation = glm::vec3(0), glm::vec3 scale = glm::vec3(1));
 		Entity(Transform transform);
 		
-		void update();
+		void update(GLFWwindow *window);
 		
 		template<typename T>
-		T addComponent(T component)
-		{
-			if (!std::is_base_of<Component, T>::value)
-			{
-				std::cerr << typeid(T).name() << " does not inherit Component class!" << std::endl;
-				return component;
-			}
-			
-			component.entity = this;
-			m_components.push_back(component);
-			
-			return component;
-		}
+		T *addComponent(T *component);
 		
 		template<typename T>
-		T getComponent(bool includeDisabled)
-		{
-			for (Component c : m_components)
-				if (std::is_same<T, typeof(c)>::value && (includeDisabled || c.enabled))
-					return (T) c;
-		}
+		T *getComponent(bool includeDisabled);
 		
 		void setRenderer(MeshRenderer *renderer);
 		
 		Transform transform;
-		MeshRenderer *renderer;
-		glm::vec3 color;
+		MeshRenderer *renderer { nullptr };
+		glm::vec3 color = glm::vec3(1);
+		bool isActive = true;
+		std::string name;
 		
 	private:
-		std::vector<Component> m_components;
+		std::vector<Component *> m_components;
 		
 		// syncing stuff
 		// for the buffer swap
@@ -65,4 +50,6 @@ namespace engine
 	};
 }
 
-#endif //ENGINE_GAME_OBJECT_H
+#include "entity.inl"
+
+#endif // ENGINE_ENTITY_H

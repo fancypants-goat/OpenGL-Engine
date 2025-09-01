@@ -15,7 +15,8 @@ namespace engine
                 Orthographic,
                 Perspective,
             } type;
-            
+		
+			Camera();
             Camera(Type type);
             
             void updateCamera();

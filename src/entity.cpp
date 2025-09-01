@@ -9,13 +9,13 @@
 
 namespace engine {
 	Entity::Entity(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
-			: transform(position, rotation, scale), renderer(nullptr)
+			: transform(position, rotation, scale), name("")
 	{
 		transform.entity = this;
 	}
 	
 	Entity::Entity(Transform transform)
-			: transform(transform), renderer(nullptr)
+			: transform(transform), name()
 	{
 		this->transform.entity = this;
 	}
@@ -26,16 +26,18 @@ namespace engine {
 		newRenderer->addEntitySilent(this);
 	}
 	
-	void Entity::update()
+	void Entity::update(GLFWwindow *window)
 	{
+		if (!isActive) return;
+		
 		for (auto &component : m_components)
 		{
-			component.update();
+			component->update(window);
 		}
 		
 		for (auto &child : transform.m_children)
 		{
-			child->entity->update();
+			child->entity->update(window);
 		}
 	}
 }

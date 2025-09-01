@@ -1,0 +1,29 @@
+scene axes
+
+cam main perspective (1, 1, 1) 0
+fov 90
+
+tag main
+init
+
+o X (1, 0, 0) 0 (1.5, .1, .1)
+color 1 0 0
+init
+
+o Y (0, 1, 0) 0 (.1, 1.5, .1)
+color 0 1 0
+init
+
+o Z (0, 0, 1) 0 (.1, .1, 1.5)
+color 0 0 1
+init
+
+r R
+mesh "Objects/Cube.obj"
+vert "Shaders/shader.vert"
+frag "Shaders/shader.frag"
+add X
+add Y
+add Z
+
+init

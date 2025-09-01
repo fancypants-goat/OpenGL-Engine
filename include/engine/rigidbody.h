@@ -10,15 +10,28 @@
 #include <glm/glm.hpp>
 
 namespace engine {
+	class BoxCollider;
 	class Rigidbody : public Component
 	{
 	public:
-		Rigidbody(float mass, float gravity = 9.81);
+		Rigidbody(float mass, float gravity = -9.81);
 		
-		void update() override;
+		static Component *create(const std::vector<std::string> args);
+		static bool registered;
+		
+		void update(GLFWwindow *window) override;
+		
+		void addVelocity(glm::vec3 v);
+		void addVelocity(float x, float y, float z);
+		void addVelocity(float strength, glm::vec3 direction);
+		void setVelocity(glm::vec3 v);
+		void setVelocity(float scalar);
+		void setVelocity(float x, float y, float z);
+		void setVelocity(float strength, glm::vec3 direction);
 		
 		void translate(glm::vec3 offset);
 		void translate(float x, float y, float z);
+		void translate(float scale, glm::vec3 axis);
 		
 		void teleport(glm::vec3 offset);
 		void teleport(float x, float y, float z);
@@ -41,6 +54,7 @@ namespace engine {
 		float gravity;
 		float mass;
 	private:
+		BoxCollider *boxCollider { nullptr };
 		void applyHalfGravity();
 	};
 } // engine

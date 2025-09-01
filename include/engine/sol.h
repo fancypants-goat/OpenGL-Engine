@@ -9,20 +9,42 @@
 #include <engine/vertex.h>
 #include <engine/mesh.h>
 #include <engine/material.h>
+#include <engine/scene.h>
 
 namespace engine {
 	class SOL
 	{
 	public:
+		struct RawSceneData
+		{
+			std::string name;
+			
+			std::unordered_map<std::string, Entity *> tokenizedEntities;
+			std::unordered_map<std::string, MeshRenderer *> tokenizedDrawables;
+			
+			std::vector<Entity *> rootEntities;
+			std::vector<MeshRenderer *> drawables;
+		};
+		
 		SOL() = delete;
 		
 		static Mesh
-		ReadFile(std::string source);
+		readMeshFile(std::string source);
 		
 		static Mesh
-		ReadObj(std::string source);
+		readObj(std::string source);
 		
-		static std::unordered_map<std::string, Material> ReadMTL(std::string source);
+		static std::unordered_map<std::string, Material> readMTL(std::string source);
+		
+		
+		static Scene *readScene(std::string source);
+		static RawSceneData readSceneRaw(std::string source);
+		static std::vector<std::string> tokenizeArgs(std::string line);
+		static glm::vec3 parseVec3(std::string toParse);
+	private:
+		
+		static glm::vec3 readVec3(std::istringstream &ss);
+		static std::string readStringLiteral(std::istringstream &ss);
 	};
 }
 

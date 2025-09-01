@@ -4,6 +4,11 @@
 
 #include "engine/component.h"
 
-void engine::Component::update()
+void engine::Component::update(GLFWwindow *window)
 {
+}
+
+engine::Component *engine::Component::create(const std::vector<std::string> args)
+{
+	return new Component();
 }

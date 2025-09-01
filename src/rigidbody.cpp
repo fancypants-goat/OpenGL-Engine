@@ -5,26 +5,43 @@
 #include <engine/rigidbody.h>
 #include <engine/entity.h>
 #include <engine/time.h>
+#include <engine/box_collider.h>
+#include <engine/component_factory.h>
 
 namespace engine {
 	Rigidbody::Rigidbody(float mass, float gravity)
-		: mass(mass), gravity(gravity)
+			: mass(mass), gravity(gravity), velocity(0)
 	{
 	}
 	
-	
-	void Rigidbody::update()
+	Component *Rigidbody::create(const std::vector<std::string> args)
 	{
+		float mass = std::stof(args[0]);
+		float gravity = std::stof(args[1]);
+		return new Rigidbody(mass, gravity);
+	}
+	bool Rigidbody::registered = []{
+		ComponentFactory::registerType("rigidbody", &Rigidbody::create);
+		return true;
+	}();
+	
+	
+	void Rigidbody::update(GLFWwindow *window)
+	{
+		
 		applyHalfGravity();
-		translate(velocity * Time::deltaTime);
+		
+		if (requireComponent(boxCollider, true))
+			boxCollider->resolveCollisions();
+		
+		translate(velocity * Time::physicsDeltaTime);
 		applyHalfGravity();
 	}
 	
 	void Rigidbody::applyHalfGravity()
 	{
-		velocity.y += gravity * Time::deltaTime / 2;
+		velocity.y += gravity * Time::physicsDeltaTime / 2;
 	}
-	
 	
 	
 	void Rigidbody::translate(glm::vec3 offset)
@@ -35,6 +52,11 @@ namespace engine {
 	void Rigidbody::translate(float x, float y, float z)
 	{
 		entity->transform.translate(x, y, z);
+	}
+	
+	void Rigidbody::translate(float scale, glm::vec3 axis)
+	{
+		entity->transform.translate(scale, axis);
 	}
 	
 	void Rigidbody::teleport(glm::vec3 offset)
@@ -105,5 +127,40 @@ namespace engine {
 	void Rigidbody::scaleBy(float scale)
 	{
 		entity->transform.scaleBy(scale);
+	}
+	
+	void Rigidbody::setVelocity(glm::vec3 v)
+	{
+		velocity = v;
+	}
+	
+	void Rigidbody::setVelocity(float x, float y, float z)
+	{
+		velocity = glm::vec3(x, y, z);
+	}
+	
+	void Rigidbody::setVelocity(float strength, glm::vec3 direction)
+	{
+		velocity = glm::normalize(direction) * strength;
+	}
+	
+	void Rigidbody::addVelocity(glm::vec3 v)
+	{
+		velocity += v;
+	}
+	
+	void Rigidbody::addVelocity(float x, float y, float z)
+	{
+		velocity += glm::vec3(x, y, z);
+	}
+	
+	void Rigidbody::addVelocity(float strength, glm::vec3 direction)
+	{
+		velocity += glm::normalize(direction) * strength;
+	}
+	
+	void Rigidbody::setVelocity(float scalar)
+	{
+		velocity = glm::vec3(scalar);
 	}
 } // engine

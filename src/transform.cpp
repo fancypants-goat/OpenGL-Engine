@@ -10,7 +10,7 @@
 
 namespace engine {
 	Transform::Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 size)
-			: position(position), rotation(rotation), size(size), parent(nullptr)
+			: position(position), rotation(rotation), size(size)
 	{
 	}
 	
@@ -22,6 +22,11 @@ namespace engine {
 	void Transform::translate(float x, float y, float z)
 	{
 		position += glm::vec3(x, y, z);
+	}
+	
+	void Transform::translate(float scale, glm::vec3 axis)
+	{
+		position += scale * axis;
 	}
 	
 	void Transform::teleport(glm::vec3 offset)
@@ -111,7 +116,7 @@ namespace engine {
 	
 	glm::mat4 Transform::scaleMatrix() const
 	{
-		return glm::scale(glm::mat4(1), globalScale());
+		return glm::scale(glm::mat4(1), globalSize() / 2.f);
 	}
 	
 	glm::mat4 Transform::modelMatrix() const
@@ -135,31 +140,7 @@ namespace engine {
 	
 	glm::mat4 Transform::localScaleMatrix() const
 	{
-		return glm::scale(glm::mat4(1), size);
-	}
-	
-	glm::vec3 Transform::globalPosition() const
-	{
-		if (parent == nullptr)
-			return position;
-		else
-			return position + parent->globalPosition();
-	}
-	
-	glm::vec3 Transform::globalRotation() const
-	{
-		if (parent == nullptr)
-			return rotation;
-		else
-			return rotation + parent->globalRotation();
-	}
-	
-	glm::vec3 Transform::globalScale() const
-	{
-		if (parent == nullptr)
-			return size;
-		else
-			return size * parent->globalScale();
+		return glm::scale(glm::mat4(1), size / 2.f);
 	}
 	
 	void Transform::set_parent(Transform *p)
@@ -172,5 +153,20 @@ namespace engine {
 	{
 		parent = &(p->transform);
 		p->transform.m_children.push_back(this);
+	}
+	
+	glm::vec3 Transform::globalPosition() const
+	{
+		return parent == nullptr? position : position + parent->globalPosition();
+	}
+	
+	glm::vec3 Transform::globalRotation() const
+	{
+		return parent == nullptr? rotation : rotation + parent->globalRotation();
+	}
+	
+	glm::vec3 Transform::globalSize() const
+	{
+		return parent == nullptr? size : size * parent->globalSize();
 	}
 } // engine

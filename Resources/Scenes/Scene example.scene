@@ -1,0 +1,45 @@
+scene main
+
+cam main perspective (0, 0, 5) 0
+fov 90
+tag main
+
+init main
+
+
+o parent 0 0 1
+name parent
+
+init parent
+
+
+o cube1 (0, 5, 0) (0, 0, 0) (1, 1, 1)
+p parent
+name cube
+color 1.0 0.0 1.0
+add rigidbody 5 -9.81
+add boxcollider (1, 1, 1) (0, 0, 0)
+
+init cube1
+
+
+o cube2 (0, 0, 0) 0 (2, 1, 2)
+p parent
+name cube
+add boxcollider 1 0
+
+init cube2
+
+
+
+r cubeRenderer
+# render data
+mesh "Objects/Cube.obj"
+vert "Shaders/unlit.vert"
+frag "Shaders/unlit.frag"
+t "Textures/container.jpg"
+
+add cube1
+add cube2
+
+init cubeRenderer

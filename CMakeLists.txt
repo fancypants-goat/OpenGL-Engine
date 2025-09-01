@@ -4,19 +4,17 @@ project(Engine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
 include(FetchContent)
 
+# GLFW
 FetchContent_Declare(
-glfw
-GIT_REPOSITORY https://github.com/glfw/glfw.git
-GIT_TAG latest  # or specify a version like 3.3.9
+        glfw
+        GIT_REPOSITORY https://github.com/glfw/glfw.git
+        GIT_TAG latest  # or specify a version like 3.3.9
 )
 FetchContent_MakeAvailable(glfw)
 
-
-# Find dependencies
-find_package(glfw3 3.3)
+# Find OpenGL
 find_package(OpenGL REQUIRED)
 
 # Executable
@@ -40,9 +38,15 @@ add_executable(Engine
         src/rigidbody.cpp
         src/time.cpp
         src/scene.cpp
+        src/box_collider.cpp
+        src/component_factory.cpp
+        src/playercontroller.cpp
+        src/math/vec.cpp
+        src/math/vec3.cpp
+        src/math/vec2.cpp
 )
 
-# Include directories (scoped to this target)
+# Include directories
 target_include_directories(Engine PRIVATE
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/include/glad
@@ -58,7 +62,7 @@ target_link_libraries(Engine PRIVATE
         pthread
 )
 
-# Define macro so you can do e.g. load shaders relative to project root
+# Define project directory macro
 target_compile_definitions(Engine PRIVATE
         PROJECT_DIR="${CMAKE_SOURCE_DIR}"
 )
