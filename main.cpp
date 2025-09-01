@@ -101,7 +101,7 @@ namespace engine {
 			double timeToWait = max(physicsUpdateTime - (glfwGetTime() - startTime), 0.);
 			this_thread::sleep_for(chrono::duration<double>(timeToWait));
 
-//			std::cout << "Physics Frame time: " << glfwGetTime() - startTime << std::endl;
+			std::cout << "Physics Frame time: " << glfwGetTime() - startTime << std::endl;
 		}
 		
 		canExit = true;
@@ -183,7 +183,7 @@ namespace engine {
 		
 		Scene *scene;
 //		scene = SOL::readScene("Scenes/Scene example.scene");
-		scene = SOL::readScene("Scenes/sandbox/main.scene");
+		scene = SOL::readScene("Scenes/main/main.scene");
 		scene->activate();
 		
 		
@@ -278,7 +278,7 @@ void engine::physicsUpdate(GLFWwindow *window)
 //		Camera::get_main()->transform.translate(-toMove * glm::vec3(0, 1, 0));
 
 //  ----- OBJECT PLACEMENT -----
-	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_2) == ButtonState::Press)
+	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_1) == ButtonState::Press)
 	{
 		auto *newEntity = new Entity(
 				Camera::get_main()->transform.position + Camera::get_main()->get_direction(),
@@ -293,7 +293,7 @@ void engine::physicsUpdate(GLFWwindow *window)
 		Scene::activeScene->findDrawable("cubeR")->addEntity(newEntity);
 	}
 	
-	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_5) == ButtonState::Press)
+	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_2) == ButtonState::Press)
 	{
 		auto *newEntity = new Entity(
 				Camera::get_main()->transform.position + Camera::get_main()->get_direction(),
