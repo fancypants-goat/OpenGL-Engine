@@ -585,7 +585,7 @@ namespace engine {
 				
 				std::filesystem::path pathInSourceRoot = sourceRoot / path;
 				if (exists(pathInSourceRoot))
-					path = pathInSourceRoot;
+					path = pathInSourceRoot.string();
 				else
 					path = Resources::get(path);
 				
