@@ -9,17 +9,24 @@
 namespace engine {
 	std::vector<BoxCollider *> BoxCollider::boxColliders {};
 	
-	BoxCollider::BoxCollider(glm::vec3 size, glm::vec3 offset)
-			: size(size), offset(offset)
-	{
-		boxColliders.push_back(this);
-	}
+	glm::vec3 	BoxCollider::DEFAULT_SIZE		= glm::vec3(1);
+	glm::vec3 	BoxCollider::DEFAULT_OFFSET		= glm::vec3(0);
+	bool 		BoxCollider::DEFAULT_IS_TRIGGER	= false;
 	
 	Component *BoxCollider::create(const std::vector<std::string> args)
 	{
-		glm::vec3 size = SOL::parseVec3(args[0]);
-		glm::vec3 offset = SOL::parseVec3(args[1]);
-		return new BoxCollider(size, offset);
+		glm::vec3 size = DEFAULT_SIZE;
+		glm::vec3 offset = DEFAULT_OFFSET;
+		bool isTrigger = DEFAULT_IS_TRIGGER;
+		
+		if (args.size() >= 1) // size argument
+			size = SOL::parseVec3(args[0]);
+		if (args.size() >= 2) // offset argument
+			offset = SOL::parseVec3(args[1]);
+		if (args.size() >= 3) // isTrigger argument
+			isTrigger = SOL::parseBool(args[2]);
+		
+		return new BoxCollider(size, offset, isTrigger);
 	}
 	
 	bool BoxCollider::registered = [] {
@@ -28,9 +35,20 @@ namespace engine {
 	}();
 	
 	
+	
+	BoxCollider::BoxCollider(glm::vec3 size, glm::vec3 offset, bool isTrigger)
+			: size(size), offset(offset), isTrigger(isTrigger)
+	{
+		boxColliders.push_back(this);
+	}
+	
+	
 	void BoxCollider::update(GLFWwindow *window)
 	{
 		calculateBounds();
+		
+		if (!isTrigger)
+			resolveCollisions();
 	}
 	
 	void BoxCollider::calculateBounds()
@@ -39,12 +57,14 @@ namespace engine {
 		
 		globalSize = transform->globalSize() * size;
 		center = transform->globalPosition() + offset;
+		
+		// AABB
 		// don't use halfsize
 		// if halfsize would be used, the rotated box could stick out with the corners, causing 'hacky' results
 		minAABB = center - globalSize;
 		maxAABB = center + globalSize;
 		
-		
+		// OBB
 		glm::vec3 worldUp(0, 1, 0);
 		
 		glm::vec3 forwards = glm::vec3(sin(glm::radians(transform->globalRotation().y)) *
@@ -61,7 +81,7 @@ namespace engine {
 		obbInfo.axisX = right;
 		obbInfo.axisY = up;
 		obbInfo.axisZ = forwards;
-		obbInfo.halfSize = globalSize / 2.f;
+		obbInfo.halfSize = globalSize * 0.5f;
 	}
 	
 	void BoxCollider::resolveCollisions()
@@ -78,7 +98,7 @@ namespace engine {
 				CollisionInfo obbCollision = collidesWithOBB(other);
 				if (obbCollision.collided)
 				{
-					if (glm::vec3(0,1,0) == obbCollision.normal)
+					if (glm::vec3(0,1,0) == glm::abs(obbCollision.normal))
 						rigidbody->setVelocity(0);
 					
 					rigidbody->translate(obbCollision.depth, obbCollision.normal);
@@ -87,7 +107,7 @@ namespace engine {
 		}
 	}
 	
-	bool BoxCollider::collidesWithAABB(BoxCollider *&other)
+	bool BoxCollider::collidesWithAABB(BoxCollider *&other) const
 	{
 		bool collided = (minAABB.x < other->maxAABB.x && maxAABB.x > other->minAABB.x
 						 && minAABB.y < other->maxAABB.y && maxAABB.y > other->minAABB.y
@@ -102,7 +122,7 @@ namespace engine {
 		float minOverlap = std::numeric_limits<float>::max();
 		glm::vec3 minAxis;
 		
-		std::vector<glm::vec3> axes {
+		const std::vector<glm::vec3> axes {
 				obbInfo.axisX,
 				obbInfo.axisY,
 				obbInfo.axisZ,
@@ -121,7 +141,7 @@ namespace engine {
 		};
 		
 		
-		for (glm::vec3 &axis : axes)
+		for (const glm::vec3 &axis : axes)
 		{
 			float dist = checkOverlapOnPlane(axis, other);
 			if (-1 == dist)

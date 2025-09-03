@@ -3,8 +3,8 @@ scene player
 
 o player 0 0 (0.1, 1, 0.1)
 color 1 0 0
-add boxcollider 1 0
-add rigidbody 0 -9.81
+add boxcollider true
+add rigidbody 0
 add playercontroller 3 5
 
 tag enabled
@@ -18,6 +18,6 @@ frag "Shaders/shader.frag"
 
 add player
 
-tag disabled
+tag enabled
 
 init

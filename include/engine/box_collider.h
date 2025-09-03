@@ -16,9 +16,9 @@ namespace engine {
 	
 	struct OBBInfo
 	{
-		glm::vec3 axisX = glm::vec3(1,0,0);
-		glm::vec3 axisY = glm::vec3(0,1,0);
-		glm::vec3 axisZ = glm::vec3(0,0,1);
+		glm::vec3 axisX = glm::vec3(1, 0, 0);
+		glm::vec3 axisY = glm::vec3(0, 1, 0);
+		glm::vec3 axisZ = glm::vec3(0, 0, 1);
 		glm::vec3 halfSize = glm::vec3(0);
 	};
 	
@@ -27,9 +27,10 @@ namespace engine {
 	{
 	public:
 		
-		BoxCollider(glm::vec3 size, glm::vec3 offset = glm::vec3(0));
+		explicit BoxCollider(glm::vec3 size = DEFAULT_SIZE, glm::vec3 offset = DEFAULT_OFFSET, bool isTrigger = DEFAULT_IS_TRIGGER);
 		
-		static Component *create(const std::vector<std::string> args);
+		static Component *create(std::vector<std::string> args);
+		
 		static bool registered;
 		
 		void update(GLFWwindow *window) override;
@@ -37,24 +38,32 @@ namespace engine {
 		void calculateBounds();
 		
 		void resolveCollisions();
-		bool collidesWithAABB(BoxCollider *&other);
+		
+		bool collidesWithAABB(BoxCollider *&other) const;
+		
 		CollisionInfo collidesWithOBB(BoxCollider *&other);
 		
 		glm::vec3 size;
 		glm::vec3 offset;
-		glm::vec3 globalSize;
-		glm::vec3 center;
+		glm::vec3 globalSize {glm::vec3(0)};
+		glm::vec3 center {glm::vec3(0)};
 		
-		Rigidbody *rigidbody { nullptr };
+		bool isTrigger;
+		
+		Rigidbody *rigidbody {nullptr};
 	private:
 		float checkOverlapOnPlane(glm::vec3 plane, BoxCollider *&other);
 		
-		glm::vec3 minAABB;
-		glm::vec3 maxAABB;
+		glm::vec3 minAABB {glm::vec3(0)};
+		glm::vec3 maxAABB {glm::vec3(0)};
 		
 		OBBInfo obbInfo;
 		
 		static std::vector<BoxCollider *> boxColliders;
+		
+		static glm::vec3 DEFAULT_SIZE;
+		static glm::vec3 DEFAULT_OFFSET;
+		static bool DEFAULT_IS_TRIGGER;
 	};
 	
 	struct CollisionInfo

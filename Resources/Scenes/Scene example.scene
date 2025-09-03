@@ -17,7 +17,7 @@ o cube1 (0, 5, 0) (0, 0, 0) (1, 1, 1)
 p parent
 name cube
 color 1.0 0.0 1.0
-add rigidbody 5 -9.81
+add rigidbody 5
 add boxcollider (1, 1, 1) (0, 0, 0)
 
 init cube1

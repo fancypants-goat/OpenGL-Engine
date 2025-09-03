@@ -5,22 +5,28 @@
 #include <engine/rigidbody.h>
 #include <engine/entity.h>
 #include <engine/time.h>
-#include <engine/box_collider.h>
 #include <engine/component_factory.h>
 
 namespace engine {
+	float Rigidbody::DEFAULT_GRAVITY = -9.81;
+	
 	Rigidbody::Rigidbody(float mass, float gravity)
 			: mass(mass), gravity(gravity), velocity(0)
 	{
 	}
 	
-	Component *Rigidbody::create(const std::vector<std::string> args)
+	Component *Rigidbody::create(const std::vector<std::string> &args)
 	{
 		float mass = std::stof(args[0]);
-		float gravity = std::stof(args[1]);
+		float gravity = DEFAULT_GRAVITY;
+		
+		if (args.size() >= 2) // gravity argument
+			gravity = std::stof(args[1]);
+		
 		return new Rigidbody(mass, gravity);
 	}
-	bool Rigidbody::registered = []{
+	
+	bool Rigidbody::registered = [] {
 		ComponentFactory::registerType("rigidbody", &Rigidbody::create);
 		return true;
 	}();
@@ -30,10 +36,6 @@ namespace engine {
 	{
 		
 		applyHalfGravity();
-		
-		if (requireComponent(boxCollider, true))
-			boxCollider->resolveCollisions();
-		
 		translate(velocity * Time::physicsDeltaTime);
 		applyHalfGravity();
 	}
