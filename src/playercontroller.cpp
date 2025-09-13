@@ -47,6 +47,7 @@ namespace engine {
 			jump();
 		
 		Camera::get_main()->transform.teleport(transform->position);
+		Camera::get_main()->transform.translate(0, 0.5, 0);
 	}
 	
 	void PlayerController::jump()

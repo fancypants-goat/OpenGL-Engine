@@ -14,9 +14,9 @@ namespace engine {
 	class Rigidbody : public Component
 	{
 	public:
-		Rigidbody(float mass, float gravity = -9.81);
+		explicit Rigidbody(float mass, float gravity = DEFAULT_GRAVITY);
 		
-		static Component *create(const std::vector<std::string> args);
+		static Component *create(const std::vector<std::string>& args);
 		static bool registered;
 		
 		void update(GLFWwindow *window) override;
@@ -56,6 +56,9 @@ namespace engine {
 	private:
 		BoxCollider *boxCollider { nullptr };
 		void applyHalfGravity();
+		
+		
+		static float DEFAULT_GRAVITY;
 	};
 } // engine
 

@@ -330,7 +330,8 @@ namespace engine {
 	{
 		if (toParse[0] == '(')
 		{
-			std::remove(toParse.begin(), toParse.end(), '(');
+			toParse.erase(toParse.find('('));
+			toParse.erase(toParse.find(')'));
 			std::vector<std::string> parts;
 			std::stringstream ss(toParse);
 			std::string item;
@@ -345,6 +346,19 @@ namespace engine {
 		{
 			return glm::vec3(std::stof(toParse));
 		}
+	}
+	
+	bool SOL::parseBool(const std::string toParse)
+	{
+		bool value = toParse == "true" || toParse == "True";
+		
+		if (!value)
+		{
+			std::istringstream ss(toParse);
+			ss >> value;
+		}
+		
+		return value;
 	}
 	
 	SOL::RawSceneData SOL::readSceneRaw(std::string source)

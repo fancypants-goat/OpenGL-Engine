@@ -2,7 +2,7 @@ scene objects
 
 o floor 0 0 (5, 1, 5)
 color 1 1 1
-add boxcollider 1 0
+add boxcollider
 
 init floor
 
@@ -21,8 +21,8 @@ init floorR
 
 o wfCube1 (0, 5, 0) 0 1
 color 0.4 0.4 1
-add boxcollider 1 0
-add rigidbody 0 -9.81
+add boxcollider
+add rigidbody 0
 
 init
 
@@ -32,8 +32,8 @@ init
 
 o cube1 (2, 5, -2) (0, 45, 0) 1
 color 1 0 1
-add boxcollider 1 0
-add rigidbody 0 -9.81
+add boxcollider
+add rigidbody 0
 
 p cubeParent
 
@@ -42,8 +42,8 @@ init
 
 o cube2 (-1, 10, 2.2) 0 1
 color 0 1 0
-add boxcollider 1 0
-add rigidbody 0 -9.81
+add boxcollider
+add rigidbody 0
 
 p cubeParent
 
@@ -53,7 +53,7 @@ init
 o teapot (-2, 5, 2) (0, -125, 0) 2
 color 1 1 1
 add boxcollider .5 0
-add rigidbody 0 -9.81
+add rigidbody 0
 init
 
 o teapotCollider 0 0 .5
@@ -69,7 +69,7 @@ init
 o dragooon (-1, 7, 2.2) 0 1
 color 0.4 0.4 1
 add boxcollider (1, .8, 0.3) (0, .3, 0)
-add rigidbody 0 -9.81
+add rigidbody 0
 
 init
 

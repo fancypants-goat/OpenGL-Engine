@@ -41,6 +41,7 @@ namespace engine {
 		static RawSceneData readSceneRaw(std::string source);
 		static std::vector<std::string> tokenizeArgs(std::string line);
 		static glm::vec3 parseVec3(std::string toParse);
+		static bool parseBool(std::string toParse);
 	private:
 		
 		static glm::vec3 readVec3(std::istringstream &ss);
