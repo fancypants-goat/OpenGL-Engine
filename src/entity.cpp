@@ -8,7 +8,7 @@
 #include <engine/mesh_renderer.h>
 
 namespace engine {
-	Entity::Entity(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
+	Entity::Entity(math::vec3 position, math::vec3 rotation, math::vec3 scale)
 			: transform(position, rotation, scale), name("")
 	{
 		transform.entity = this;
@@ -26,7 +26,7 @@ namespace engine {
 		newRenderer->addEntitySilent(this);
 	}
 	
-	void Entity::update(GLFWwindow *window)
+	void Entity::update(GLFWwindow *window) const
 	{
 		if (!isActive) return;
 		

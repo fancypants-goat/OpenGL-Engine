@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "transform.h"
+#include "math/math.h"
 
 
 namespace engine
@@ -21,10 +22,10 @@ namespace engine
             
             void updateCamera();
             
-            glm::mat4 calculateView();
-            glm::mat4 orthoProjection(glm::vec2 viewport);
-            glm::mat4 perspectiveProjection(glm::vec2 viewport);
-            glm::mat4 cameraProjection(glm::vec2 viewport);
+            glm::mat4 calculateView() const;
+            glm::mat4 orthoProjection(glm::vec2 viewport) const;
+            glm::mat4 perspectiveProjection(glm::vec2 viewport) const;
+            glm::mat4 cameraProjection(glm::vec2 viewport) const;
             
             glm::vec2 size;
             float fovy;
@@ -35,20 +36,20 @@ namespace engine
             
             void set_depthPlanes(float nearPlane, float farPlane);
             
-            glm::vec3 get_direction();
-            glm::vec3 get_forwards();
-            glm::vec3 get_right();
-            glm::vec3 get_up();
+            math::vec3 get_direction();
+            math::vec3 get_forwards();
+            math::vec3 get_right();
+            math::vec3 get_up();
             
             static Camera *get_main();
             static void set_main(Camera *camera);
         private:
             static Camera *s_main;
             
-            glm::vec3 direction;
-            glm::vec3 forwards;
-            glm::vec3 right;
-            glm::vec3 up;
+            math::vec3 direction;
+            math::vec3 forwards;
+            math::vec3 right;
+            math::vec3 up;
     };
 }
 

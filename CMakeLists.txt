@@ -41,9 +41,9 @@ add_executable(Engine
         src/box_collider.cpp
         src/component_factory.cpp
         src/playercontroller.cpp
-        src/math/vec.cpp
         src/math/vec3.cpp
         src/math/vec2.cpp
+        src/math/math.cpp
 )
 
 # Include directories

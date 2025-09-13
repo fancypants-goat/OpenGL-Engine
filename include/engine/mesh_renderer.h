@@ -17,7 +17,7 @@ namespace engine {
 	struct EntityRenderData
 	{
 		glm::mat4 model;
-		glm::vec3 color;
+		math::vec3 color;
 	};
 	
 	class Entity;

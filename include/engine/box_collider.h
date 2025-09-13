@@ -26,7 +26,13 @@ namespace engine {
 	class BoxCollider : public Component
 	{
 	public:
-		
+		enum CollisionMode
+		{
+			Simple,
+			Advanced
+		};
+
+
 		BoxCollider(glm::vec3 size, glm::vec3 offset = glm::vec3(0));
 		
 		static Component *create(const std::vector<std::string> args);
@@ -37,24 +43,30 @@ namespace engine {
 		void calculateBounds();
 		
 		void resolveCollisions();
-		bool collidesWithAABB(BoxCollider *&other);
+		CollisionInfo collidesWithAABB(BoxCollider *&other);
 		CollisionInfo collidesWithOBB(BoxCollider *&other);
-		
+
 		glm::vec3 size;
 		glm::vec3 offset;
 		glm::vec3 globalSize;
 		glm::vec3 center;
+
+		CollisionMode collisionMode = Advanced;
 		
 		Rigidbody *rigidbody { nullptr };
 	private:
-		float checkOverlapOnPlane(glm::vec3 plane, BoxCollider *&other);
-		
+		float checkOverlapOnPlane(glm::vec3 plane, BoxCollider *&other) const;
+
 		glm::vec3 minAABB;
 		glm::vec3 maxAABB;
-		
+		glm::vec3 doubledMinAABB;
+		glm::vec3 doubledMaxAABB;
+
 		OBBInfo obbInfo;
 		
 		static std::vector<BoxCollider *> boxColliders;
+
+		static float LOD_THRESHOLD;
 	};
 	
 	struct CollisionInfo
@@ -62,7 +74,6 @@ namespace engine {
 		bool collided = false;
 		BoxCollider *a;
 		BoxCollider *b;
-		glm::vec3 collisionPoint;
 		glm::vec3 normal;
 		float depth;
 	};

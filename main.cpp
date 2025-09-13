@@ -1,7 +1,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <bits/stdc++.h>
-#include <glm/glm.hpp>
 
 #include <engine/camera.h>
 #include <engine/entity.h>
@@ -12,6 +11,7 @@
 #include <engine/scene.h>
 #include <engine/utils.h>
 #include <engine/scale_printer.h>
+#include <engine/math/math.h>
 
 using namespace std;
 
@@ -101,7 +101,7 @@ namespace engine {
 			double timeToWait = max(physicsUpdateTime - (glfwGetTime() - startTime), 0.);
 			this_thread::sleep_for(chrono::duration<double>(timeToWait));
 
-			std::cout << "Physics Frame time: " << glfwGetTime() - startTime << std::endl;
+			// std::cout << "Physics Frame time: " << glfwGetTime() - startTime << std::endl;
 		}
 		
 		canExit = true;
@@ -183,7 +183,7 @@ namespace engine {
 		
 		Scene *scene;
 //		scene = SOL::readScene("Scenes/Scene example.scene");
-		scene = SOL::readScene("Scenes/main/main.scene");
+		scene = SOL::readScene("Scenes/sandbox/main.scene");
 		scene->activate();
 		
 		
@@ -281,8 +281,8 @@ void engine::physicsUpdate(GLFWwindow *window)
 	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_1) == ButtonState::Press)
 	{
 		auto *newEntity = new Entity(
-				Camera::get_main()->transform.position + Camera::get_main()->get_direction(),
-				glm::vec3(0, Camera::get_main()->transform.rotation.y, 0),
+				Camera::get_main()->transform.position + Camera::get_main()->get_direction()
+				math::vec3(0, Camera::get_main()->transform.rotation.y, 0),
 				glm::vec3(1));
 		
 		newEntity->color = glm::vec3(1);

@@ -20,10 +20,10 @@ namespace engine
 	class Entity
 	{
 	public:
-		explicit Entity(glm::vec3 position = glm::vec3(0), glm::vec3 rotation = glm::vec3(0), glm::vec3 scale = glm::vec3(1));
+		explicit Entity(math::vec3 position = math::vec3(0), math::vec3 rotation = math::vec3(0), math::vec3 scale = math::vec3(1));
 		Entity(Transform transform);
 		
-		void update(GLFWwindow *window);
+		void update(GLFWwindow *window) const;
 		
 		template<typename T>
 		T *addComponent(T *component);
@@ -35,7 +35,7 @@ namespace engine
 		
 		Transform transform;
 		MeshRenderer *renderer { nullptr };
-		glm::vec3 color = glm::vec3(1);
+		math::vec3 color = math::vec3::one;
 		bool isActive = true;
 		std::string name;
 		
