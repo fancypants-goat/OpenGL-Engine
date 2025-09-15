@@ -1,7 +1,7 @@
 scene player
 
 
-o player 0 0 (0.1, 1, 0.1)
+o player 0 0 <0.1, 1, 0.1>
 color 1 0 0
 add boxcollider true
 add rigidbody 0

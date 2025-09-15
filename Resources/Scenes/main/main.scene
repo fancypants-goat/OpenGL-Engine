@@ -1,6 +1,6 @@
 scene main
 
-cam mainCamera perspective (0, 5, 0) (10, 0, 0)
+cam mainCamera perspective <0, 5, 0> <10, 0, 0>
 fov 90
 tag main
 init camera
