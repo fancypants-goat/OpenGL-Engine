@@ -3,6 +3,7 @@
 #include <engine/shader.h>
 
 #include <engine/resources.h>
+#include <glm/gtc/type_ptr.hpp>
 
 using namespace std;
 

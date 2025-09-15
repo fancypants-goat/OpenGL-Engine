@@ -1,40 +1,42 @@
 #include <engine/camera.h>
 
 #include <iostream>
+#include <engine/math/math.h>
 
 namespace engine
 {
     Camera* Camera::s_main{nullptr};
 
-    Camera::Camera(Type type)
-        : type(type), transform(math::vec3::zero, math::vec3::zero, math::vec3::zero)
+    Camera::Camera(const Type type)
+        : type(type), transform(math::vec3(0), math::vec3(0), math::vec3(0))
     {
         updateCamera();
     }
 
     Camera::Camera()
-        : type(), transform(math::vec3::zero, math::vec3::zero, math::vec3::zero)
+        : type(), transform(math::vec3(0), math::vec3(0), math::vec3(0))
     {
     }
 
     void Camera::updateCamera()
     {
         direction = math::vec3(
-            sin(glm::radians(transform.globalRotation().y)) * cos(glm::radians(transform.globalRotation().x)),
-            sin(glm::radians(transform.globalRotation().x)),
-            -cos(glm::radians(transform.globalRotation().y)) * cos(glm::radians(transform.globalRotation().x)));
+            sin(math::radians(transform.globalRotation().y)) * cos(math::radians(transform.globalRotation().x)),
+            sin(math::radians(transform.globalRotation().x)),
+            -cos(math::radians(transform.globalRotation().y)) * cos(math::radians(transform.globalRotation().x)));
 
         direction.normalize();
 
         forwards = math::vec3(direction.x, 0, direction.z).normalized();
 
-        right = math::cross(direction, math::vec3::up).normalized();
+        right = math::cross(direction, math::vec3(0, 1, 0)).normalized();
         up = math::cross(right, direction).normalized();
     }
 
     glm::mat4 Camera::calculateView() const
     {
-        return glm::lookAt(transform.globalPosition().toGLM(), (transform.globalPosition() + direction).toGLM(),
+        return glm::lookAt(transform.globalPosition().toGLM(),
+        				  (transform.globalPosition() + direction).toGLM(),
                            up.toGLM());
     }
 
@@ -50,7 +52,7 @@ namespace engine
 
     glm::mat4 Camera::perspectiveProjection(const glm::vec2 viewport) const
     {
-        return glm::perspective(glm::radians(fovy), viewport.x / viewport.y, nearPlane, farPlane);
+        return glm::perspective(math::radians(fovy), viewport.x / viewport.y, nearPlane, farPlane);
     }
 
     glm::mat4 Camera::cameraProjection(const glm::vec2 viewport) const

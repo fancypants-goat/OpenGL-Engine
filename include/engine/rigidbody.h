@@ -7,7 +7,8 @@
 
 #include "component.h"
 
-#include <glm/glm.hpp>
+#include "math/vec3.h"
+
 
 namespace engine {
 	class BoxCollider;
@@ -21,36 +22,36 @@ namespace engine {
 		
 		void update(GLFWwindow *window) override;
 		
-		void addVelocity(glm::vec3 v);
+		void addVelocity(math::vec3 v);
 		void addVelocity(float x, float y, float z);
-		void addVelocity(float strength, glm::vec3 direction);
-		void setVelocity(glm::vec3 v);
+		void addVelocity(float strength, math::vec3 direction);
+		void setVelocity(math::vec3 v);
 		void setVelocity(float scalar);
 		void setVelocity(float x, float y, float z);
-		void setVelocity(float strength, glm::vec3 direction);
+		void setVelocity(float strength, math::vec3 direction);
 		
-		void translate(glm::vec3 offset);
+		void translate(math::vec3 offset);
 		void translate(float x, float y, float z);
-		void translate(float scale, glm::vec3 axis);
+		void translate(float scale, math::vec3 axis);
 		
-		void teleport(glm::vec3 offset);
+		void teleport(math::vec3 offset);
 		void teleport(float x, float y, float z);
 		
-		void rotate(glm::vec3 rot);
+		void rotate(math::vec3 rot);
 		void rotate(float x, float y, float z);
-		void rotateTo(glm::vec3 rot);
+		void rotateTo(math::vec3 rot);
 		void rotateTo(float x, float y, float z);
-		void rotateAxis(float degrees, glm::vec3 axis);
-		void rotateToAxis(float degrees, glm::vec3 axis);
+		void rotateAxis(float degrees, math::vec3 axis);
+		void rotateToAxis(float degrees, math::vec3 axis);
 		
-		void scale(glm::vec3 scale);
+		void scale(math::vec3 scale);
 		void scale(float x, float y, float z);
 		void scale(float scale);
-		void scaleBy(glm::vec3 scale);
+		void scaleBy(math::vec3 scale);
 		void scaleBy(float x, float y, float z);
 		void scaleBy(float scale);
 		
-		glm::vec3 velocity;
+		math::vec3 velocity;
 		float gravity;
 		float mass;
 	private:

@@ -1,13 +1,14 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 
-#include <glm/glm.hpp>
+#include "math/vec3.h"
+
 
 namespace engine
 {
     struct Vertex {
-        glm::vec3 position;
-        glm::vec3 normal;
+        math::vec3 position;
+        math::vec3 normal;
         glm::vec2 texCoord;
     };
 }

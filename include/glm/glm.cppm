@@ -344,7 +344,7 @@ export namespace glm {
 	using glm::highp_vec4;
 	using glm::vec1;
 	using glm::vec2;
-	using glm::vec3;
+	using math::vec3;
 	using glm::vec4;
 	using glm::lowp_fvec1;
 	using glm::lowp_fvec2;
@@ -1115,7 +1115,7 @@ export namespace glm {
 	using glm::packUnorm2x16;
 	using glm::packUnorm4x8;
 	using glm::pow;
-	using glm::radians;
+	using math::radians;
 	using glm::reflect;
 	using glm::refract;
 	using glm::round;
@@ -1903,7 +1903,7 @@ export namespace glm {
 		using glm::quatLookAtLH;
 		using glm::quatLookAtRH;
 		using glm::quat_cast;
-		using glm::radians;
+		using math::radians;
 		using glm::reflect;
 		using glm::refract;
 		using glm::repeat;
@@ -2143,7 +2143,7 @@ export namespace glm {
 		using glm::projectNO;
 		using glm::projectZO;
 		using glm::quarter_pi;
-		using glm::radians;
+		using math::radians;
 		using glm::reflect;
 		using glm::refract;
 		using glm::repeat;
@@ -2580,7 +2580,7 @@ export namespace glm {
 		using glm::quinticEaseInOut;
 		using glm::quinticEaseOut;
 		using glm::radialGradient;
-		using glm::radians;
+		using math::radians;
 		using glm::recompose;
 		using glm::reflect;
 		using glm::refract;

@@ -7,9 +7,6 @@
 
 #include <GLFW/glfw3.h>
 #include <bits/stdc++.h>
-#include <glm/glm.hpp>
-
-#include "mouse.h"
 
 namespace engine {
 	

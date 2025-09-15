@@ -24,8 +24,8 @@ namespace engine {
 		source = Resources::get(source);
 		
 		// initialize all temporary storages
-		std::vector<glm::vec3> vertexPositions;
-		std::vector<glm::vec3> vertexNormals;
+		std::vector<math::vec3> vertexPositions;
+		std::vector<math::vec3> vertexNormals;
 		std::vector<glm::vec2> textureCoordinates;
 		
 		std::vector<Vertex> resultVertices;
@@ -99,7 +99,7 @@ namespace engine {
 					}
 					
 					auto texCoord(glm::vec2(0));
-					auto normal(glm::vec3(0));
+					auto normal(math::vec3(0));
 					if (t != -1)
 						texCoord = textureCoordinates[t - 1];
 					if (n != -1)
@@ -198,17 +198,17 @@ namespace engine {
 			{
 				float r, g, b;
 				ss >> r >> g >> b;
-				currentMaterial.ambientColor = glm::vec3(r, g, b);
+				currentMaterial.ambientColor = math::vec3(r, g, b);
 			} else if (prefix == "Kd")
 			{
 				float r, g, b;
 				ss >> r >> g >> b;
-				currentMaterial.diffuseColor = glm::vec3(r, g, b);
+				currentMaterial.diffuseColor = math::vec3(r, g, b);
 			} else if (prefix == "Ks")
 			{
 				float r, g, b;
 				ss >> r >> g >> b;
-				currentMaterial.specularColor = glm::vec3(r, g, b);
+				currentMaterial.specularColor = math::vec3(r, g, b);
 			} else if (prefix == "Ns")
 			{
 				float exponent;
@@ -239,9 +239,9 @@ namespace engine {
 	
 	Scene *SOL::readScene(std::string source)
 	{
-		Scene *scene = new Scene();
+		auto scene = new Scene();
 		
-		RawSceneData rawData = readSceneRaw(source);
+		RawSceneData rawData = readSceneRaw(std::move(source));
 		
 		scene->m_rootEntities = rawData.rootEntities;
 		scene->m_drawables = rawData.drawables;
@@ -286,30 +286,6 @@ namespace engine {
 		return tokens;
 	}
 	
-	glm::vec3 SOL::readVec3(std::istringstream &ss)
-	{
-		glm::vec3 vector;
-		// remove all whitespaces
-		while (ss && std::isspace(ss.peek())) ss.get();
-		
-		if (ss.peek() == '(') // a vector (defined to be vec3)
-		{
-			ss.get();
-			ss >> vector.x;
-			ss.ignore(1, ',');
-			ss >> vector.y;
-			ss.ignore(1, ',');
-			ss >> vector.z;
-			ss.ignore(1, ')');
-		} else
-		{
-			float scalar;
-			ss >> scalar;
-			vector = glm::vec3(scalar);
-		};
-		return vector;
-	}
-	
 	std::string SOL::readStringLiteral(std::istringstream &ss)
 	{
 		while (ss && std::isspace(ss.peek())) ss.get(); // skip spaces
@@ -324,28 +300,6 @@ namespace engine {
 		std::getline(ss, result, '"'); // read until closing quote
 		
 		return result;
-	}
-	
-	glm::vec3 SOL::parseVec3(std::string toParse)
-	{
-		if (toParse[0] == '(')
-		{
-			toParse.erase(toParse.find('('));
-			toParse.erase(toParse.find(')'));
-			std::vector<std::string> parts;
-			std::stringstream ss(toParse);
-			std::string item;
-			
-			while (std::getline(ss, item, ','))
-			{
-				parts.push_back(item);
-			}
-			
-			return glm::vec3(std::stof(parts[0]), std::stof(parts[1]), std::stof(parts[2]));
-		} else
-		{
-			return glm::vec3(std::stof(toParse));
-		}
 	}
 	
 	bool SOL::parseBool(const std::string toParse)
@@ -384,10 +338,10 @@ namespace engine {
 		
 		// entity stuff
 		std::string parentID;
-		glm::vec3 position;
-		glm::vec3 rotation;
-		glm::vec3 size;
-		glm::vec3 color;
+		math::vec3 position;
+		math::vec3 rotation;
+		math::vec3 size;
+		math::vec3 color;
 		std::vector<std::vector<std::string>> components;
 		
 		// renderer stuff
@@ -400,8 +354,8 @@ namespace engine {
 		// camera stuff
 		bool isMain = false;
 		std::string cameraType;
-		glm::vec3 camPosition;
-		glm::vec3 camRotation;
+		math::vec3 camPosition;
+		math::vec3 camRotation;
 		float fovy;
 		glm::vec2 orthoSize;
 		float near = 0.1;
@@ -419,7 +373,6 @@ namespace engine {
 		
 		while (getline(file, line))
 		{
-			
 			std::istringstream ss(line);
 			std::string prefix;
 			ss >> prefix;
@@ -438,9 +391,7 @@ namespace engine {
 				// CAMERA ATTRIBUTES
 			else if (prefix == "cam")
 			{
-				ss >> currentID >> cameraType;
-				camPosition = readVec3(ss);
-				camRotation = readVec3(ss);
+				ss >> currentID >> cameraType >> camPosition >> camRotation;
 				
 				currentType = ObjectType::Camera;
 			} else if (prefix == "fov" && currentType == ObjectType::Camera)
@@ -462,11 +413,7 @@ namespace engine {
 				// OBJECT ATTRIBUTES
 			else if (prefix == "o")
 			{
-				ss >> currentID;
-				
-				position = readVec3(ss);
-				rotation = readVec3(ss);
-				size = readVec3(ss);
+				ss >> currentID >> position >> rotation >> size;
 				
 				currentType = ObjectType::Entity;
 			} else if (prefix == "p" && currentType == ObjectType::Entity)
@@ -568,7 +515,7 @@ namespace engine {
 					if (isMain) Camera::set_main(c);
 				}
 				
-				color = glm::vec3(1);
+				color = math::vec3(1);
 				parentID = "";
 				components.clear();
 				

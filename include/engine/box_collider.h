@@ -5,8 +5,8 @@
 #ifndef ENGINE_BOX_COLLIDER_H
 #define ENGINE_BOX_COLLIDER_H
 
-#include <glm/glm.hpp>
 #include <vector>
+#include <engine/math/math.h>
 #include "component.h"
 #include "rigidbody.h"
 
@@ -16,10 +16,10 @@ namespace engine {
 	
 	struct OBBInfo
 	{
-		glm::vec3 axisX = glm::vec3(1,0,0);
-		glm::vec3 axisY = glm::vec3(0,1,0);
-		glm::vec3 axisZ = glm::vec3(0,0,1);
-		glm::vec3 halfSize = glm::vec3(0);
+		math::vec3 axisX;
+		math::vec3 axisY;
+		math::vec3 axisZ;
+		math::vec3 halfSize;
 	};
 	
 	
@@ -33,9 +33,9 @@ namespace engine {
 		};
 
 
-		BoxCollider(glm::vec3 size, glm::vec3 offset = glm::vec3(0));
+		explicit BoxCollider(math::vec3 size = DEFAULT_SIZE, math::vec3 offset = DEFAULT_OFFSET, bool isTrigger = DEFAULT_IS_TRIGGER);
 		
-		static Component *create(const std::vector<std::string> args);
+		static Component *create(std::vector<std::string> args);
 		static bool registered;
 		
 		void update(GLFWwindow *window) override;
@@ -46,27 +46,33 @@ namespace engine {
 		CollisionInfo collidesWithAABB(BoxCollider *&other);
 		CollisionInfo collidesWithOBB(BoxCollider *&other);
 
-		glm::vec3 size;
-		glm::vec3 offset;
-		glm::vec3 globalSize;
-		glm::vec3 center;
+		math::vec3 size;
+		math::vec3 offset;
+		math::vec3 globalSize;
+		math::vec3 center;
 
 		CollisionMode collisionMode = Advanced;
 		
+		bool isTrigger;
+		
 		Rigidbody *rigidbody { nullptr };
 	private:
-		float checkOverlapOnPlane(glm::vec3 plane, BoxCollider *&other) const;
+		float checkOverlapOnPlane(math::vec3 plane, BoxCollider *&other) const;
 
-		glm::vec3 minAABB;
-		glm::vec3 maxAABB;
-		glm::vec3 doubledMinAABB;
-		glm::vec3 doubledMaxAABB;
+		math::vec3 minAABB;
+		math::vec3 maxAABB;
+		math::vec3 doubledMinAABB;
+		math::vec3 doubledMaxAABB;
 
 		OBBInfo obbInfo;
 		
 		static std::vector<BoxCollider *> boxColliders;
 
-		static float LOD_THRESHOLD;
+		static const float LOD_THRESHOLD;
+
+		static const math::vec3 DEFAULT_SIZE;
+		static const math::vec3 DEFAULT_OFFSET;
+		static const bool DEFAULT_IS_TRIGGER;
 	};
 	
 	struct CollisionInfo
@@ -74,7 +80,7 @@ namespace engine {
 		bool collided = false;
 		BoxCollider *a;
 		BoxCollider *b;
-		glm::vec3 normal;
+		math::vec3 normal;
 		float depth;
 	};
 }

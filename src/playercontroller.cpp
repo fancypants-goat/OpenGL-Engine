@@ -15,7 +15,7 @@ namespace engine {
 	
 	}
 	
-	Component *PlayerController::create(std::vector<std::string> args)
+	Component *PlayerController::create(const std::vector<std::string> &args)
 	{
 		float speed = std::stof(args[0]);
 		float jumpStrength = std::stof(args[1]);
@@ -52,8 +52,8 @@ namespace engine {
 	
 	void PlayerController::jump()
 	{
-		transform->translate(0.1f, glm::vec3(0, 1, 0));
-		getComponent<Rigidbody>()->setVelocity(jumpStrength, glm::vec3(0, 1, 0));
+		transform->translate(0.1f, math::vec3(0, 1, 0));
+		getComponent<Rigidbody>()->setVelocity(jumpStrength, math::vec3(0, 1, 0));
 		isJumping = true;
 	}
 }

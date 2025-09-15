@@ -4,7 +4,7 @@
 
 #include <engine/mesh_renderer.h>
 
-#include <glm/glm.hpp>
+#include <engine/math/vec3.h>
 #include <engine/camera.h>
 #include <engine/entity.h>
 
@@ -85,14 +85,14 @@ namespace engine {
 		{
 			subMesh.use();
 			
-			glm::vec3 ambientColor = glm::vec3(1);
-			glm::vec3 diffuseColor = glm::vec3(1);
-			glm::vec3 specularColor = glm::vec3(1);
-			if (subMesh.material.ambientColor != glm::vec3(-1))
+			math::vec3 ambientColor = math::vec3(1);
+			math::vec3 diffuseColor = math::vec3(1);
+			math::vec3 specularColor = math::vec3(1);
+			if (subMesh.material.ambientColor != math::vec3(-1))
 				ambientColor = subMesh.material.ambientColor;
-			if (subMesh.material.diffuseColor != glm::vec3(-1))
+			if (subMesh.material.diffuseColor != math::vec3(-1))
 				diffuseColor = subMesh.material.diffuseColor;
-			if (subMesh.material.specularColor != glm::vec3(-1))
+			if (subMesh.material.specularColor != math::vec3(-1))
 				specularColor = subMesh.material.specularColor;
 			
 			shader->uniform3f("objAmbient", ambientColor.x,

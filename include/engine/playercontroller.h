@@ -13,7 +13,7 @@ namespace engine {
 	public:
 		PlayerController(float speed, float jumpStrength);
 		
-		static Component *create(std::vector<std::string> args);
+		static Component *create(const std::vector<std::string> &args);
 		static bool registered;
 		
 		void update(GLFWwindow *window) override;

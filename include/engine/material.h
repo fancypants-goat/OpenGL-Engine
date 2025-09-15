@@ -5,14 +5,14 @@
 #ifndef ENGINE_MATERIAL_H
 #define ENGINE_MATERIAL_H
 
-#include <glm/glm.hpp>
+#include <engine/math/vec3.h>
 
 namespace engine {
 	struct Material
 	{
-		glm::vec3 ambientColor = glm::vec3(-1);
-		glm::vec3 diffuseColor = glm::vec3(-1);
-		glm::vec3 specularColor = glm::vec3(-1);
+		math::vec3 ambientColor = math::vec3(-1);
+		math::vec3 diffuseColor = math::vec3(-1);
+		math::vec3 specularColor = math::vec3(-1);
 		float specularExponent = 32;
 		float alpha = 1;
 	};

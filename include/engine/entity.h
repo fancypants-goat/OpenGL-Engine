@@ -21,7 +21,7 @@ namespace engine
 	{
 	public:
 		explicit Entity(math::vec3 position = math::vec3(0), math::vec3 rotation = math::vec3(0), math::vec3 scale = math::vec3(1));
-		Entity(Transform transform);
+		explicit Entity(Transform transform);
 		
 		void update(GLFWwindow *window) const;
 		
@@ -35,7 +35,7 @@ namespace engine
 		
 		Transform transform;
 		MeshRenderer *renderer { nullptr };
-		math::vec3 color = math::vec3::one;
+		math::vec3 color;
 		bool isActive = true;
 		std::string name;
 		

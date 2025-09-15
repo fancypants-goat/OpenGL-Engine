@@ -4,7 +4,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "transform.h"
-#include "math/math.h"
+#include "math/vec3.h"
 
 
 namespace engine
@@ -18,7 +18,7 @@ namespace engine
             } type;
 		
 			Camera();
-            Camera(Type type);
+            explicit Camera(Type type);
             
             void updateCamera();
             

@@ -8,6 +8,8 @@
 #include <engine/entity.h>
 #include <iostream>
 
+#include "engine/math/math.h"
+
 namespace engine {
 	Transform::Transform(math::vec3 position, math::vec3 rotation, math::vec3 size)
 			: position(position), rotation(rotation), size(size)
@@ -108,9 +110,9 @@ namespace engine {
 	glm::mat4 Transform::rotationMatrix() const
 	{
 		glm::mat4 rot (1);
-		rot = glm::rotate(rot, glm::radians(globalRotation().x), math::vec3::right.toGLM());
-		rot = glm::rotate(rot, glm::radians(globalRotation().y), math::vec3::up.toGLM());
-		rot = glm::rotate(rot, glm::radians(globalRotation().z), math::vec3::forwards.toGLM());
+		rot = glm::rotate(rot, math::radians(globalRotation().x), math::vec3(1, 0, 0).toGLM());
+		rot = glm::rotate(rot, math::radians(globalRotation().y), math::vec3(0, 1, 0).toGLM());
+		rot = glm::rotate(rot, math::radians(globalRotation().z), math::vec3(0, 0, 1).toGLM());
 		return rot;
 	}
 	
@@ -132,9 +134,9 @@ namespace engine {
 	glm::mat4 Transform::localRotationMatrix() const
 	{
 		glm::mat4 rot;
-		rot = glm::rotate(rot, glm::radians(rotation.x), math::vec3::right.toGLM());
-		rot = glm::rotate(rot, glm::radians(rotation.y), math::vec3::up.toGLM());
-		rot = glm::rotate(rot, glm::radians(rotation.z), math::vec3::forwards.toGLM());
+		rot = glm::rotate(rot, math::radians(rotation.x), math::vec3(1, 0, 0).toGLM());
+		rot = glm::rotate(rot, math::radians(rotation.y), math::vec3(0, 1, 0).toGLM());
+		rot = glm::rotate(rot, math::radians(rotation.z), math::vec3(0, 0, 1).toGLM());
 		return rot;
 	}
 	

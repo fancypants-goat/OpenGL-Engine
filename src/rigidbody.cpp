@@ -3,6 +3,7 @@
 //
 
 #include <engine/rigidbody.h>
+
 #include <engine/entity.h>
 #include <engine/time.h>
 #include <engine/component_factory.h>
@@ -34,7 +35,6 @@ namespace engine {
 	
 	void Rigidbody::update(GLFWwindow *window)
 	{
-		
 		applyHalfGravity();
 		translate(velocity * Time::physicsDeltaTime);
 		applyHalfGravity();
@@ -46,7 +46,7 @@ namespace engine {
 	}
 	
 	
-	void Rigidbody::translate(glm::vec3 offset)
+	void Rigidbody::translate(math::vec3 offset)
 	{
 		entity->transform.translate(offset);
 	}
@@ -56,12 +56,12 @@ namespace engine {
 		entity->transform.translate(x, y, z);
 	}
 	
-	void Rigidbody::translate(float scale, glm::vec3 axis)
+	void Rigidbody::translate(float scale, math::vec3 axis)
 	{
 		entity->transform.translate(scale, axis);
 	}
 	
-	void Rigidbody::teleport(glm::vec3 offset)
+	void Rigidbody::teleport(math::vec3 offset)
 	{
 		entity->transform.teleport(offset);
 	}
@@ -71,7 +71,7 @@ namespace engine {
 		entity->transform.teleport(x, y, z);
 	}
 	
-	void Rigidbody::rotate(glm::vec3 rot)
+	void Rigidbody::rotate(math::vec3 rot)
 	{
 		entity->transform.rotate(rot);
 	}
@@ -81,7 +81,7 @@ namespace engine {
 		entity->transform.rotate(x, y, z);
 	}
 	
-	void Rigidbody::rotateTo(glm::vec3 rot)
+	void Rigidbody::rotateTo(math::vec3 rot)
 	{
 		entity->transform.rotateTo(rot);
 	}
@@ -91,17 +91,17 @@ namespace engine {
 		entity->transform.rotateTo(x, y, z);
 	}
 	
-	void Rigidbody::rotateAxis(float degrees, glm::vec3 axis)
+	void Rigidbody::rotateAxis(float degrees, math::vec3 axis)
 	{
 		entity->transform.rotateAxis(degrees, axis);
 	}
 	
-	void Rigidbody::rotateToAxis(float degrees, glm::vec3 axis)
+	void Rigidbody::rotateToAxis(float degrees, math::vec3 axis)
 	{
 		entity->transform.rotateToAxis(degrees, axis);
 	}
 	
-	void Rigidbody::scale(glm::vec3 scale)
+	void Rigidbody::scale(math::vec3 scale)
 	{
 		entity->transform.scale(scale);
 	}
@@ -116,7 +116,7 @@ namespace engine {
 		entity->transform.scale(scale);
 	}
 	
-	void Rigidbody::scaleBy(glm::vec3 scale)
+	void Rigidbody::scaleBy(math::vec3 scale)
 	{
 		entity->transform.scaleBy(scale);
 	}
@@ -131,38 +131,38 @@ namespace engine {
 		entity->transform.scaleBy(scale);
 	}
 	
-	void Rigidbody::setVelocity(glm::vec3 v)
+	void Rigidbody::setVelocity(math::vec3 v)
 	{
 		velocity = v;
 	}
 	
 	void Rigidbody::setVelocity(float x, float y, float z)
 	{
-		velocity = glm::vec3(x, y, z);
+		velocity = math::vec3(x, y, z);
 	}
 	
-	void Rigidbody::setVelocity(float strength, glm::vec3 direction)
+	void Rigidbody::setVelocity(float strength, math::vec3 direction)
 	{
-		velocity = glm::normalize(direction) * strength;
+		velocity = direction.normalized() * strength;
 	}
 	
-	void Rigidbody::addVelocity(glm::vec3 v)
+	void Rigidbody::addVelocity(math::vec3 v)
 	{
 		velocity += v;
 	}
 	
 	void Rigidbody::addVelocity(float x, float y, float z)
 	{
-		velocity += glm::vec3(x, y, z);
+		velocity += math::vec3(x, y, z);
 	}
 	
-	void Rigidbody::addVelocity(float strength, glm::vec3 direction)
+	void Rigidbody::addVelocity(float strength, math::vec3 direction)
 	{
-		velocity += glm::normalize(direction) * strength;
+		velocity += direction.normalized() * strength;
 	}
 	
 	void Rigidbody::setVelocity(float scalar)
 	{
-		velocity = glm::vec3(scalar);
+		velocity = math::vec3(scalar);
 	}
 } // engine

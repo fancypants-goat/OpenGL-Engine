@@ -12,6 +12,7 @@
 #include "mesh.h"
 #include "shader.h"
 #include "texture.h"
+#include "math/vec3.h"
 
 namespace engine {
 	struct EntityRenderData
@@ -26,17 +27,17 @@ namespace engine {
 	public:
 		MeshRenderer();
 		MeshRenderer(Mesh mesh, Shader *shader, Texture *texture = nullptr);
-		
+
 		void upload();
-		
+
 		void draw(GLFWwindow *window);
-		
+
 		void addEntity(Entity *entity);
-		
+
 		void addEntitySilent(Entity *entity);
-		
+
 		std::vector<Entity *> get_entities();
-		
+
 		Mesh mesh;
 		Shader *shader;
 		Texture *texture;

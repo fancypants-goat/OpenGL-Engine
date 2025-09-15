@@ -10,8 +10,8 @@ namespace engine {
 	{
 	public:
 		Texture() = default;
-		
-		Texture(std::string source);
+
+		explicit Texture(std::string source);
 		
 		void use();
 		

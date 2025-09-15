@@ -11,7 +11,7 @@
 #include <engine/scene.h>
 #include <engine/utils.h>
 #include <engine/scale_printer.h>
-#include <engine/math/math.h>
+#include <engine/math/vec3.h>
 
 using namespace std;
 
@@ -238,17 +238,17 @@ void engine::start(GLFWwindow *window)
 //	cubeRenderer = MeshRenderer(SOL::readMeshFile("Objects/Cube.obj"), &shader
 //			/*, &container*/);
 //
-//	cubeParent = Entity(glm::vec3(0, 5, 0), glm::vec3(0), glm::vec3(1));
+//	cubeParent = Entity(math::vec3(0, 5, 0), math::vec3(0), math::vec3(1));
 //
-//	cube1 = Entity(glm::vec3(0, 4, 0), glm::vec3(0, 0, 0), glm::vec3(1));
-//	cube1.color = glm::vec3(0.4, 0.4, 1);
+//	cube1 = Entity(math::vec3(0, 4, 0), math::vec3(0, 0, 0), math::vec3(1));
+//	cube1.color = math::vec3(0.4, 0.4, 1);
 //	cube1.addComponent(new Rigidbody(1, -.01));
-//	cube1.addComponent(new BoxCollider(glm::vec3(1)));
+//	cube1.addComponent(new BoxCollider(math::vec3(1)));
 //	scene.addEntity(&cube1);
 //
-//	cube2 = Entity(glm::vec3(0, 0, 0), glm::vec3(0), glm::vec3(1));
-//	cube2.color = glm::vec3(1, 0.4, 0.4);
-//	cube2.addComponent(new BoxCollider(glm::vec3(1)));
+//	cube2 = Entity(math::vec3(0, 0, 0), math::vec3(0), math::vec3(1));
+//	cube2.color = math::vec3(1, 0.4, 0.4);
+//	cube2.addComponent(new BoxCollider(math::vec3(1)));
 //	scene.addEntity(&cube2);
 //
 //	cubeRenderer.addEntity(&cube1);
@@ -273,40 +273,40 @@ void engine::physicsUpdate(GLFWwindow *window)
 //	if (Input::getKeyState(window, GLFW_KEY_D) == KeyState::Hold)
 //		Camera::get_main()->transform.translate(toMove * Camera::get_main()->get_right());
 //	if (Input::getKeyState(window, GLFW_KEY_SPACE) == KeyState::Hold)
-//		Camera::get_main()->transform.translate(toMove * glm::vec3(0, 1, 0));
+//		Camera::get_main()->transform.translate(toMove * math::vec3(0, 1, 0));
 //	if (Input::getKeyState(window, GLFW_KEY_LEFT_CONTROL) == KeyState::Hold)
-//		Camera::get_main()->transform.translate(-toMove * glm::vec3(0, 1, 0));
+//		Camera::get_main()->transform.translate(-toMove * math::vec3(0, 1, 0));
 
 //  ----- OBJECT PLACEMENT -----
-	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_1) == ButtonState::Press)
-	{
-		auto *newEntity = new Entity(
-				Camera::get_main()->transform.position + Camera::get_main()->get_direction()
-				math::vec3(0, Camera::get_main()->transform.rotation.y, 0),
-				glm::vec3(1));
-		
-		newEntity->color = glm::vec3(1);
-		newEntity->addComponent(new BoxCollider(glm::vec3(1), glm::vec3(0)));
-//		newEntity->addComponent(new Rigidbody(0));
-		newEntity->transform.set_parent(Scene::activeScene->find("cubeParent"));
-		
-		Scene::activeScene->findDrawable("cubeR")->addEntity(newEntity);
-	}
-	
-	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_2) == ButtonState::Press)
-	{
-		auto *newEntity = new Entity(
-				Camera::get_main()->transform.position + Camera::get_main()->get_direction(),
-				glm::vec3(0, Camera::get_main()->transform.rotation.y, 0),
-				glm::vec3(1));
-		
-		newEntity->color = glm::vec3(1);
-		newEntity->addComponent(new BoxCollider(glm::vec3(1), glm::vec3(0)));
-		newEntity->addComponent(new Rigidbody(0));
-		newEntity->transform.set_parent(Scene::activeScene->find("cubeParent"));
-		
-		Scene::activeScene->findDrawable("cubeR")->addEntity(newEntity);
-	}
+// 	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_1) == ButtonState::Press)
+// 	{
+// 		auto *newEntity = new Entity(
+// 				Camera::get_main()->transform.position + Camera::get_main()->get_direction(),
+// 				math::vec3(0, Camera::get_main()->transform.rotation.y, 0),
+// 				math::vec3(1));
+//
+// 		newEntity->color = math::vec3(1);
+// 		newEntity->addComponent(new BoxCollider(math::vec3(1), math::vec3(0)));
+// //		newEntity->addComponent(new Rigidbody(0));
+// 		newEntity->transform.set_parent(Scene::activeScene->find("cubeParent"));
+//
+// 		Scene::activeScene->findDrawable("cubeR")->addEntity(newEntity);
+// 	}
+//
+// 	if (Mouse::getButtonState(window, GLFW_MOUSE_BUTTON_2) == ButtonState::Press)
+// 	{
+// 		auto *newEntity = new Entity(
+// 				Camera::get_main()->transform.position + Camera::get_main()->get_direction(),
+// 				math::vec3(0, Camera::get_main()->transform.rotation.y, 0),
+// 				math::vec3(1));
+//
+// 		newEntity->color = math::vec3(1);
+// 		newEntity->addComponent(new BoxCollider(math::vec3(1), math::vec3(0)));
+// 		newEntity->addComponent(new Rigidbody(0));
+// 		newEntity->transform.set_parent(Scene::activeScene->find("cubeParent"));
+//
+// 		Scene::activeScene->findDrawable("cubeR")->addEntity(newEntity);
+// 	}
 }
 
 void engine::update(GLFWwindow *window)
@@ -314,9 +314,9 @@ void engine::update(GLFWwindow *window)
 //  ----- MOUSE MOVEMENT -----
 	glm::vec2 offset = Mouse::getMouseOffset();
 	Camera::get_main()->transform
-			.rotateAxis(offset.x * sensitivity * Time::timeScale, glm::vec3(0, 1, 0));
+			.rotateAxis(offset.x * sensitivity * Time::timeScale, math::vec3(0, 1, 0));
 	Camera::get_main()->transform
-			.rotateAxis(-offset.y * sensitivity * Time::timeScale, glm::vec3(1, 0, 0));
+			.rotateAxis(-offset.y * sensitivity * Time::timeScale, math::vec3(1, 0, 0));
 	
 	Camera::get_main()->transform
 			.rotateTo(clamp(Camera::get_main()->transform.rotation.x, -89.f, 89.f),
@@ -341,5 +341,6 @@ void engine::update(GLFWwindow *window)
 
 int main()
 {
+
 	return engine::main();
 }

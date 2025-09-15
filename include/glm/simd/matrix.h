@@ -949,7 +949,7 @@ GLM_FUNC_QUALIFIER void glm_mat4_inverse_lowp(glm_vec4 const in[4], glm_vec4 out
 /*
 GLM_FUNC_QUALIFIER void glm_mat4_rotate(__m128 const in[4], float Angle, float const v[3], __m128 out[4])
 {
-	float a = glm::radians(Angle);
+	float a = math::radians(Angle);
 	float c = cos(a);
 	float s = sin(a);
 

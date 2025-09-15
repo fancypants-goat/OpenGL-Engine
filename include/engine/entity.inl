@@ -1,3 +1,5 @@
+#ifndef ENGINE_ENTITY_INL
+#define ENGINE_ENTITY_INL
 
 namespace engine {
 	template<typename T>
@@ -28,3 +30,5 @@ namespace engine {
 		return nullptr;
 	}
 }
+
+#endif

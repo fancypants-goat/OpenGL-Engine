@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(Engine)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
@@ -41,9 +41,6 @@ add_executable(Engine
         src/box_collider.cpp
         src/component_factory.cpp
         src/playercontroller.cpp
-        src/math/vec3.cpp
-        src/math/vec2.cpp
-        src/math/math.cpp
 )
 
 # Include directories

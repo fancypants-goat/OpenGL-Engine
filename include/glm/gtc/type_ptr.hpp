@@ -22,7 +22,7 @@
 /// #include <glm/glm.hpp>
 /// #include <glm/gtc/type_ptr.hpp>
 ///
-/// glm::vec3 aVector(3);
+/// math::vec3 aVector(3);
 /// glm::mat4 someMatrix(1.0);
 ///
 /// glUniform3fv(uniformLoc, 1, glm::value_ptr(aVector));

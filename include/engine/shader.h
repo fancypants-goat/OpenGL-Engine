@@ -4,7 +4,6 @@
 #include <glad/glad.h>
 #include <bits/stdc++.h>
 #include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
 
 namespace engine {
 	class Shader
