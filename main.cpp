@@ -182,7 +182,7 @@ namespace engine {
 		glfwSwapInterval(0);
 		
 		Scene *scene;
-		scene = SOL::readScene("Scenes/sandbox/main.scene");
+		scene = SOL::readScene("Scenes/main/main.scene");
 		scene->activate();
 		
 		

@@ -118,6 +118,8 @@ namespace engine::math {
 		};
 		friend std::istream& operator>>(std::istream& stream, vec3& vec)
 		{
+			stream >> std::ws;
+
 			char c = stream.peek();
 			if (c == '<')
 			{
