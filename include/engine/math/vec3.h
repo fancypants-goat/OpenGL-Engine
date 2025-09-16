@@ -13,46 +13,53 @@ namespace engine::math {
 	{
 		float x, y, z;
 
+		const float& r = x, g = y, b = z;
+		const float& width = x, height = y, depth = z;
+
+
 		constexpr vec3() : x(0), y(0), z(0) {}
 		constexpr vec3(float x, float y, float z) : x(x), y(y), z(z) {}
 		explicit constexpr vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
 
-//		----- DIRECTIONS / CONSTANTS -----
-		struct c;
-
-//		----- MATH HELPER METHODS -----
-		[[nodiscard]] float magnitude() const
+//		----- VECTOR MODIFIERS / MEMBERS -----
+		[[nodiscard]] constexpr float magnitude() const noexcept
 		{
 			return std::sqrt(x * x + y * y + z * z);
 		}
 
-		void normalize()
+		constexpr vec3 & normalize() noexcept
 		{
-			float mag = magnitude();
-			*this /= mag;
+			*this = normalized();
+			return *this;
 		}
 
-		[[nodiscard]] vec3 normalized() const
+		[[nodiscard]] constexpr vec3 normalized() const noexcept
 		{
 			return *this / magnitude();
 		}
 
-		[[nodiscard]] float dot(const vec3& other) const
+		[[nodiscard]] constexpr vec3 abs() const noexcept
+		{
+			return { std::fabs(x), std::fabs(y), std::fabs(z) };
+		}
+
+//		----- MATH HELPER METHODS -----
+		[[nodiscard]] constexpr float dot(const vec3& other) const noexcept
 		{
 			return x * other.x + y * other.y + z * other.z;
 		}
 
-		[[nodiscard]] vec3 cross(const vec3& other) const
+		[[nodiscard]] constexpr vec3 cross(const vec3& other) const noexcept
 		{
 			return vec3(y*other.z- z*other.y, z*other.x - x*other.z, x*other.y - y*other.x);
 		}
 
-		[[nodiscard]] float angle(const vec3& other) const
+		[[nodiscard]] constexpr float angle(const vec3& other) const noexcept
 		{
 			return std::acos(dot(other) / (magnitude() * other.magnitude()));
 		}
 
-		[[nodiscard]] float distance(const vec3& other) const
+		[[nodiscard]] constexpr float distance(const vec3& other) const noexcept
 		{
 			float dx = x - other.x;
 			float dy = y - other.y;
@@ -60,20 +67,19 @@ namespace engine::math {
 			return std::sqrt(dx*dx + dy*dy + dz*dz);
 		}
 
-		[[nodiscard]] glm::vec3 toGLM() const
-		{
-			return {x, y, z};
-		}
 
-		static float dot(const vec3& a, const vec3& b) { return a.dot(b); }
-		static vec3 cross(const vec3& a, const vec3& b) { return a.cross(b); }
-		static float angle(const vec3& a, const vec3& b) { return a.angle(b); }
-		static float distance(const vec3& a, const vec3& b) { return a.distance(b); }
+//		----- STATIC MATH HELPERS -----
+		static constexpr float dot(const vec3& a, const vec3& b) noexcept { return a.dot(b); }
+		static constexpr vec3 cross(const vec3& a, const vec3& b) noexcept { return a.cross(b); }
+		static constexpr float angle(const vec3& a, const vec3& b) noexcept { return a.angle(b); }
+		static constexpr float distance(const vec3& a, const vec3& b) noexcept { return a.distance(b); }
+
+
 
 
 //		----- ARITHMETIC OPERATORS -----
 		vec3 operator+() const { return {x, y, z}; }
-		vec3 operator-() const { return {x, -y, z}; }
+		vec3 operator-() const { return {-x, -y, -z}; }
 		vec3 operator+(const vec3 &rhs) const { return {x + rhs.x, y + rhs.y, z + rhs.z}; }
 		vec3 operator-(const vec3& rhs) const { return {x - rhs.x, y - rhs.y, z - rhs.z}; }
 		vec3 operator*(const vec3& rhs) const { return {x * rhs.x, y * rhs.y, z * rhs.z}; }
@@ -140,22 +146,34 @@ namespace engine::math {
 
 //		----- OTHER OPERATORS -----
 		bool operator!() const { return magnitude() == 0; }
-		explicit operator std::string() const { std::ostringstream os; os << '<' << x << ',' << y << ',' << z << '>'; return os.str(); }
 		vec3& operator=(vec3 rhs) { x = rhs.x; y = rhs.y; z = rhs.z; return *this; }
-		vec3& operator=(std::string rhs) { std::istringstream is(rhs); is >> *this; return *this; }
+		[[nodiscard]] constexpr glm::vec3 toGLM() const noexcept { return {x, y, z}; }
+		[[nodiscard]] static constexpr vec3 fromGLM(glm::vec3 v) noexcept { return {v.x, v.y, v.z}; }
+
+		static std::string str(const vec3 v) noexcept
+		{
+			std::ostringstream os;
+			os << v;
+			return os.str();
+		}
+
+		static vec3 str(const std::string& s) noexcept
+		{
+			std::istringstream is(s);
+			vec3 v;
+			is >> v;
+			return v;
+		}
 	};
 
-	struct vec3::c
+	struct vec3const
 	{
-		inline static constexpr vec3 up {0,1,0};
-		inline static constexpr vec3 down {0,-1,0};
-		inline static constexpr vec3 left {-1,0,0};
-		inline static constexpr vec3 right {1,0,0};
-		inline static constexpr vec3 forward {0,0,1};
-		inline static constexpr vec3 backward {0,0,-1};
-		inline static constexpr vec3 zero {0,0,0};
-		inline static constexpr vec3 one {1,1,1};
-		inline static constexpr vec3 identity {1,1,1};
+		static constexpr vec3 up {0,1,0};
+		static constexpr vec3 left {-1,0,0};
+		static constexpr vec3 forward {0,0,1};
+		static constexpr vec3 zero {0,0,0};
+		static constexpr vec3 one {1,1,1};
+		static constexpr vec3 identity {1,1,1};
 	};
 }
 

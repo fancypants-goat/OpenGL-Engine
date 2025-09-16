@@ -14,8 +14,8 @@ namespace engine {
 
 	const float BoxCollider::LOD_THRESHOLD = 20;
 
-	const math::vec3 BoxCollider::DEFAULT_SIZE = math::vec3::c::one;
-	const math::vec3 BoxCollider::DEFAULT_OFFSET = math::vec3::c::zero;
+	const math::vec3 BoxCollider::DEFAULT_SIZE = math::vec3const::one;
+	const math::vec3 BoxCollider::DEFAULT_OFFSET = math::vec3const::zero;
 	const bool BoxCollider::DEFAULT_IS_TRIGGER = false;
 	
 	BoxCollider::BoxCollider(math::vec3 size, math::vec3 offset, bool isTrigger)
@@ -31,9 +31,9 @@ namespace engine {
 		bool isTrigger = DEFAULT_IS_TRIGGER;
 
 		if (args.size() >= 1)
-			size = args[0];
+			size = math::strv3(args[0]);
 		if (args.size() >= 2)
-			offset = args[1];
+			offset = math::strv3(args[1]);
 		if (args.size() >= 3)
 			isTrigger = SOL::parseBool(args[2]);
 
@@ -92,20 +92,20 @@ namespace engine {
 		{
 			if (other == this) continue;
 			
-			CollisionInfo info;
-			
 			float distToCamera = math::distance(Camera::get_main()->transform.globalPosition(),
 												transform->globalPosition());
-			if (collisionMode == Simple || distToCamera > LOD_THRESHOLD)
-				info = collidesWithOBB(other);
-			else if (collisionMode == Advanced)
-				info = collidesWithOBB(other);
+			CollisionInfo info = collisionMode == Simple || distToCamera > LOD_THRESHOLD
+												  ? collidesWithAABB(other)
+												  : collidesWithOBB(other);
 			
 			if (info.collided)
 			{
-				if (math::vec3(0, 1, 0) == info.normal)
+				if (math::vec3const::up == info.normal.abs())
+				{
+				// ReSharper disable CppDFAUnreachableCode
 					rigidbody->setVelocity(0);
-				
+				}
+
 				rigidbody->translate(info.depth, info.normal);
 			}
 		}

@@ -65,9 +65,10 @@ namespace engine {
 	void MeshRenderer::draw(GLFWwindow *window)
 	{
 		if (!enabled) return;
-		
-		glm::ivec2 viewport;
-		glfwGetWindowSize(window, &viewport.x, &viewport.y);
+
+		int x, y;
+		glfwGetWindowSize(window, &x, &y);
+		math::vec2 viewport (x, y);
 		
 		if (texture != nullptr)
 			texture->use();

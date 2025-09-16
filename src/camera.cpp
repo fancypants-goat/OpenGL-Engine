@@ -40,9 +40,9 @@ namespace engine
                            up.toGLM());
     }
 
-    glm::mat4 Camera::orthoProjection(glm::vec2 viewport) const
+    glm::mat4 Camera::orthoProjection(math::vec2 viewport) const
     {
-        viewport = glm::normalize(viewport);
+        viewport.normalize();
 
         const float width = size.x * viewport.x; /*std::cout << "Width: " << width << std::endl;*/
         const float height = size.y * viewport.y;
@@ -50,12 +50,12 @@ namespace engine
         return glm::ortho(-width / 2, width / 2, -height / 2, height / 2, nearPlane, farPlane);
     }
 
-    glm::mat4 Camera::perspectiveProjection(const glm::vec2 viewport) const
+    glm::mat4 Camera::perspectiveProjection(const math::vec2 viewport) const
     {
         return glm::perspective(math::radians(fovy), viewport.x / viewport.y, nearPlane, farPlane);
     }
 
-    glm::mat4 Camera::cameraProjection(const glm::vec2 viewport) const
+    glm::mat4 Camera::cameraProjection(const math::vec2 viewport) const
     {
         glm::mat4 projection;
         if (type == Orthographic)
@@ -100,7 +100,7 @@ namespace engine
             std::cerr
                 << "Tried accessing main camera, but it is not set! Try setting the main camera with Camera::set_main(*camera)."
                 << std::endl;
-            return new Camera(Camera::Orthographic);
+            return new Camera(Orthographic);
         }
         return s_main;
     }

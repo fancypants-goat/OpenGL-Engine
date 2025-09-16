@@ -1,7 +1,7 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 
-#include "math/vec3.h"
+#include "math/math.h"
 
 
 namespace engine
@@ -9,7 +9,7 @@ namespace engine
     struct Vertex {
         math::vec3 position;
         math::vec3 normal;
-        glm::vec2 texCoord;
+        math::vec2 texCoord;
     };
 }
 

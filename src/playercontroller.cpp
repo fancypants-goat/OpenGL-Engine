@@ -48,11 +48,13 @@ namespace engine {
 		
 		Camera::get_main()->transform.teleport(transform->position);
 		Camera::get_main()->transform.translate(0, 0.5, 0);
+
+		transform->rotateToAxis(-Camera::get_main()->transform.rotation.y, math::vec3const::up);
 	}
 	
 	void PlayerController::jump()
 	{
-		transform->translate(0.1f, math::vec3(0, 1, 0));
+		transform->translate(0.1f, math::vec3const::up);
 		getComponent<Rigidbody>()->setVelocity(jumpStrength, math::vec3(0, 1, 0));
 		isJumping = true;
 	}

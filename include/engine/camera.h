@@ -1,10 +1,10 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
 #include "transform.h"
-#include "math/vec3.h"
+#include "math/math.h"
 
 
 namespace engine
@@ -23,11 +23,11 @@ namespace engine
             void updateCamera();
             
             glm::mat4 calculateView() const;
-            glm::mat4 orthoProjection(glm::vec2 viewport) const;
-            glm::mat4 perspectiveProjection(glm::vec2 viewport) const;
-            glm::mat4 cameraProjection(glm::vec2 viewport) const;
+            glm::mat4 orthoProjection(math::vec2 viewport) const;
+            glm::mat4 perspectiveProjection(math::vec2 viewport) const;
+            glm::mat4 cameraProjection(math::vec2 viewport) const;
             
-            glm::vec2 size;
+            math::vec2 size;
             float fovy;
             float nearPlane;
             float farPlane;

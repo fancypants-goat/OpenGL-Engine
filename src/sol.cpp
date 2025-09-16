@@ -26,7 +26,7 @@ namespace engine {
 		// initialize all temporary storages
 		std::vector<math::vec3> vertexPositions;
 		std::vector<math::vec3> vertexNormals;
-		std::vector<glm::vec2> textureCoordinates;
+		std::vector<math::vec2> textureCoordinates;
 		
 		std::vector<Vertex> resultVertices;
 		std::vector<unsigned int> resultIndices;
@@ -98,7 +98,7 @@ namespace engine {
 						}
 					}
 					
-					auto texCoord(glm::vec2(0));
+					auto texCoord(math::vec2(0));
 					auto normal(math::vec3(0));
 					if (t != -1)
 						texCoord = textureCoordinates[t - 1];
@@ -357,7 +357,7 @@ namespace engine {
 		math::vec3 camPosition;
 		math::vec3 camRotation;
 		float fovy;
-		glm::vec2 orthoSize;
+		math::vec2 orthoSize;
 		float near = 0.1;
 		float far = 100;
 		

@@ -6,8 +6,8 @@
 
 namespace engine {
 	std::unordered_map<int, ButtonState> Mouse::buttonStates {};
-	glm::vec2 Mouse::lastCursorPosition(0);
-	glm::vec2 Mouse::cursorOffset(0);
+	math::vec2 Mouse::lastCursorPosition(0);
+	math::vec2 Mouse::cursorOffset(0);
 	
 	
 	ButtonState Mouse::getButtonState(GLFWwindow *window, int button)
@@ -37,31 +37,32 @@ namespace engine {
 		return state;
 	}
 	
-	glm::vec2 Mouse::getMousePosition()
+	math::vec2 Mouse::getMousePosition()
 	{
 		return lastCursorPosition;
 	}
 	
-	glm::vec2 Mouse::getMouseOffset()
+	math::vec2 Mouse::getMouseOffset()
 	{
 		return cursorOffset;
 	}
 	
 	void Mouse::setCursorMode(GLFWwindow *window, CursorState mode)
 	{
-		glfwSetInputMode(window, GLFW_CURSOR, (int) mode);
+		glfwSetInputMode(window, GLFW_CURSOR, static_cast<int>(mode));
 	}
 	
 	CursorState Mouse::getCursorMode(GLFWwindow *window)
 	{
-		return (CursorState) glfwGetInputMode(window, GLFW_CURSOR);
+		return static_cast<CursorState>(glfwGetInputMode(window, GLFW_CURSOR));
 	}
 	
 	void Mouse::updateCursorPosition(GLFWwindow *window)
 	{
-		glm::dvec2 newPosition;
-		glfwGetCursorPos(window, &newPosition.x, &newPosition.y);
-		cursorOffset = glm::vec2(newPosition) - lastCursorPosition;
-		lastCursorPosition = glm::vec2(newPosition);
+		double x, y;
+		glfwGetCursorPos(window, &x, &y);
+		math::vec2 newPos (x, y);
+		cursorOffset = math::vec2(newPos) - lastCursorPosition;
+		lastCursorPosition = math::vec2(newPos);
 	}
 } // engine

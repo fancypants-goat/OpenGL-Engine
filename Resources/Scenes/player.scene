@@ -12,9 +12,9 @@ tag enabled
 init
 
 r playerR
-mesh "Objects/Cube.obj"
-vert "Shaders/shader.vert"
-frag "Shaders/shader.frag"
+mesh "Objects/Player.obj"
+vert "Shaders/unlit.vert"
+frag "Shaders/unlit.frag"
 
 add player
 

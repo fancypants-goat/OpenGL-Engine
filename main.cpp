@@ -29,7 +29,7 @@ namespace engine {
 	float speed(2.8);
 	float sensitivity(.1);
 	
-	float physicsUpdateTime(1 / 99999.f);
+	float physicsUpdateTime(1 / 10'000.f);
 	
 	// placeholder methods.
 	void awake();
@@ -224,7 +224,7 @@ void engine::awake()
 void engine::start(GLFWwindow *window)
 {
 //	camera.fovy = 90;
-//	camera.size = glm::vec2(15);
+//	camera.size = math::vec2(15);
 //	camera.set_depthPlanes(0.1f, 100);
 //	camera.transform.teleport(2, 2, 3);
 //	Camera::set_main(&camera);
@@ -311,7 +311,7 @@ void engine::physicsUpdate(GLFWwindow *window)
 void engine::update(GLFWwindow *window)
 {
 //  ----- MOUSE MOVEMENT -----
-	glm::vec2 offset = Mouse::getMouseOffset();
+	math::vec2 offset = Mouse::getMouseOffset();
 	Camera::get_main()->transform
 			.rotateAxis(offset.x * sensitivity * Time::timeScale, math::vec3(0, 1, 0));
 	Camera::get_main()->transform
