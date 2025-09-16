@@ -17,6 +17,12 @@ FetchContent_MakeAvailable(glfw)
 # Find OpenGL
 find_package(OpenGL REQUIRED)
 
+# Force static linking of libgcc, libstdc++, and winpthread
+if (MINGW)
+    set(CMAKE_EXE_LINKER_FLAGS
+            "${CMAKE_EXE_LINKER_FLAGS} -static -static-libgcc -static-libstdc++ -static -lpthread")
+endif()
+
 # Executable
 add_executable(Engine
         main.cpp
