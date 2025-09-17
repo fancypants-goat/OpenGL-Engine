@@ -22,6 +22,8 @@ namespace engine {
 			: size(size), offset(offset), isTrigger(isTrigger)
 	{
 		boxColliders.push_back(this);
+
+		std::cout << "Size: " << size << " Offset: " << offset << std::endl;
 	}
 	
 	Component *BoxCollider::create(const std::vector<std::string> args)
@@ -74,7 +76,7 @@ namespace engine {
 
 		forwards.normalize();
 		
-		math::vec3 right = math::vec3::cross(forwards, math::vec3(0, 1, 0)).normalized();
+		math::vec3 right = math::vec3::cross(forwards, math::vec3const::up).normalized();
 		math::vec3 up = math::vec3::cross(right, forwards).normalized();
 		
 		obbInfo.axisX = right;
@@ -90,7 +92,7 @@ namespace engine {
 		
 		for (auto &other : boxColliders)
 		{
-			if (other == this) continue;
+			if (other == this || other->isTrigger) continue;
 			
 			float distToCamera = math::distance(Camera::get_main()->transform.globalPosition(),
 												transform->globalPosition());
@@ -115,8 +117,8 @@ namespace engine {
 	{
 		math::vec3 axes[]
 				{
-						math::vec3(0, 1, 0),
 						math::vec3(1, 0, 0),
+						math::vec3(0, 1, 0),
 						math::vec3(0, 0, 1),
 				};
 		
@@ -185,7 +187,7 @@ namespace engine {
 		
 		for (math::vec3 &axis : axes)
 		{
-			float dist = checkOverlapOnPlane(axis, other);
+			const float dist = checkOverlapOnPlane(axis, other);
 			if (-1 == dist)
 			{
 				collided = false;
@@ -219,13 +221,13 @@ namespace engine {
 		
 		float projection = std::fabs(math::dot(direction, plane));
 		
-		float radiusThis = abs(math::dot(obbInfo.axisX * obbInfo.halfSize.x, plane)) +
-						   abs(math::dot(obbInfo.axisY * obbInfo.halfSize.y, plane)) +
-						   abs(math::dot(obbInfo.axisZ * obbInfo.halfSize.z, plane));
+		float radiusThis = std::fabs(math::dot(obbInfo.axisX * obbInfo.halfSize.x, plane)) +
+						   std::fabs(math::dot(obbInfo.axisY * obbInfo.halfSize.y, plane)) +
+						   std::fabs(math::dot(obbInfo.axisZ * obbInfo.halfSize.z, plane));
 		
-		float radiusOther = abs(math::dot(other->obbInfo.axisX * other->obbInfo.halfSize.x, plane)) +
-							abs(math::dot(other->obbInfo.axisY * other->obbInfo.halfSize.y, plane)) +
-							abs(math::dot(other->obbInfo.axisZ * other->obbInfo.halfSize.z, plane));
+		float radiusOther = std::fabs(math::dot(other->obbInfo.axisX * other->obbInfo.halfSize.x, plane)) +
+							std::fabs(math::dot(other->obbInfo.axisY * other->obbInfo.halfSize.y, plane)) +
+							std::fabs(math::dot(other->obbInfo.axisZ * other->obbInfo.halfSize.z, plane));
 		
 		float overlap = (radiusThis + radiusOther) - projection;
 		

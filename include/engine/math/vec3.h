@@ -169,7 +169,7 @@ namespace engine::math {
 	struct vec3const
 	{
 		static constexpr vec3 up {0,1,0};
-		static constexpr vec3 left {-1,0,0};
+		static constexpr vec3 right {1,0,0};
 		static constexpr vec3 forward {0,0,1};
 		static constexpr vec3 zero {0,0,0};
 		static constexpr vec3 one {1,1,1};

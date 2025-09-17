@@ -118,9 +118,9 @@ namespace engine {
 	
 	glm::mat4 Transform::scaleMatrix() const
 	{
-		return glm::scale(glm::mat4(1), (globalSize() / 2.f).toGLM());
+		return glm::scale(glm::mat4(1), globalSize().toGLM() / 2.f);
 	}
-	
+
 	glm::mat4 Transform::modelMatrix() const
 	{
 		return positionMatrix() * rotationMatrix() * scaleMatrix();

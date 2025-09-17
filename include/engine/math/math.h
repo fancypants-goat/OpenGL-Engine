@@ -8,28 +8,18 @@
 #include "vec2.h"
 #include "vec3.h"
 
+#include <numbers>
+
 namespace engine::math {
 //	----- UNIT MATH HELPERS -----
-	constexpr float radians(const float degrees)
-	{
-		constexpr float d_r_const = M_PI / 180.f;
-		return d_r_const * degrees;
-	}
-	constexpr float degrees(const float radians)
-	{
-		constexpr float r_d_const = 180.f / M_PI;
-		return r_d_const * radians;
+	template <typename T>
+	constexpr T radians(T degrees) noexcept {
+		return degrees * (std::numbers::pi_v<T> / static_cast<T>(180));
 	}
 
-	constexpr double radians(const double degrees)
-	{
-		constexpr double d_r_const = M_PI / 180;
-		return d_r_const * degrees;
-	}
-	constexpr double degrees(const double radians)
-	{
-		constexpr double r_d_const = 180 / M_PI;
-		return r_d_const * radians;
+	template <typename T>
+	constexpr T degrees(T radians) noexcept {
+		return radians * (static_cast<T>(180) / std::numbers::pi_v<T>);
 	}
 
 

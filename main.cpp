@@ -5,20 +5,15 @@
 #include <engine/camera.h>
 #include <engine/entity.h>
 #include <engine/mesh_renderer.h>
-#include <engine/shader.h>
-#include <engine/texture.h>
 #include <engine/physics.h>
 #include <engine/scene.h>
 #include <engine/utils.h>
-#include <engine/scale_printer.h>
 #include <engine/math/vec3.h>
 
 using namespace std;
 
 
 namespace engine {
-	
-	std::shared_mutex syncMutex;
 	
 	bool runningApplication = true;
 	bool canExit = false;
@@ -65,8 +60,7 @@ namespace engine {
 	{
 		if (!runningApplication)
 			return;
-		
-		unique_lock<shared_mutex> lock(syncMutex);
+
 		Camera::get_main()->updateCamera();
 		
 		for (const auto &r : Scene::activeScene->m_drawables)
@@ -101,7 +95,7 @@ namespace engine {
 			double timeToWait = max(physicsUpdateTime - (glfwGetTime() - startTime), 0.);
 			this_thread::sleep_for(chrono::duration<double>(timeToWait));
 
-			// std::cout << "Physics Frame time: " << glfwGetTime() - startTime << std::endl;
+			std::cout << "Physics Frame time: " << glfwGetTime() - startTime << std::endl;
 		}
 		
 		canExit = true;
@@ -125,19 +119,16 @@ namespace engine {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			
 			// upload/draw all MeshRenderers
-			std::shared_lock<shared_mutex> lock(syncMutex);
 			
 			Scene::activeScene->drawScene(window);
 			
 			glfwPollEvents();
 			glfwInputUpdateHandler(window);
 			
-			lock.unlock();
-			
 			// BUFFER
 			glfwSwapBuffers(window);
 
-//			std::cout << "Rendering Frame time: " << glfwGetTime() - Time::runTime << std::endl;
+			// std::cout << "Rendering Frame time: " << glfwGetTime() - Time::runTime << std::endl;
 		}
 		
 		terminateApplication();

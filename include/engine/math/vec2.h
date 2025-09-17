@@ -4,9 +4,10 @@
 
 #ifndef ENGINE_VEC2_H
 #define ENGINE_VEC2_H
-#include <cmath>
 
-#include "vec3.h"
+#include <cmath>
+#include <glm/glm.hpp>
+#include <bits/stdc++.h>
 
 namespace engine::math {
 	struct vec2
