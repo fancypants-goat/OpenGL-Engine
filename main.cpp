@@ -95,7 +95,7 @@ namespace engine {
 			double timeToWait = max(physicsUpdateTime - (glfwGetTime() - startTime), 0.);
 			this_thread::sleep_for(chrono::duration<double>(timeToWait));
 
-			std::cout << "Physics Frame time: " << glfwGetTime() - startTime << std::endl;
+			// std::cout << "Physics Frame time: " << glfwGetTime() - startTime << std::endl;
 		}
 		
 		canExit = true;
@@ -214,36 +214,6 @@ void engine::awake()
 
 void engine::start(GLFWwindow *window)
 {
-//	camera.fovy = 90;
-//	camera.size = math::vec2(15);
-//	camera.set_depthPlanes(0.1f, 100);
-//	camera.transform.teleport(2, 2, 3);
-//	Camera::set_main(&camera);
-
-//	scene.activate();
-
-//	shader = Shader("Shaders/unlit.vert", "Shaders/unlit.frag");
-//	container = Texture("Textures/container.jpg");
-//
-//	cubeRenderer = MeshRenderer(SOL::readMeshFile("Objects/Cube.obj"), &shader
-//			/*, &container*/);
-//
-//	cubeParent = Entity(math::vec3(0, 5, 0), math::vec3(0), math::vec3(1));
-//
-//	cube1 = Entity(math::vec3(0, 4, 0), math::vec3(0, 0, 0), math::vec3(1));
-//	cube1.color = math::vec3(0.4, 0.4, 1);
-//	cube1.addComponent(new Rigidbody(1, -.01));
-//	cube1.addComponent(new BoxCollider(math::vec3(1)));
-//	scene.addEntity(&cube1);
-//
-//	cube2 = Entity(math::vec3(0, 0, 0), math::vec3(0), math::vec3(1));
-//	cube2.color = math::vec3(1, 0.4, 0.4);
-//	cube2.addComponent(new BoxCollider(math::vec3(1)));
-//	scene.addEntity(&cube2);
-//
-//	cubeRenderer.addEntity(&cube1);
-//	cubeRenderer.addEntity(&cube2);
-//	scene.addDrawable(&cubeRenderer);
 }
 
 void engine::physicsUpdate(GLFWwindow *window)

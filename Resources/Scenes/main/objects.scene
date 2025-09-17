@@ -56,15 +56,6 @@ add boxcollider .5 0
 add rigidbody 0
 init
 
-o teapotCollider 0 0 .5
-p teapot
-color 1 1 1
-add scaleprnt
-
-tag disabled
-
-init
-
 
 o dragooon <-1, 7, 2.2> 0 1
 color 0.4 0.4 1

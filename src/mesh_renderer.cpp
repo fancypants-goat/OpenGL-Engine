@@ -37,10 +37,10 @@ namespace engine {
 		std::vector<EntityRenderData> bufferData;
 		bufferData.reserve(m_entities.size());
 		
-		for (Entity *e : m_entities)
+		for (const Entity *e : m_entities)
 		{
 			if (e->isActive)
-				bufferData.push_back((*e).renderData);
+				bufferData.push_back(e->renderData);
 		}
 		
 		for (SubMesh &subMesh : mesh.get_SubMeshes())
@@ -86,9 +86,10 @@ namespace engine {
 		{
 			subMesh.use();
 			
-			math::vec3 ambientColor = math::vec3(1);
-			math::vec3 diffuseColor = math::vec3(1);
-			math::vec3 specularColor = math::vec3(1);
+			auto ambientColor = math::vec3(1);
+			auto diffuseColor = math::vec3(1);
+			auto specularColor = math::vec3(1);
+
 			if (subMesh.material.ambientColor != math::vec3(-1))
 				ambientColor = subMesh.material.ambientColor;
 			if (subMesh.material.diffuseColor != math::vec3(-1))
