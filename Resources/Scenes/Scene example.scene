@@ -1,31 +1,21 @@
-scene main
+scene example1
 
-cam main perspective (0, 0, 5) 0
+cam mainCam perspective <0, 0, 5> 0
 fov 90
 tag main
 
-init main
+init
 
 
-o parent 0 0 1
-name parent
-
-init parent
-
-
-o cube1 (0, 5, 0) (0, 0, 0) (1, 1, 1)
-p parent
-name cube
+o cube1 <0, 5, 0> <0, 0, 0> <1, 1, 1>
 color 1.0 0.0 1.0
 add rigidbody 5
-add boxcollider (1, 1, 1) (0, 0, 0)
+add boxcollider <1, 1, 1> <0, 0, 0>
 
 init cube1
 
 
-o cube2 (0, 0, 0) 0 (2, 1, 2)
-p parent
-name cube
+o cube2 <0, 0, 0> 0 <2, 1, 2>
 add boxcollider 1 0
 
 init cube2

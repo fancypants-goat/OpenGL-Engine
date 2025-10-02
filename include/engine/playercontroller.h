@@ -5,6 +5,7 @@
 #ifndef ENGINE_PLAYERCONTROLLER_H
 #define ENGINE_PLAYERCONTROLLER_H
 
+#include "box_collider.h"
 #include "component.h"
 
 namespace engine {
@@ -22,7 +23,8 @@ namespace engine {
 		
 		float speed;
 		float jumpStrength;
-		bool isJumping = false;
+
+		BoxCollider *feetCollider;
 	};
 }
 

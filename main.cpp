@@ -56,25 +56,6 @@ namespace engine {
 		Mouse::updateCursorPosition(window);
 	}
 	
-	void dataSync()
-	{
-		if (!runningApplication)
-			return;
-
-		Camera::get_main()->updateCamera();
-		
-		for (const auto &r : Scene::activeScene->m_drawables)
-		{
-			for (auto &entity : r->get_entities())
-			{
-				entity->renderData = EntityRenderData {
-						entity->transform.modelMatrix(),
-						entity->color
-				};
-			}
-		}
-	}
-	
 	void physicsLoop(GLFWwindow *window)
 	{
 		while (runningApplication)
@@ -89,7 +70,6 @@ namespace engine {
 			physicsUpdate(window);
 			
 			// sync
-			dataSync();
 			
 			// physics fps cap
 			double timeToWait = max(physicsUpdateTime - (glfwGetTime() - startTime), 0.);
@@ -119,7 +99,7 @@ namespace engine {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			
 			// upload/draw all MeshRenderers
-			
+			Camera::get_main()->updateCamera();
 			Scene::activeScene->drawScene(window);
 			
 			glfwPollEvents();

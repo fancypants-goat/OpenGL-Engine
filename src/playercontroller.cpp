@@ -12,7 +12,9 @@ namespace engine {
 	PlayerController::PlayerController(float speed, float jumpStrength)
 			: speed(speed), jumpStrength(jumpStrength)
 	{
-	
+		feetCollider = new BoxCollider(math::vec3(.8, .05, .8), math::vec3(0, -1, 0));
+		feetCollider->isTrigger = true;
+		feetCollider->collisionMode = BoxCollider::Advanced;
 	}
 	
 	Component *PlayerController::create(const std::vector<std::string> &args)
@@ -54,8 +56,10 @@ namespace engine {
 	
 	void PlayerController::jump()
 	{
-		transform->translate(0.1f, math::vec3const::up);
-		getComponent<Rigidbody>()->setVelocity(jumpStrength, math::vec3(0, 1, 0));
-		isJumping = true;
+		if (feetCollider->collidesWithFirst().collided)
+		{
+			transform->translate(0.1f, math::vec3const::up);
+			getComponent<Rigidbody>()->setVelocity(jumpStrength, math::vec3(0, 1, 0));
+		}
 	}
 }

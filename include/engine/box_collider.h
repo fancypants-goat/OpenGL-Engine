@@ -43,6 +43,8 @@ namespace engine {
 		void calculateBounds();
 		
 		void resolveCollisions();
+		CollisionInfo collidesWithFirst();
+		std::vector<CollisionInfo> collidesWithAny();
 		CollisionInfo collidesWithAABB(BoxCollider *&other);
 		CollisionInfo collidesWithOBB(BoxCollider *&other);
 

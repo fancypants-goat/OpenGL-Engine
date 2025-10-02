@@ -37,10 +37,15 @@ namespace engine {
 		std::vector<EntityRenderData> bufferData;
 		bufferData.reserve(m_entities.size());
 		
-		for (const Entity *e : m_entities)
+		for (Entity *e : m_entities)
 		{
 			if (e->isActive)
+			{
+				e->renderData.color = e->color;
+				e->renderData.model = e->transform.modelMatrix();
+
 				bufferData.push_back(e->renderData);
+			}
 		}
 		
 		for (SubMesh &subMesh : mesh.get_SubMeshes())

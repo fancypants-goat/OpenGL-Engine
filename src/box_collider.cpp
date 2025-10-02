@@ -112,7 +112,40 @@ namespace engine {
 			}
 		}
 	}
-	
+
+	CollisionInfo BoxCollider::collidesWithFirst()
+	{
+		for (auto &other : boxColliders)
+		{
+			if (other == this || other->isTrigger) continue;
+
+			CollisionInfo info = collisionMode == Simple? collidesWithAABB(other)
+												  : collidesWithOBB(other);
+			if (info.collided)
+				return info;
+		}
+
+		return CollisionInfo();
+	}
+
+	std::vector<CollisionInfo> BoxCollider::collidesWithAny()
+	{
+		std::vector<CollisionInfo> results;
+
+		for (auto &other : boxColliders)
+		{
+			if (other == this || other->isTrigger) continue;
+
+			CollisionInfo info = collisionMode == Simple? collidesWithAABB(other)
+												  : collidesWithOBB(other);
+
+			if (info.collided)
+				results.push_back(info);
+		}
+
+		return results;
+	}
+
 	CollisionInfo BoxCollider::collidesWithAABB(BoxCollider *&other)
 	{
 		math::vec3 axes[]
