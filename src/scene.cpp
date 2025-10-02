@@ -35,22 +35,11 @@ namespace engine {
 	
 	void Scene::drawScene(GLFWwindow *window)
 	{
-		std::cout << "DRAWING SCENE >>>>>>>>>>>>>>>>>" << std::endl;
-		float begin = glfwGetTime();
 		for (const auto& drawable : m_drawables)
 		{
-			float start = glfwGetTime();
-
 			drawable->upload();
 			drawable->draw(window);
-
-			float end = glfwGetTime();
-			std::cout << "Start: " << start << " End: " << end << " Time span: " << end - start << std::endl;
 		}
-		float final = glfwGetTime();
-		std::cout << "-------------------------------------------" << std::endl;
-		std::cout << "Started At: " << begin << " Ended At: " << final << " Total Span: " << final - begin << std::endl;
-		std::cout << std::endl;
 	}
 	
 	void Scene::updateScene(GLFWwindow *window)
